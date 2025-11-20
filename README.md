@@ -9,7 +9,7 @@ Modularized R package with:
 ## Installation
 
 ```r
-remotes::install_github("Calcalas/DBfunction")
+remotes::install_github("scottcalcalas/XZDBfunction")
 ```
 
 ## Build documentation
