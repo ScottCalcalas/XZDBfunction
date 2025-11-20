@@ -1,5 +1,5 @@
 
-# DBfunction
+# XZDBfunction
 
 Modularized R package with:
 - roxygen2 documentation
