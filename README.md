@@ -12,14 +12,8 @@ Modularized R package with:
 remotes::install_github("scottcalcalas/XZDBfunction")
 ```
 
-## Build documentation
+## Use
 
 ```r
-devtools::document()
-```
-
-## Build pkgdown site
-
-```r
-pkgdown::build_site()
+library(XZDBfunction)
 ```
