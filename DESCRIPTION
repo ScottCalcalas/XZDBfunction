@@ -16,10 +16,6 @@ Imports:
     tools, 
     stringr, 
     tibble, 
-    AnnotationDbi, 
-    org.Hs.eg.db, 
-    ensembldb, 
-    EnsDb.Hsapiens.v86,
     utils
 Suggests:
     testthat,
