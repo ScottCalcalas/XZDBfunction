@@ -1,0 +1,12 @@
+Package: DBfunction
+Type: Package
+Title: Xiaopei Zhang Dataset Indexing and Search Tools
+Version: 0.2.0
+Author: Xiaopei Zhang
+Maintainer: Xiaopei Zhang <xiaopei.zhang@northwestern.edu>
+Description: Modularized tools for dataset indexing, gene ID/symbol resolution, searching, and printing.
+License: MIT
+Encoding: UTF-8
+Depends: R (>= 4.2.0)
+Imports: readxl, dplyr, purrr, rlang, tools, stringr, tibble, AnnotationDbi, org.Hs.eg.db, ensembldb, EnsDb.Hsapiens.v86, utils
+RoxygenNote: 7.3.0
