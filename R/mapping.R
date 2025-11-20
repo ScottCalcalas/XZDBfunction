@@ -19,61 +19,9 @@ norm_ensembl <- function(x) {
 is_ensembl <- function(x) grepl("^ENSG\\d{6,}", toupper(x %||% ""))
 is_entrez  <- function(x) grepl("^\\d+$", x %||% "")
 
-map_symbol_to_id <- function(sym) {
-  sym <- norm_symbol(sym)
-  if (!nzchar(sym) || is.na(sym)) return(NA_character_)
-  key <- paste0("S2I:", sym)
-  if (exists(key, envir = .hcache, inherits = FALSE)) return(get(key, .hcache))
-  out <- NA_character_
-  if (.pkg_ok("AnnotationDbi") && .pkg_ok("org.Hs.eg.db")) {
-    try({
-      eg <- AnnotationDbi::mapIds(org.Hs.eg.db::org.Hs.eg.db,
-                                  keys = sym, keytype = "SYMBOL",
-                                  column = "ENSEMBL", multiVals = "first")
-      out <- scalarize_chr(unname(eg[[1]]), NA_character_)
-      if (nzchar(out)) out <- norm_ensembl(out)
-    }, silent = TRUE)
-  }
-  if (is.na(out) && .pkg_ok("ensembldb") && .pkg_ok("EnsDb.Hsapiens.v86")) {
-    try({
-      edb <- EnsDb.Hsapiens.v86::EnsDb.Hsapiens.v86
-      res <- ensembldb::select(edb, keys = sym, keytype = "SYMBOL", columns = "GENEID")
-      if (NROW(res)) out <- norm_ensembl(res$GENEID[1])
-    }, silent = TRUE)
-  }
-  assign(key, out, envir = .hcache); out
-}
+map_symbol_to_id <- function(sym) {sym}
 
-map_id_to_symbol <- function(id) {
-  id <- scalarize_chr(id, na = NA_character_); if (is.na(id)) return(NA_character_)
-  id_norm <- if (is_ensembl(id)) norm_ensembl(id) else id
-  key <- paste0("I2S:", id_norm)
-  if (exists(key, envir = .hcache, inherits = FALSE)) return(get(key, .hcache))
-  out <- NA_character_
-  if (.pkg_ok("AnnotationDbi") && .pkg_ok("org.Hs.eg.db")) {
-    try({
-      if (is_ensembl(id_norm)) {
-        sy <- AnnotationDbi::mapIds(org.Hs.eg.db::org.Hs.eg.db,
-                                    keys = id_norm, keytype = "ENSEMBL",
-                                    column = "SYMBOL", multiVals = "first")
-      } else if (is_entrez(id_norm)) {
-        sy <- AnnotationDbi::mapIds(org.Hs.eg.db::org.Hs.eg.db,
-                                    keys = id_norm, keytype = "ENTREZID",
-                                    column = "SYMBOL", multiVals = "first")
-      } else sy <- NA_character_
-      out <- scalarize_chr(unname(sy[[1]]), NA_character_)
-      if (nzchar(out)) out <- norm_symbol(out)
-    }, silent = TRUE)
-  }
-  if (is.na(out) && is_ensembl(id_norm) && .pkg_ok("ensembldb") && .pkg_ok("EnsDb.Hsapiens.v86")) {
-    try({
-      edb <- EnsDb.Hsapiens.v86::EnsDb.Hsapiens.v86
-      res <- ensembldb::select(edb, keys = id_norm, keytype = "GENEID", columns = "SYMBOL")
-      if (NROW(res)) out <- norm_symbol(res$SYMBOL[1])
-    }, silent = TRUE)
-  }
-  assign(key, out, envir = .hcache); out
-}
+map_id_to_symbol <- function(id) {id}
 
 # Vectorized fill with rules:
 # - If both missing -> drop
