@@ -1,3 +1,6 @@
+#' Module input
+#' @keywords internal
+
 # ---------- Build per-dataset index CSVs ----------
 xiaopei.input <- function(file.Name, Sheet = 1, xlsx.index.location = "Datasets infomation.xlsx") {
   indexfile <- readxl::read_xlsx(xlsx.index.location)

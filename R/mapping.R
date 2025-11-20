@@ -1,3 +1,6 @@
+#' Module mapping
+#' @keywords internal
+
 # ---------- Lightweight gene mappers with caching ----------
 .hcache <- new.env(parent = emptyenv())
 .pkg_ok <- function(pkg) isTRUE(requireNamespace(pkg, quietly = TRUE))

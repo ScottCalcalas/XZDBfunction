@@ -1,12 +1,30 @@
 Package: DBfunction
 Type: Package
 Title: Xiaopei Zhang Dataset Indexing and Search Tools
-Version: 0.2.0
+Version: 1.0.0
 Author: Xiaopei Zhang
 Maintainer: Xiaopei Zhang <xiaopei.zhang@northwestern.edu>
-Description: Modularized tools for dataset indexing, gene ID/symbol resolution, searching, and printing.
+Description: Modularized tools for dataset indexing, gene ID/symbol resolution, searching, printing, and metadata binding. Includes full roxygen2, pkgdown, and GitHub Actions support.
 License: MIT
 Encoding: UTF-8
 Depends: R (>= 4.2.0)
-Imports: readxl, dplyr, purrr, rlang, tools, stringr, tibble, AnnotationDbi, org.Hs.eg.db, ensembldb, EnsDb.Hsapiens.v86, utils
+Imports: 
+    readxl, 
+    dplyr, 
+    purrr, 
+    rlang, 
+    tools, 
+    stringr, 
+    tibble, 
+    AnnotationDbi, 
+    org.Hs.eg.db, 
+    ensembldb, 
+    EnsDb.Hsapiens.v86,
+    utils
+Suggests:
+    testthat,
+    pkgdown
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.0
+URL: https://github.com/Calcalas/DBfunction
+BugReports: https://github.com/Calcalas/DBfunction/issues
