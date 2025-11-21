@@ -42,10 +42,10 @@ if (length(missing)) {
 # 6) Launch on a free port and open browser
 port <- tryCatch(httpuv::randomPort(), error = function(e) 8888)
 url  <- sprintf("http://127.0.0.1:%d/", port)
-message(sprintf("Starting app from ./App_Info on %s", url))
+message(sprintf("Starting app on %s", url))
 
 shiny::runApp(
-  #appDir = "App_Info",
+  appDir = ".",
   host = "127.0.0.1",
   port = port,
   launch.browser = TRUE
