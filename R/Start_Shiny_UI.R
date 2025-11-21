@@ -39,19 +39,13 @@ if (length(missing)) {
 # 4) Ensure Output/ exists at project root (app also checks, but do it here)
 #if (!dir.exists("Output")) dir.create("Output", showWarnings = FALSE)
 
-# 5) Validate App_Info/ and app.R presence
-if (!dir.exists("App_Info")) stop("Missing 'App_Info/' directory at project root.")
-if (!file.exists(file.path("App_Info", "app.R"))) {
-  stop("Missing 'App_Info/app.R'. Place your app file there.")
-}
-
 # 6) Launch on a free port and open browser
 port <- tryCatch(httpuv::randomPort(), error = function(e) 8888)
 url  <- sprintf("http://127.0.0.1:%d/", port)
 message(sprintf("Starting app from ./App_Info on %s", url))
 
 shiny::runApp(
-  appDir = "App_Info",
+  #appDir = "App_Info",
   host = "127.0.0.1",
   port = port,
   launch.browser = TRUE
