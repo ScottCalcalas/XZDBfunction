@@ -12,8 +12,9 @@ Modularized R package with:
 remotes::install_github("scottcalcalas/XZDBfunction")
 ```
 
-## Use
+## Use Genomic website browser
 
 ```r
 library(XZDBfunction)
+XZDB.Run()
 ```
