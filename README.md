@@ -103,8 +103,8 @@ Requires an internet connection.
   - [Step 1 — Download / Open Folder](#step-1-download--open-folder)
   - [Step 2 — Open Quick Start.R](#step-2-open-quick-startr)
   - [Step 3 — Run the Script](#step-3-run-the-script)
-- [2Start & Package Installation](#2start--package-installation)
-- [3Last Step](#3last-step)
+- [2.Start & Package Installation](#2start--package-installation)
+- [3.Last Step](#3last-step)
 - [Appendix — Windows & Mac Shortcuts](#appendix)
 
 # 1A. Auto Start
