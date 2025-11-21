@@ -93,7 +93,8 @@ Requires an internet connection.
 
 ---
 ---
-## *If you want to use it locally, instead of a package*
+# Local use protocol
+## If you want to use it locally, instead of a package
 **Author:** Xiaopei  
 **Updated:** 2025-11-20  
 
