@@ -17,20 +17,15 @@ XZDB.Run()
 
 ---
 
-## **Contents**
-- [Functions](#functions)
+## **Functions Contents**
   - [1. Print/Export](#function-1-printexport)
   - [2. Check](#function-2-check)
   - [3. Load Index File](#function-3-load-index-file)
   - [4. Output Files](#function-4-output-files)
   - [5. Update Database](#function-5-update-database)
   - [6. UniProt / MINT Comparison](#function-6-uniprot--mint-comparison)
-- [Last Step](#last-step)
-- [Appendix — Windows & Mac Shortcuts](#appendix)
 
 ---
-
-# FUNCTIONS
 
 ## Function 1 — Print/Export
 Use the **Print/Export** tab to obtain detailed search results.
@@ -92,13 +87,6 @@ Run these actions in the left panel:
 
 Requires an internet connection.
 
----
-
-# Last Step
-After finishing:
-- Close the browser tab  
-- Close R / RStudio / Terminal  
-
 
 
 
@@ -112,7 +100,7 @@ After finishing:
 A user-friendly Shiny application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.  
 This README provides complete instructions for starting the application and using all its functions.
 
-## **Contents**
+### **Contents**
 - [A. Auto Start](#a-auto-start)
   - [On Windows](#on-windows)
   - [On Mac](#on-mac)
@@ -122,6 +110,8 @@ This README provides complete instructions for starting the application and usin
   - [Step 2 — Open Quick Start.R](#step-2-open-quick-startr)
   - [Step 3 — Run the Script](#step-3-run-the-script)
 - [Start & Package Installation](#start--package-installation)
+- [Last Step](#last-step)
+- [Appendix — Windows & Mac Shortcuts](#appendix)
 ---
 
 # A. Auto Start
@@ -158,6 +148,15 @@ Running **one line** from `Quick Start.R` will launch the browser interface.
 On the first run, the script will automatically install any missing R packages.
 
 Once installation finishes, the app will open in your browser automatically.
+
+
+---
+
+# Last Step
+After finishing:
+- Close the browser tab  
+- Close R / RStudio / Terminal
+
 
 ---
 
