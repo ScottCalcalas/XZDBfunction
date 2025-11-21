@@ -2,7 +2,7 @@
 # XZDBfunction
 
 
-## Installation
+## Installation at R
 
 ```r
 remotes::install_github("scottcalcalas/XZDBfunction")
