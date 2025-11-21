@@ -28,6 +28,7 @@ XZDB.Run()
   - [4. Output Files](#function-4-output-files)
   - [5. Update Database](#function-5-update-database)
   - [6. UniProt / MINT Comparison](#function-6-uniprot--mint-comparison)
+  - [Browser Files: Add Your Own Dataset & Dataset Information](#browser-files-add-your-own-dataset--dataset-information)
 
 ## Function 1 — Print/Export
 Use the **Print/Export** tab to obtain detailed search results.
