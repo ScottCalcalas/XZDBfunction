@@ -25,7 +25,7 @@ suppressPackageStartupMessages({
 #   xiaopei.print.geneSymbol.family()
 #   xiaopei.print.geneSymbol.fuzzy()
 #   xiaopei.print.GeneID()
-#source("XZ_DB_functions.r", local = TRUE)
+source("XZ_DB_functions.r", local = TRUE)
 
 # Ensure folders exist
 if (!dir.exists("IndexedData")) dir.create("IndexedData", showWarnings = FALSE)
