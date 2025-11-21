@@ -28,7 +28,7 @@ XZDB.Run()
   - [4. Output Files](#function-4-output-files)
   - [5. Update Database](#function-5-update-database)
   - [6. UniProt / MINT Comparison](#function-6-uniprot--mint-comparison)
-  - [Browser Files: Add Your Own Dataset & Dataset Information](#browser-files-add-your-own-dataset--dataset-information)
+  - [Browser Files: Add Your Own Dataset & Dataset Information](#browser-files)
 
 ## Function 1 — Print/Export
 Use the **Print/Export** tab to obtain detailed search results.
@@ -83,7 +83,8 @@ Run these actions in the left panel:
 Requires an internet connection.
 
 
-# Browser files: put your own dataset and dataset information
+# Browser files
+(Put your own dataset and dataset information)
 Example location, inside R package:
 ```r
  R\R-4.4.3\library\XZDBfunction\shinyapp
