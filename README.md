@@ -109,33 +109,36 @@ Requires an internet connection.
 
 # 1A. Auto Start
 
-## On Windows
+
+*On Windows*: 
+
 A desktop shortcut can automatically launch the Genomic DB Browser, as long as **R is installed**.
 
-## On Mac
+
+
+*On Mac*:
+
 1. Ensure **R** is installed.  
 2. Open the project folder.  
 3. Double-click **MAC_Start.command**.
-
 *If the Mac start script fails, use the backup version inside the `App_Info` folder.*
 
 ---
 
 # 1B. Manual Start
 
-### Step 0 — Return Users
+Step 0 — Return Users
 Close all running R sessions, including RStudio and R terminal windows.
 
-### Step 1 — Download / Open Folder
+Step 1 — Download / Open Folder
 Download or open the entire Genomic DB Browser folder on your computer.
 
-### Step 2 — Open `Quick Start.R`
+Step 2 — Open `Quick Start.R`
 Open the script using **R** or **RStudio**.
 
-### Step 3 — Run the Script
+Step 3 — Run the Script
 Running **one line** from `Quick Start.R` will launch the browser interface.
 
----
 
 # 2.Start & Package Installation
 On the first run, the script will automatically install any missing R packages.
@@ -143,7 +146,6 @@ On the first run, the script will automatically install any missing R packages.
 Once installation finishes, the app will open in your browser automatically.
 
 
----
 
 # 3.Last Step
 After finishing:
@@ -151,7 +153,6 @@ After finishing:
 - Close R / RStudio / Terminal
 
 
----
 
 ## Appendix
 
