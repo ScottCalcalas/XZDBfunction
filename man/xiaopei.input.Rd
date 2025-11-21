@@ -2,7 +2,7 @@
 % Please edit documentation in R/input.R
 \name{xiaopei.input}
 \alias{xiaopei.input}
-\title{Module input}
+\title{Build per-dataset index from Excel metadata}
 \usage{
 xiaopei.input(
   file.Name,
@@ -34,10 +34,3 @@ xiaopei.input("Dataset2.xlsx", Sheet = 2)
 xiaopei.input("Sample.xlsx", xlsx.index.location = "metadata.xlsx")
 }
 }
-\keyword{Build}
-\keyword{Excel}
-\keyword{from}
-\keyword{index}
-\keyword{internal}
-\keyword{metadata}
-\keyword{per-dataset}

@@ -1,5 +1,3 @@
-#' Module mapping
-#' @keywords internal
 
 # ---------- Lightweight gene mappers with caching ----------
 .hcache <- new.env(parent = emptyenv())

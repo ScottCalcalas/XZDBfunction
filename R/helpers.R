@@ -1,7 +1,6 @@
-#' Module helpers
-#' @keywords internal
 
-# ---- helpers ----
+
+
 `%||%` <- function(a, b) if (!is.null(a)) a else b
 
 sanitize_filename <- function(x) {

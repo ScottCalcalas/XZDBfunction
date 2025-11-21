@@ -1,5 +1,5 @@
 
-# Generate note: Run next line
+# Generate roxygen2 note: Run next line
 # library(devtools)
 # devtools::document()
 

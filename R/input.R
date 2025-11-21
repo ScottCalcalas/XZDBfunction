@@ -1,6 +1,3 @@
-#' Module input
-#' @keywords internal
-
 # Generate note: Run next line
 # library(devtools)
 # devtools::document()
