@@ -20,7 +20,7 @@ XZDB.Run()
 
 ---
 
-## **Functions Contents**
+ *Functions Contents*
   - [1. Print/Export](#function-1-printexport)
   - [2. Check](#function-2-check)
   - [3. Load Index File](#function-3-load-index-file)
@@ -162,7 +162,7 @@ C:\Users\jcc1885\AppData\Local\Programs\R\R-4.4.3\bin\Rscript.exe "R:\Basic_Scie
 ```
 
 ## Mac “One-Click Start” Command File
-Create a file named `something.command` on the Desktop:
+Create a file named `something.command` (e.g. `MAC_Start.command`) on the Desktop:
 
 ```bash
 #!/bin/bash
