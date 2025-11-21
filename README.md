@@ -123,7 +123,6 @@ A desktop shortcut can automatically launch the Genomic DB Browser, as long as *
 3. Double-click **MAC_Start.command**.
 *If the Mac start script fails, use the backup version inside the `App_Info` folder.*
 
----
 
 ## 1B. Manual Start
 
