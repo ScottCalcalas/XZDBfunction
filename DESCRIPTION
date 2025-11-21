@@ -1,7 +1,7 @@
 Package: XZDBfunction
 Type: Package
 Title: Xiaopei Zhang Dataset Indexing and Search Tools
-Version: 1.3.0
+Version: 6.36.0
 Author: Xiaopei Zhang
 Maintainer: Xiaopei Zhang <xiaopei.zhang@northwestern.edu>
 Description: Modularized tools for dataset indexing, gene ID/symbol resolution, searching, printing, and metadata binding. Includes full roxygen2, pkgdown, and GitHub Actions support.
