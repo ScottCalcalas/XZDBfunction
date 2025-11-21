@@ -18,6 +18,7 @@ library(XZDBfunction)
 XZDB.Run()
 ```
 
+
 ---
 
  *Functions Contents*
@@ -81,8 +82,16 @@ Run these actions in the left panel:
 Requires an internet connection.
 
 
-
-
+# Browser files: put your own dataset and dataset information
+Example location, inside R package:
+```r
+ R\R-4.4.3\library\XZDBfunction\shinyapp
+```
+You can find Datasets infomation.xlsx ; For putting dataset, goes to dataset folder
+After done those, start broswer can run all the Administrator Operation by following 
+1. Build Index(all)
+2. Build for GeneID
+3. Build for GeneSymbol
 
 ---
 
