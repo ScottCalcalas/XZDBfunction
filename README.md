@@ -107,7 +107,7 @@ Requires an internet connection.
 - [3.Last Step](#3last-step)
 - [Appendix — Windows & Mac Shortcuts](#appendix)
 
-# 1A. Auto Start
+## 1A. Auto Start
 
 
 *On Windows*: 
@@ -125,7 +125,7 @@ A desktop shortcut can automatically launch the Genomic DB Browser, as long as *
 
 ---
 
-# 1B. Manual Start
+## 1B. Manual Start
 
 Step 0 — Return Users
 Close all running R sessions, including RStudio and R terminal windows.
@@ -140,29 +140,29 @@ Step 3 — Run the Script
 Running **one line** from `Quick Start.R` will launch the browser interface.
 
 
-# 2.Start & Package Installation
+## 2.Start & Package Installation
 On the first run, the script will automatically install any missing R packages.
 
 Once installation finishes, the app will open in your browser automatically.
 
 
 
-# 3.Last Step
+## 3.Last Step
 After finishing:
 - Close the browser tab  
 - Close R / RStudio / Terminal
 
 
 
-## Appendix
+### Appendix
 
-### Windows Shortcut Example
+#### Windows Shortcut Example
 Modify the shortcut **Target** to point to Rscript and your Quick Start script: (For example:)
 ```
 C:\Users\jcc1885\AppData\Local\Programs\R\R-4.4.3\bin\Rscript.exe "R:\Basic_Sciences\Pharm\Borden_Lab\borden\Database\Genomic result Browser\Quick Start.R"
 ```
 
-### Mac “One-Click Start” Command File
+#### Mac “One-Click Start” Command File
 Create a file named `something.command` (e.g. `MAC_Start.command`) on the Desktop:
 
 ```bash
