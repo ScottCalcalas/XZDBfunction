@@ -83,8 +83,11 @@ Run these actions in the left panel:
 Requires an internet connection.
 
 
+
 # Browser files
+
 (Put your own dataset and dataset information)
+
 Example location, inside R package:
 ```r
  R\R-4.4.3\library\XZDBfunction\shinyapp
