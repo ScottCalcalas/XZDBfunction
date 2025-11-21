@@ -28,8 +28,6 @@ XZDB.Run()
   - [5. Update Database](#function-5-update-database)
   - [6. UniProt / MINT Comparison](#function-6-uniprot--mint-comparison)
 
----
-
 ## Function 1 — Print/Export
 Use the **Print/Export** tab to obtain detailed search results.
 
@@ -45,19 +43,15 @@ The app generates three files automatically:
 - Details for Gene 1  
 - Details for Gene 2  
 
----
-
 ## Function 2 — Check
 Use the **Check** tab to:
 - See which datasets include a specific gene  
 - Quickly confirm if the gene exists in the database  
 
----
 
 ## Function 3 — Load Index File
 On the left panel, use **Load index file** to view dataset metadata and structure.
 
----
 
 ## Function 4 — Output Files
 Open the **Output files** tab to:
@@ -67,8 +61,6 @@ Open the **Output files** tab to:
 **Note:**  
 Not all outputs can be previewed.  
 The output folder may be cleared monthly—please save results you want to keep.
-
----
 
 ## Function 5 — Update Database
 *(Optional — only needed if updating dataset metadata)*
@@ -82,8 +74,6 @@ Run these actions in the left panel:
 2. **Build searching_GeneID.csv**  
 3. **Build searching_geneSymbol.csv**
 
----
-
 ## Function 6 — UniProt / MINT Comparison
 - **UniProt:** retrieves protein entry information  
 - **MINT:** retrieves protein–protein interaction data based on UniProt ID  
@@ -95,9 +85,11 @@ Requires an internet connection.
 
 
 ---
----
+
 # Local use protocol
+
 (If you want to use it locally, instead of a package)
+
 **Author:** Xiaopei  
 **Updated:** 2025-11-20  
 
@@ -114,7 +106,6 @@ Requires an internet connection.
 - [Start & Package Installation](#start--package-installation)
 - [Last Step](#last-step)
 - [Appendix — Windows & Mac Shortcuts](#appendix)
----
 
 # A. Auto Start
 
