@@ -95,19 +95,19 @@ Requires an internet connection.
 
 
 ### **Contents**
-- [A. Auto Start](#a-auto-start)
+- [1A. Auto Start](#1a-auto-start)
   - [On Windows](#on-windows)
   - [On Mac](#on-mac)
-- [B. Manual Start](#b-manual-start)
+- [1B. Manual Start](#1b-manual-start)
   - [Step 0 — Return Users](#step-0-return-users)
   - [Step 1 — Download / Open Folder](#step-1-download--open-folder)
   - [Step 2 — Open Quick Start.R](#step-2-open-quick-startr)
   - [Step 3 — Run the Script](#step-3-run-the-script)
-- [Start & Package Installation](#start--package-installation)
-- [Last Step](#last-step)
+- [2Start & Package Installation](#2start--package-installation)
+- [3Last Step](#3last-step)
 - [Appendix — Windows & Mac Shortcuts](#appendix)
 
-# A. Auto Start
+# 1A. Auto Start
 
 ## On Windows
 A desktop shortcut can automatically launch the Genomic DB Browser, as long as **R is installed**.
@@ -121,7 +121,7 @@ A desktop shortcut can automatically launch the Genomic DB Browser, as long as *
 
 ---
 
-# B. Manual Start
+# 1B. Manual Start
 
 ### Step 0 — Return Users
 Close all running R sessions, including RStudio and R terminal windows.
@@ -137,7 +137,7 @@ Running **one line** from `Quick Start.R` will launch the browser interface.
 
 ---
 
-# Start & Package Installation
+# 2Start & Package Installation
 On the first run, the script will automatically install any missing R packages.
 
 Once installation finishes, the app will open in your browser automatically.
@@ -145,7 +145,7 @@ Once installation finishes, the app will open in your browser automatically.
 
 ---
 
-# Last Step
+# 3Last Step
 After finishing:
 - Close the browser tab  
 - Close R / RStudio / Terminal
