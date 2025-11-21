@@ -1,10 +1,6 @@
 
 # XZDBfunction
 
-Modularized R package with:
-- roxygen2 documentation
-- GitHub Actions (R CMD check)
-- pkgdown website support
 
 ## Installation
 
