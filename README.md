@@ -137,7 +137,7 @@ Running **one line** from `Quick Start.R` will launch the browser interface.
 
 ---
 
-# 2Start & Package Installation
+# 2.Start & Package Installation
 On the first run, the script will automatically install any missing R packages.
 
 Once installation finishes, the app will open in your browser automatically.
@@ -145,7 +145,7 @@ Once installation finishes, the app will open in your browser automatically.
 
 ---
 
-# 3Last Step
+# 3.Last Step
 After finishing:
 - Close the browser tab  
 - Close R / RStudio / Terminal
