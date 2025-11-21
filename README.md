@@ -153,15 +153,15 @@ After finishing:
 
 ---
 
-# Appendix
+## Appendix
 
-## Windows Shortcut Example
+### Windows Shortcut Example
 Modify the shortcut **Target** to point to Rscript and your Quick Start script: (For example:)
 ```
 C:\Users\jcc1885\AppData\Local\Programs\R\R-4.4.3\bin\Rscript.exe "R:\Basic_Sciences\Pharm\Borden_Lab\borden\Database\Genomic result Browser\Quick Start.R"
 ```
 
-## Mac “One-Click Start” Command File
+### Mac “One-Click Start” Command File
 Create a file named `something.command` (e.g. `MAC_Start.command`) on the Desktop:
 
 ```bash
