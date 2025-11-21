@@ -18,7 +18,8 @@ XZDB.Run()
 ---
 ---
 
-# Genomic DB Browser — User Protocol
+# Genomic DB Browser 
+## *If you want to use it locally, instead of a package*
 **Author:** Xiaopei  
 **Updated:** 2025-11-20  
 
@@ -158,8 +159,26 @@ After finishing:
 # Appendix
 
 ## Windows Shortcut Example
-Modify the shortcut **Target** to point to Rscript and your Quick Start script:
+Modify the shortcut **Target** to point to Rscript and your Quick Start script: (For example:)
+```
+C:\Users\jcc1885\AppData\Local\Programs\R\R-4.4.3\bin\Rscript.exe "R:\Basic_Sciences\Pharm\Borden_Lab\borden\Database\Genomic result Browser\Quick Start.R"
+```
 
+## Mac “One-Click Start” Command File
+Create a file named `something.command` on the Desktop:
+
+```bash
+#!/bin/bash
+# Launch script
+# ...
+```
+Then run
+```bash
+cd ~/Desktop
+chmod +x something.command
+```
+
+After those steps, Double-click the file can run it.
 
 
 
