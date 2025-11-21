@@ -25,8 +25,6 @@ XZDB.Run()
 A user-friendly Shiny application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.  
 This README provides complete instructions for starting the application and using all its functions.
 
----
-
 ## **Contents**
 - [A. Auto Start](#a-auto-start)
   - [On Windows](#on-windows)
