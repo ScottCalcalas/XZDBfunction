@@ -154,7 +154,7 @@ After finishing:
 
 
 
-### *Appendix*
+## *Appendix*
 
 #### A1.Windows Shortcut Example
 Modify the shortcut **Target** to point to Rscript and your Quick Start script: (For example:)
