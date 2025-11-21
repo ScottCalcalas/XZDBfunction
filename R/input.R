@@ -1,7 +1,40 @@
 #' Module input
 #' @keywords internal
 
+# Generate note: Run next line
+# library(devtools)
+# devtools::document()
+
+# If want everything inside the package, put next line at NAMESPACE
+# exportPattern(".")
+
+
+
 # ---------- Build per-dataset index CSVs ----------
+#' Build per-dataset index from Excel metadata
+#' 
+#' @description
+#' Reads the dataset metadata Excel file (default: `"Datasets infomation.xlsx"`),
+#' trims/normalizes the fields, and returns the subset row matching the requested
+#' dataset file name. This function is the first step of the XZ_DB workflow.
+#'
+#' @param file.Name Character. The dataset file name to index (e.g., `"Dataset1.xlsx"`).
+#' @param Sheet Integer or character. Sheet number or name to read
+#'   from the dataset file. Default is `1`.
+#' @param xlsx.index.location Character. Path to the dataset information index
+#'   Excel file. Default: `"Datasets infomation.xlsx"`.
+#'
+#' @return
+#' A cleaned data frame containing the metadata row(s) for the requested dataset.
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' xiaopei.input("MyDataset.xlsx")
+#' xiaopei.input("Dataset2.xlsx", Sheet = 2)
+#' xiaopei.input("Sample.xlsx", xlsx.index.location = "metadata.xlsx")
+#' }
 xiaopei.input <- function(file.Name, Sheet = 1, xlsx.index.location = "Datasets infomation.xlsx") {
   indexfile <- readxl::read_xlsx(xlsx.index.location)
   indexfile <- trim_df(indexfile)
