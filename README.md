@@ -1,5 +1,8 @@
 
 # XZDBfunction
+- A user-friendly Shiny application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.  
+This README provides complete instructions for starting the application and using all its functions.
+- Daily Functions
 
 
 ## Installation at R
@@ -94,12 +97,10 @@ Requires an internet connection.
 ---
 ---
 # Local use protocol
-## If you want to use it locally, instead of a package
+(If you want to use it locally, instead of a package)
 **Author:** Xiaopei  
 **Updated:** 2025-11-20  
 
-A user-friendly Shiny application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.  
-This README provides complete instructions for starting the application and using all its functions.
 
 ### **Contents**
 - [A. Auto Start](#a-auto-start)
