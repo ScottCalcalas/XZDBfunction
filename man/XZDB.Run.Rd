@@ -2,10 +2,28 @@
 % Please edit documentation in R/Start_Shiny_UI.R
 \name{XZDB.Run}
 \alias{XZDB.Run}
-\title{Run UI}
+\title{Run UI: Launch the Genomic DB Browser Shiny Application}
 \usage{
 XZDB.Run()
 }
+\value{
+This function is called for launching a Shiny
+application and does not return a value.
+}
 \description{
-Run UI
+Starts the Shiny-based \strong{Genomic DB Browser} included within the
+\code{XZDBfunction} package.
+This function automatically:
+\itemize{
+\item Locates the packaged Shiny application directory,
+\item Ensures required R packages are installed,
+\item Selects an available random port,
+\item Launches the UI in the user's default browser.
+}
+}
+\details{
+The Shiny app is bundled inside the package under the \verb{shinyapp/}
+directory. If the directory cannot be found, the function will stop
+with an informative error.
+Missing dependencies will be installed automatically from CRAN.
 }

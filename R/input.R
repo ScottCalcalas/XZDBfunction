@@ -106,6 +106,41 @@ xiaopei.input <- function(file.Name, Sheet = 1, xlsx.index.location = "Datasets 
   cat("run done : ", file.Name, "\n")
 }
 
+
+
+#' Build Index Files for All Datasets in the Metadata Table
+#'
+#' @description
+#' Reads the dataset metadata table (default: `"Datasets infomation.xlsx"`)
+#' and sequentially runs `xiaopei.input()` for every listed dataset.  
+#' This function is the bulk-processing version of `xiaopei.input()`, allowing
+#' users to generate all per-dataset index files in one step.
+#'
+#' @details
+#' The metadata Excel file must contain at least the columns:
+#' - `DatasetName`: File names of datasets to index
+#' - `Sheet`: Sheet number or name for each dataset  
+#'
+#' Each entry is processed row-by-row.  
+#' If a row fails (missing file, bad sheet, unreadable data, etc.), the error is
+#' caught and reported as a warning, but processing continues for the remaining
+#' rows.
+#'
+#' The helper functions `trim_df()` and `scalarize_chr()` are used internally to
+#' normalize the metadata contents.
+#'
+#' @param xlsx.index.location
+#'   Path to the dataset information Excel file.  
+#'   Defaults to `"Datasets infomation.xlsx"`.
+#'
+#' @return
+#' Invisibly returns `NULL`. Side effect: calls `xiaopei.input()` for each row
+#' of the index table and writes the associated index outputs.
+#'
+#' @seealso
+#'   [`xiaopei.input()`] for single-dataset processing.
+#'
+#' @export
 xiaopei.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx") {
   indexfile <- readxl::read_xlsx(xlsx.index.location)
   indexfile <- trim_df(indexfile)

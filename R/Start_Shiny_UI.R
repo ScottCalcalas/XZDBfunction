@@ -7,8 +7,27 @@
 
 
 
-#' Run UI
-#' 
+#' Run UI: Launch the Genomic DB Browser Shiny Application
+#'
+#' @description
+#' Starts the Shiny-based **Genomic DB Browser** included within the
+#' `XZDBfunction` package.  
+#' This function automatically:
+#' - Locates the packaged Shiny application directory,
+#' - Ensures required R packages are installed,
+#' - Selects an available random port,
+#' - Launches the UI in the user's default browser.
+#'
+#' @details
+#' The Shiny app is bundled inside the package under the `shinyapp/`
+#' directory. If the directory cannot be found, the function will stop
+#' with an informative error.  
+#' Missing dependencies will be installed automatically from CRAN.
+#'
+#' @return
+#' This function is called for launching a Shiny
+#' application and does not return a value.
+#'
 #' @export
 XZDB.Run <- function() {
   # Find app directory inside installed package
