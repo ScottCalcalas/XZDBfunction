@@ -13,14 +13,17 @@
 #' - Default: Runs the packaged UI located inside the installed
 #'   XZDBfunction package.
 #'
-#' - Development mode (`use_current = TRUE`): Copies only two files into the
+#' - Development mode (`use_current = TRUE`): need to run xiaopei.input.all() first to build dataset index.
+#'   It Copies only two files into the
 #'   **current working directory**:
 #'     * app.R  
 #'     * XZ_DB_functions.r  
 #'   Then runs the Shiny app from the working directory.
-#'
-#' This allows users to modify UI/server code locally without altering the
-#' package installation and without creating any additional folders.
+#'   
+#'   This allows users to modify UI/server code locally without altering the package installation 
+#'   and without creating any additional folders.
+#'   Under development mode: since the datasets are updated, 
+#'   it's required to run All Administrator Operations(left-bottom side) after launched ShinyUI
 #'
 #' @param use_current Logical.  
 #' - `FALSE` (default): run packaged app  
@@ -54,8 +57,8 @@ XZDB.Run <- function(use_current = FALSE) {
       stop("Missing XZ_DB_functions.r inside package shinyapp folder.")
     
     # copy ONLY app.R and XZ_DB_functions.r into current working directory
-    file.copy(pkg_app_R, getwd(), overwrite = TRUE)
-    file.copy(pkg_fun_R, getwd(), overwrite = TRUE)
+    file.copy(pkg_app_R, getwd(), overwrite = F)
+    file.copy(pkg_fun_R, getwd(), overwrite = F)
     
     message("[XZDB.Run] Copied app.R and XZ_DB_functions.r into: ", normalizePath(getwd()))
     message("[XZDB.Run] Launching app from working directory...")
