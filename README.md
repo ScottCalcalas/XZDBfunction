@@ -24,6 +24,7 @@ XZDB.Run(use_current = T)  #Required setup datasets to current path
 ## See protocol and Modify copied files to set up your own datasets
 ```r
 library(XZDBfunction)
+?xzdb.help()
 xzdb.help()
 ```
 
