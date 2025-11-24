@@ -1,6 +1,41 @@
 
+url: https://ScottCalcalas.github.io/XZDBfunction
+title: "XZDBfunction"
 template:
   bootstrap: 5
+  bootswatch: flatly
 
-url: https://ScottCalcalas.github.io/XZDBfunction
-https://github.com/ScottCalcalas/XZDBfunction
+navbar:
+  structure:
+    left: [home, reference, articles, news]
+    right: [github]
+  components:
+    github:
+      icon: fab fa-github
+      href: https://github.com/ScottCalcalas/XZDBfunction
+
+home:
+  title: "XZDBfunction — Genomic DB Browser"
+  description: >
+    Comprehensive dataset indexing, gene ID mapping, UniProt/MINT comparison,
+    and Shiny-based multi-omics data browsing.
+
+reference:
+  - title: "Input & Indexing"
+    contents:
+      - xiaopei.input
+      - xiaopei.input.all
+  - title: "Gene ID / Symbol Preparation"
+    contents:
+      - xiaopei.prepare.GeneID
+      - xiaopei.prepare.geneSymbol
+  - title: "Printing / Exporting"
+    contents:
+      - xiaopei.print.geneSymbol
+      - xiaopei.print.geneSymbol.family
+      - xiaopei.print.geneSymbol.fuzzy
+      - xiaopei.print.GeneID
+  - title: "Shiny Application"
+    contents:
+      - XZDB.Run
+      - Xiaopei.help

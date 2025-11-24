@@ -1,0 +1,21 @@
+
+---
+title: "XZDBfunction Workflow Overview"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{XZDBfunction Workflow Overview}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Overview
+
+This vignette walks through:
+
+1. Loading dataset information  
+2. Preparing Gene ID / Symbol fields  
+3. Index building  
+4. Searching by GeneID or Symbol  
+5. Running the Shiny Browser  
+6. UniProt & MINT comparison
+
