@@ -11,21 +11,23 @@ This README provides complete instructions for starting the application and usin
 remotes::install_github("scottcalcalas/XZDBfunction")
 ```
 
-## Use Genomic website browser
-
-```r
-library(XZDBfunction)
-XZDB.Run()
-
-XZDB.Run(use_current = T)  #Required setup datasets to current path
-```
-
 
 ## See protocol and Modify copied files to set up your own datasets
 ```r
 library(XZDBfunction)
 ?xzdb.help()
 xzdb.help()
+
+xiaopei.input.all()    #After build neccassry files, copied them to R package. Always use your own dataset (storage yours in R package) instead of example dataset
+```
+
+## Use Genomic website browser
+
+```r
+library(XZDBfunction)
+XZDB.Run()                 # lunches browser, if you run xiaopei.input.all(), it will use your own dataset instead of example dataset
+
+XZDB.Run(use_current = T)  # Required setup datasets to current path to search
 ```
 
 ---
