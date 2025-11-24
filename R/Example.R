@@ -53,7 +53,7 @@
 #' }
 xzdb.help <- function() {
   # 1. Locate shinyapp folder inside the installed package
-  pkg_app <- system.file("shinyapp", package = "XZDBfunction")
+  pkg_app <- system.file("example", package = "XZDBfunction")
   if (pkg_app == "")
     stop("Cannot find shinyapp folder inside XZDBfunction package.")
   
@@ -64,7 +64,7 @@ xzdb.help <- function() {
   
   # 3. Check existence
   if (!dir.exists(datasets_src))
-    stop("Missing 'datasets' folder inside shinyapp.")
+    stop("Missing 'datasets' folder inside package/XZDBfunction/example.")
   
   if (!file.exists(info_xlsx_src))
     stop("Missing 'Datasets infomation.xlsx' inside shinyapp.")
