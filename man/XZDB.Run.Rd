@@ -22,15 +22,18 @@ Launches the Shiny-based Genomic DB Browser.
 \itemize{
 \item Default: Runs the packaged UI located inside the installed
 XZDBfunction package.
-\item Development mode (\code{use_current = TRUE}): Copies only two files into the
+\item Development mode (\code{use_current = TRUE}): need to run xiaopei.input.all() first to build dataset index.
+It Copies only two files into the
 \strong{current working directory}:
 \itemize{
 \item app.R
 \item XZ_DB_functions.r
 Then runs the Shiny app from the working directory.
 }
-}
 
-This allows users to modify UI/server code locally without altering the
-package installation and without creating any additional folders.
+This allows users to modify UI/server code locally without altering the package installation
+and without creating any additional folders.
+Under development mode: since the datasets are updated,
+it's required to run All Administrator Operations(left-bottom side) after launched ShinyUI
+}
 }
