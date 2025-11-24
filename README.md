@@ -94,9 +94,18 @@ Requires an internet connection.
 
 # Browser files
 
-(Put your own dataset and dataset information)
+To use your own dataset and dataset information(saving to package storage or run on current path), use:
+```r
+xiaopei.input.all()
+```
 
-Example location, inside R package:
+Use helper to create your own dataset, run:
+```r
+xzdb.help()
+xiaopei.input.all()    # Run this after modified copied files
+```
+
+Example package storage location, inside R package:
 ```r
  R\R-4.4.3\library\XZDBfunction\shinyapp
 ```
@@ -110,7 +119,7 @@ After done those, start broswer can run all the Administrator Operation by follo
 
 # Local use protocol
 
-(If you want to use it locally, instead of a package)
+(If you want to use it as one click, instead of open R)
 
 **Author:** Xiaopei  
 **Updated:** 2025-11-20  
