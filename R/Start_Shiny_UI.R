@@ -6,58 +6,108 @@
 #     Start.R             (this file)
 
 
-
-#' Run UI: Launch the Genomic DB Browser Shiny Application
+#' Run Shiny UI for the Genomic DB Browser
 #'
 #' @description
-#' Starts the Shiny-based **Genomic DB Browser** included within the
+#' Launches the Shiny-based **Genomic DB Browser** bundled inside the
 #' `XZDBfunction` package.  
-#' This function automatically:
-#' - Locates the packaged Shiny application directory,
-#' - Ensures required R packages are installed,
-#' - Selects an available random port,
-#' - Launches the UI in the user's default browser.
+#'
+#' By default, the UI runs directly from the installed package directory
+#' (`system.file("shinyapp")`).  
+#'
+#' Developers or advanced users may instead choose to run the app from the
+#' **current working directory** by setting `use_current = TRUE`.  
+#' In this mode, all Shiny UI files (e.g., `app.R`, `XZ_DB_functions.r`,
+#' CSS/JS assets, etc.) are automatically copied from the packaged
+#' `shinyapp/` directory into the user's current folder before launching.
 #'
 #' @details
-#' The Shiny app is bundled inside the package under the `shinyapp/`
-#' directory. If the directory cannot be found, the function will stop
-#' with an informative error.  
-#' Missing dependencies will be installed automatically from CRAN.
+#' This function also:
+#' - Ensures required Shiny packages are installed,
+#' - Selects a random available port,
+#' - Starts the app in the default web browser.
+#'
+#' The `use_current = TRUE` mode is recommended for:
+#' - Development,
+#' - Debugging,
+#' - Editing UI/server code,
+#' - Running an external Shiny deployment.
+#'
+#' No files inside the installed package are modified.
+#'
+#' @param use_current
+#' Logical.  
+#' - `FALSE` (default): run the packaged Shiny app (safe, static, stable).  
+#' - `TRUE`: copy the packaged Shiny app into the current directory and
+#' run the app from there (development mode).
 #'
 #' @return
-#' This function is called for launching a Shiny
-#' application and does not return a value.
+#' Invisibly returns the app directory being used.  
+#' (The function is normally called for its side-effects.)
+#'
+#' @examples
+#' \dontrun{
+#' # Standard mode — run packaged app
+#' XZDB.Run()
+#'
+#' # Development mode — copy app files to working directory and run locally
+#' XZDB.Run(use_current = TRUE)
+#' }
 #'
 #' @export
-XZDB.Run <- function() {
-  # Find app directory inside installed package
-  appDir <- system.file("shinyapp", package = "XZDBfunction")
-  if (appDir == "") {
-    stop("Could not find Shiny app directory in the package.", call. = FALSE)
+XZDB.Run <- function(use_current = FALSE) {
+  
+  # ---------- Locate packaged shinyapp ----------
+  pkg_app <- system.file("shinyapp", package = "XZDBfunction")
+  if (!nzchar(pkg_app)) {
+    stop("Could not find 'shinyapp' directory inside the package.", call. = FALSE)
   }
   
-  # Packages
+  # ---------- Determine where to run the UI ----------
+  if (isTRUE(use_current)) {
+    # Development mode: copy to current working directory
+    run_dir <- file.path(getwd(), "shinyapp_local")
+    
+    # clean old folder
+    if (dir.exists(run_dir))
+      unlink(run_dir, recursive = TRUE, force = TRUE)
+    
+    # copy all package shinyapp files
+    dir.create(run_dir, showWarnings = FALSE, recursive = TRUE)
+    file.copy(pkg_app, getwd(), recursive = TRUE, overwrite = TRUE)
+    run_dir <- file.path(getwd(), "shinyapp")
+    
+    message("[XZDB.Run] Running app from current directory: ", normalizePath(run_dir))
+  } else {
+    # Standard mode: run inside package
+    run_dir <- pkg_app
+    message("[XZDB.Run] Running packaged app from: ", run_dir)
+  }
+  
+  # ---------- Ensure dependencies ----------
   options(repos = c(CRAN = "https://cloud.r-project.org"))
   needed <- c("shiny", "bslib", "DT", "readxl", "dplyr", "purrr",
               "rlang", "stringr", "tibble", "ggpubr", "patchwork",
               "httpuv", "tidyverse")
-  installed <- rownames(installed.packages())
-  missing <- setdiff(needed, installed)
+  
+  missing <- setdiff(needed, rownames(installed.packages()))
   if (length(missing)) {
-    message("Installing packages: ", paste(missing, collapse = ", "))
+    message("Installing required packages: ", paste(missing, collapse = ", "))
     install.packages(missing, Ncpus = max(1, parallel::detectCores() - 1))
   }
   
-  # Random port
+  # ---------- Select port ----------
   port <- tryCatch(httpuv::randomPort(), error = function(e) 8888)
-  url <- sprintf("http://127.0.0.1:%d/", port)
-  message(sprintf("Starting app on %s", url))
+  url  <- sprintf("http://127.0.0.1:%d/", port)
+  message("Launching app at: ", url)
   
-  # Run app
+  # ---------- Launch Shiny ----------
   shiny::runApp(
-    appDir = appDir,
+    appDir = run_dir,
     host = "127.0.0.1",
     port = port,
     launch.browser = TRUE
   )
+  
+  invisible(run_dir)
 }

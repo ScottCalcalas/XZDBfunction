@@ -2,35 +2,61 @@
 % Please edit documentation in R/input.R
 \name{xiaopei.input}
 \alias{xiaopei.input}
-\title{Build per-dataset index from Excel metadata}
+\title{Build an index file for one dataset}
 \usage{
 xiaopei.input(
   file.Name,
   Sheet = 1,
-  xlsx.index.location = "Datasets infomation.xlsx"
+  xlsx.index.location = "Datasets infomation.xlsx",
+  write_to_shinyapp = TRUE
 )
 }
 \arguments{
-\item{file.Name}{Character. The dataset file name to index (e.g., \code{"Dataset1.xlsx"}).}
+\item{file.Name}{Character. Dataset filename (must exist under \verb{datasets/}).}
 
-\item{Sheet}{Integer or character. Sheet number or name to read
-from the dataset file. Default is \code{1}.}
+\item{Sheet}{Integer or character. Sheet number or sheet name when reading XLSX files.
+Default: \code{1}.}
 
-\item{xlsx.index.location}{Character. Path to the dataset information index
-Excel file. Default: \code{"Datasets infomation.xlsx"}.}
+\item{xlsx.index.location}{Character. Path to the Dataset Information Excel file
+(typically \code{"Datasets infomation.xlsx"}).
+Must exist in the \strong{current working directory}, not inside the package.}
+
+\item{write_to_shinyapp}{Logical. Whether to write the index output into the package \verb{shinyapp/}
+directory in addition to the local \verb{IndexedData/} directory.
+Default: \code{TRUE}.}
 }
 \value{
-A cleaned data frame containing the metadata row(s) for the requested dataset.
+Invisibly returns the \code{tibble} containing the processed index table.
+Primarily called for its side-effects (CSV file creation).
 }
 \description{
-Reads the dataset metadata Excel file (default: \code{"Datasets infomation.xlsx"}),
-trims/normalizes the fields, and returns the subset row matching the requested
-dataset file name. This function is the first step of the XZ_DB workflow.
+Reads a single dataset file located in the local \verb{datasets/} folder,
+extracts gene identifier and gene symbol columns, normalizes and resolves
+missing values, removes rows with no usable identifiers, and produces an
+index file.
+
+The resulting index CSV is written to both locations:
+\enumerate{
+\item Local: \verb{./IndexedData/}
+\item Package: \verb{system.file("shinyapp", package = "XZDBfunction")/IndexedData/}
+}
+
+If writing to the installed package directory is not permitted,
+the function writes locally without error and emits a warning.
+}
+\details{
+The function uses the metadata in the index Excel file to:
+\itemize{
+\item Determine the expected file type (CSV/TXT/XLSX)
+\item Locate gene identifier and gene symbol columns
+\item Normalize, trim, and resolve missing identifier pairs
+\item Construct stable row keys of the form \code{"DatasetName~Sheet.index"}
+\item Drop rows where both ID and Symbol cannot be recovered
+}
 }
 \examples{
 \dontrun{
-xiaopei.input("MyDataset.xlsx")
-xiaopei.input("Dataset2.xlsx", Sheet = 2)
-xiaopei.input("Sample.xlsx", xlsx.index.location = "metadata.xlsx")
+xiaopei.input("DatasetA.xlsx", Sheet = 1)
 }
+
 }

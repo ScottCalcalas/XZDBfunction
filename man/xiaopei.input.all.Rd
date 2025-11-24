@@ -2,39 +2,41 @@
 % Please edit documentation in R/input.R
 \name{xiaopei.input.all}
 \alias{xiaopei.input.all}
-\title{Build Index Files for All Datasets in the Metadata Table}
+\title{Build index files for all datasets listed in the index Excel}
 \usage{
-xiaopei.input.all(xlsx.index.location = "Datasets infomation.xlsx")
+xiaopei.input.all(
+  xlsx.index.location = "Datasets infomation.xlsx",
+  sync = TRUE
+)
 }
 \arguments{
-\item{xlsx.index.location}{Path to the dataset information Excel file.
-Defaults to \code{"Datasets infomation.xlsx"}.}
+\item{xlsx.index.location}{Character. File path to the dataset-information Excel file in the current
+working directory. Default: \code{"Datasets infomation.xlsx"}.}
+
+\item{sync}{Logical. If \code{TRUE} (default), calls \code{xiaopei.sync.to.shinyapp()} after all
+indexes are built. Set to \code{FALSE} to disable automatic syncing.}
 }
 \value{
-Invisibly returns \code{NULL}. Side effect: calls \code{xiaopei.input()} for each row
-of the index table and writes the associated index outputs.
+Invisibly \code{NULL}. Creates/updates local \verb{IndexedData/} directory and
+(optionally) updates the package \verb{shinyapp/} folder.
 }
 \description{
-Reads the dataset metadata table (default: \code{"Datasets infomation.xlsx"})
-and sequentially runs \code{xiaopei.input()} for every listed dataset.
-This function is the bulk-processing version of \code{xiaopei.input()}, allowing
-users to generate all per-dataset index files in one step.
+Reads the dataset-information Excel file (e.g., \code{"Datasets infomation.xlsx"}),
+loops over all listed dataset names and sheet specifications, and calls
+\code{\link{xiaopei.input}} for each entry.
+
+After successfully building all local index files, the function optionally
+synchronizes the entire \verb{datasets/}, \verb{IndexedData/}, and Excel index file
+into the installed package's \verb{shinyapp/} directory using
+\code{\link{xiaopei.sync.to.shinyapp}}.
 }
-\details{
-The metadata Excel file must contain at least the columns:
-\itemize{
-\item \code{DatasetName}: File names of datasets to index
-\item \code{Sheet}: Sheet number or name for each dataset
+\examples{
+\dontrun{
+# Process all datasets and sync to shinyapp
+xiaopei.input.all()
+
+# Process only, do NOT sync
+xiaopei.input.all(sync = FALSE)
 }
 
-Each entry is processed row-by-row.
-If a row fails (missing file, bad sheet, unreadable data, etc.), the error is
-caught and reported as a warning, but processing continues for the remaining
-rows.
-
-The helper functions \code{trim_df()} and \code{scalarize_chr()} are used internally to
-normalize the metadata contents.
-}
-\seealso{
-\code{\link[=xiaopei.input]{xiaopei.input()}} for single-dataset processing.
 }

@@ -2,28 +2,60 @@
 % Please edit documentation in R/Start_Shiny_UI.R
 \name{XZDB.Run}
 \alias{XZDB.Run}
-\title{Run UI: Launch the Genomic DB Browser Shiny Application}
+\title{Run Shiny UI for the Genomic DB Browser}
 \usage{
-XZDB.Run()
+XZDB.Run(use_current = FALSE)
+}
+\arguments{
+\item{use_current}{Logical.
+\itemize{
+\item \code{FALSE} (default): run the packaged Shiny app (safe, static, stable).
+\item \code{TRUE}: copy the packaged Shiny app into the current directory and
+run the app from there (development mode).
+}}
 }
 \value{
-This function is called for launching a Shiny
-application and does not return a value.
+Invisibly returns the app directory being used.
+(The function is normally called for its side-effects.)
 }
 \description{
-Starts the Shiny-based \strong{Genomic DB Browser} included within the
+Launches the Shiny-based \strong{Genomic DB Browser} bundled inside the
 \code{XZDBfunction} package.
-This function automatically:
-\itemize{
-\item Locates the packaged Shiny application directory,
-\item Ensures required R packages are installed,
-\item Selects an available random port,
-\item Launches the UI in the user's default browser.
-}
+
+By default, the UI runs directly from the installed package directory
+(\code{system.file("shinyapp")}).
+
+Developers or advanced users may instead choose to run the app from the
+\strong{current working directory} by setting \code{use_current = TRUE}.
+In this mode, all Shiny UI files (e.g., \code{app.R}, \code{XZ_DB_functions.r},
+CSS/JS assets, etc.) are automatically copied from the packaged
+\verb{shinyapp/} directory into the user's current folder before launching.
 }
 \details{
-The Shiny app is bundled inside the package under the \verb{shinyapp/}
-directory. If the directory cannot be found, the function will stop
-with an informative error.
-Missing dependencies will be installed automatically from CRAN.
+This function also:
+\itemize{
+\item Ensures required Shiny packages are installed,
+\item Selects a random available port,
+\item Starts the app in the default web browser.
+}
+
+The \code{use_current = TRUE} mode is recommended for:
+\itemize{
+\item Development,
+\item Debugging,
+\item Editing UI/server code,
+\item Running an external Shiny deployment.
+}
+
+No files inside the installed package are modified.
+}
+\examples{
+\dontrun{
+# Standard mode — run packaged app
+XZDB.Run()
+
+# Development mode — copy app files to working directory and run locally
+XZDB.Run(use_current = TRUE)
+}
+
 }

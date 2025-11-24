@@ -8,79 +8,114 @@
 
 
 # ---------- Build per-dataset index CSVs ----------
-#' Build per-dataset index from Excel metadata
-#' 
-#' @description
-#' Reads the dataset metadata Excel file (default: `"Datasets infomation.xlsx"`),
-#' trims/normalizes the fields, and returns the subset row matching the requested
-#' dataset file name. This function is the first step of the XZ_DB workflow.
+
+#' Build an index file for one dataset
 #'
-#' @param file.Name Character. The dataset file name to index (e.g., `"Dataset1.xlsx"`).
-#' @param Sheet Integer or character. Sheet number or name to read
-#'   from the dataset file. Default is `1`.
-#' @param xlsx.index.location Character. Path to the dataset information index
-#'   Excel file. Default: `"Datasets infomation.xlsx"`.
+#' @description
+#' Reads a single dataset file located in the local `datasets/` folder,
+#' extracts gene identifier and gene symbol columns, normalizes and resolves
+#' missing values, removes rows with no usable identifiers, and produces an
+#' index file.  
+#'
+#' The resulting index CSV is written to both locations:
+#'
+#' 1. Local: `./IndexedData/`  
+#' 2. Package: `system.file("shinyapp", package = "XZDBfunction")/IndexedData/`  
+#'
+#' If writing to the installed package directory is not permitted,
+#' the function writes locally without error and emits a warning.
+#'
+#' @param file.Name
+#' Character. Dataset filename (must exist under `datasets/`).
+#'
+#' @param Sheet
+#' Integer or character. Sheet number or sheet name when reading XLSX files.
+#' Default: `1`.
+#'
+#' @param xlsx.index.location
+#' Character. Path to the Dataset Information Excel file
+#' (typically `"Datasets infomation.xlsx"`).  
+#' Must exist in the **current working directory**, not inside the package.
+#'
+#' @param write_to_shinyapp
+#' Logical. Whether to write the index output into the package `shinyapp/`
+#' directory in addition to the local `IndexedData/` directory.  
+#' Default: `TRUE`.
 #'
 #' @return
-#' A cleaned data frame containing the metadata row(s) for the requested dataset.
+#' Invisibly returns the `tibble` containing the processed index table.  
+#' Primarily called for its side-effects (CSV file creation).
 #'
-#' @export
+#' @details
+#' The function uses the metadata in the index Excel file to:
+#' - Determine the expected file type (CSV/TXT/XLSX)
+#' - Locate gene identifier and gene symbol columns  
+#' - Normalize, trim, and resolve missing identifier pairs  
+#' - Construct stable row keys of the form `"DatasetName~Sheet.index"`  
+#' - Drop rows where both ID and Symbol cannot be recovered  
 #'
 #' @examples
 #' \dontrun{
-#' xiaopei.input("MyDataset.xlsx")
-#' xiaopei.input("Dataset2.xlsx", Sheet = 2)
-#' xiaopei.input("Sample.xlsx", xlsx.index.location = "metadata.xlsx")
+#' xiaopei.input("DatasetA.xlsx", Sheet = 1)
 #' }
-xiaopei.input <- function(file.Name, Sheet = 1, xlsx.index.location = "Datasets infomation.xlsx") {
+#'
+#' @export
+xiaopei.input <- function(file.Name,
+                          Sheet = 1,
+                          xlsx.index.location = "Datasets infomation.xlsx",
+                          write_to_shinyapp = TRUE) {
+  
+  # ---- Read index file from current working directory ----
   indexfile <- readxl::read_xlsx(xlsx.index.location)
   indexfile <- trim_df(indexfile)
   
-  # match index row
+  # ---- Match index row ----
   i <- which(as.character(indexfile$DatasetName) == as.character(file.Name) &
-               as.character(indexfile$Sheet)       == as.character(Sheet))
-  if (length(i) == 0) {
-    warning(sprintf("[xiaopei.input] No index row for %s (Sheet=%s). Writing empty CSV.", file.Name, Sheet))
+               as.character(indexfile$Sheet) == as.character(Sheet))
+  
+  if (!length(i)) {
+    warning(sprintf("[xiaopei.input] No index for %s (Sheet=%s)", file.Name, Sheet))
     out <- tibble::tibble(Row = character(0), GeneID = character(0), geneSymbol = character(0))
-    utils::write.csv(out, file.path("IndexedData", sprintf("%s~%s.csv", file.Name, Sheet)), row.names = FALSE)
+    .write_index_dual(out, file.Name, Sheet, write_to_shinyapp)
     return(invisible(NULL))
   }
   i <- i[1]
   
-  # determine file type
+  # ---- Determine File Type ----
   File_Type <- toupper(scalarize_chr(indexfile$File_Type[i]))
-  if (!nzchar(File_Type) || is.na(File_Type)) File_Type <- infer_type(file.Name)
+  if (!nzchar(File_Type) || is.na(File_Type))
+    File_Type <- infer_type(file.Name)
   
-  # read data
+  # ---- Read dataset ----
   path <- file.path("datasets", file.Name)
   nowdata <- tryCatch({
-    if (identical(File_Type, "CSV"))  utils::read.csv(path, check.names = FALSE, stringsAsFactors = FALSE)
-    else if (identical(File_Type, "TXT"))  utils::read.table(path, header = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    else if (identical(File_Type, "XLSX")) as.data.frame(readxl::read_xlsx(path, sheet = Sheet), check.names = FALSE, stringsAsFactors = FALSE)
-    else stop(sprintf("Unknown File_Type for %s: %s", file.Name, File_Type))
+    if (File_Type == "CSV") utils::read.csv(path, check.names = FALSE, stringsAsFactors = FALSE)
+    else if (File_Type == "TXT") utils::read.table(path, header = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    else if (File_Type == "XLSX") as.data.frame(readxl::read_xlsx(path, sheet = Sheet), check.names = FALSE)
+    else stop(sprintf("Unknown File_Type: %s", File_Type))
   }, error = function(e) {
-    warning(sprintf("[xiaopei.input] Failed reading %s (Sheet=%s): %s", file.Name, Sheet, conditionMessage(e)))
+    warning(sprintf("[xiaopei.input] Cannot read %s (Sheet %s): %s", file.Name, Sheet, e$message))
     NULL
   })
   
+  # ---- If fail or empty ----
   if (is.null(nowdata) || !NROW(nowdata)) {
     out <- tibble::tibble(Row = character(0), GeneID = character(0), geneSymbol = character(0))
-    utils::write.csv(out, file.path("IndexedData", sprintf("%s~%s.csv", file.Name, Sheet)), row.names = FALSE)
+    .write_index_dual(out, file.Name, Sheet, write_to_shinyapp)
     cat("run done (empty): ", file.Name, "\n")
     return(invisible(NULL))
   }
   
-  # map gene columns (case-insensitive)
+  # ---- Mapping gene ID + symbol ----
   id_col  <- scalarize_chr(indexfile$VarN_GeneID[i])
   sym_col <- scalarize_chr(indexfile$VarN_GeneName[i])
-  id_in   <- ci_match(id_col,  names(nowdata))
+  id_in   <- ci_match(id_col, names(nowdata))
   sym_in  <- ci_match(sym_col, names(nowdata))
   
   n <- nrow(nowdata)
   gene_id_vec  <- if (!is.na(id_in))  as.character(nowdata[[id_in]])  else rep(NA_character_, n)
   gene_sym_vec <- if (!is.na(sym_in)) as.character(nowdata[[sym_in]]) else rep(NA_character_, n)
   
-  # normalize -> back-fill -> enforce no blanks (drop both-missing)
   gene_id_vec  <- cleanse_tokens(gene_id_vec)
   gene_sym_vec <- cleanse_tokens(gene_sym_vec)
   filled <- resolve_gene_pairs(gene_id_vec, gene_sym_vec)
@@ -88,75 +123,245 @@ xiaopei.input <- function(file.Name, Sheet = 1, xlsx.index.location = "Datasets 
   
   if (!any(keep)) {
     out <- tibble::tibble(Row = character(0), GeneID = character(0), geneSymbol = character(0))
-    utils::write.csv(out, file.path("IndexedData", sprintf("%s~%s.csv", file.Name, Sheet)), row.names = FALSE)
-    cat("run done (all dropped: missing IDs & Symbols): ", file.Name, "\n")
+    .write_index_dual(out, file.Name, Sheet, write_to_shinyapp)
+    cat("run done (all dropped): ", file.Name, "\n")
     return(invisible(NULL))
   }
   
-  # build Dataindex with fixed length columns
+  # ---- Build Dataindex ----
   Row_all <- paste0(indexfile$DatasetName[i], "~", Sheet, ".", seq_len(n))
   Row     <- Row_all[keep]
+  
   Dataindex <- tibble::tibble(
     Row        = Row,
     GeneID     = filled$GeneID,
     geneSymbol = filled$GeneSymbol
   )
   
-  utils::write.csv(Dataindex, file.path("IndexedData", sprintf("%s~%s.csv", file.Name, Sheet)), row.names = FALSE)
-  cat("run done : ", file.Name, "\n")
+  .write_index_dual(Dataindex, file.Name, Sheet, write_to_shinyapp)
+  
+  cat("run done :", file.Name, "\n")
+  return(invisible(Dataindex))
 }
 
 
 
-#' Build Index Files for All Datasets in the Metadata Table
+
+
+
+
+#' Internal helper: write index CSV to local and package locations
 #'
 #' @description
-#' Reads the dataset metadata table (default: `"Datasets infomation.xlsx"`)
-#' and sequentially runs `xiaopei.input()` for every listed dataset.  
-#' This function is the bulk-processing version of `xiaopei.input()`, allowing
-#' users to generate all per-dataset index files in one step.
+#' Writes an index `data.frame`/`tibble` produced by `xiaopei.input()` to:
 #'
-#' @details
-#' The metadata Excel file must contain at least the columns:
-#' - `DatasetName`: File names of datasets to index
-#' - `Sheet`: Sheet number or name for each dataset  
+#' - The local directory `./IndexedData/`  
+#' - The package directory `system.file("shinyapp", package = "XZDBfunction")/IndexedData/`
 #'
-#' Each entry is processed row-by-row.  
-#' If a row fails (missing file, bad sheet, unreadable data, etc.), the error is
-#' caught and reported as a warning, but processing continues for the remaining
-#' rows.
+#' Fails safely when package directory write access is unavailable.
 #'
-#' The helper functions `trim_df()` and `scalarize_chr()` are used internally to
-#' normalize the metadata contents.
+#' @param df A data.frame or tibble containing index data.
+#' @param file.Name Character. Dataset filename (base name).
+#' @param Sheet Sheet number/name associated with the index.
+#' @param write_to_shinyapp Logical. Write to package location in addition to local.
+#'
+#' @return Invisibly `NULL`.
+#'
+#' @keywords internal
+.write_index_dual <- function(df, file.Name, Sheet, write_to_shinyapp = TRUE) {
+  
+  # ensure local
+  if (!dir.exists("IndexedData"))
+    dir.create("IndexedData", recursive = TRUE)
+  
+  out_local <- file.path("IndexedData", sprintf("%s~%s.csv", file.Name, Sheet))
+  utils::write.csv(df, out_local, row.names = FALSE)
+  
+  # shinyapp location
+  if (isTRUE(write_to_shinyapp)) {
+    appDir <- system.file("shinyapp", package = "XZDBfunction")
+    if (nzchar(appDir)) {
+      
+      idxDir <- file.path(appDir, "IndexedData")
+      if (!dir.exists(idxDir)) {
+        # test write permission
+        ok <- dir.create(idxDir, recursive = TRUE, showWarnings = FALSE)
+        if (!ok) {
+          warning("[xiaopei.input] no permission to write into shinyapp/IndexedData")
+          return(invisible(NULL))
+        }
+      }
+      
+      out_pkg <- file.path(idxDir, sprintf("%s~%s.csv", file.Name, Sheet))
+      try(utils::write.csv(df, out_pkg, row.names = FALSE), silent = TRUE)
+    }
+  }
+  invisible(NULL)
+}
+
+
+
+
+#' Build index files for all datasets listed in the index Excel
+#'
+#' @description
+#' Reads the dataset-information Excel file (e.g., `"Datasets infomation.xlsx"`),
+#' loops over all listed dataset names and sheet specifications, and calls
+#' \code{\link{xiaopei.input}} for each entry.  
+#'
+#' After successfully building all local index files, the function optionally
+#' synchronizes the entire `datasets/`, `IndexedData/`, and Excel index file
+#' into the installed package's `shinyapp/` directory using
+#' \code{\link{xiaopei.sync.to.shinyapp}}.
 #'
 #' @param xlsx.index.location
-#'   Path to the dataset information Excel file.  
-#'   Defaults to `"Datasets infomation.xlsx"`.
+#' Character. File path to the dataset-information Excel file in the current
+#' working directory. Default: `"Datasets infomation.xlsx"`.
+#'
+#' @param sync
+#' Logical. If `TRUE` (default), calls \code{xiaopei.sync.to.shinyapp()} after all
+#' indexes are built. Set to `FALSE` to disable automatic syncing.
 #'
 #' @return
-#' Invisibly returns `NULL`. Side effect: calls `xiaopei.input()` for each row
-#' of the index table and writes the associated index outputs.
+#' Invisibly `NULL`. Creates/updates local `IndexedData/` directory and
+#' (optionally) updates the package `shinyapp/` folder.
 #'
-#' @seealso
-#'   [`xiaopei.input()`] for single-dataset processing.
+#' @examples
+#' \dontrun{
+#' # Process all datasets and sync to shinyapp
+#' xiaopei.input.all()
+#'
+#' # Process only, do NOT sync
+#' xiaopei.input.all(sync = FALSE)
+#' }
 #'
 #' @export
-xiaopei.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx") {
+xiaopei.input.all <- function(
+    xlsx.index.location = "Datasets infomation.xlsx",
+    sync = TRUE
+) {
   indexfile <- readxl::read_xlsx(xlsx.index.location)
   indexfile <- trim_df(indexfile)
+  
   if (!NROW(indexfile)) {
     warning("[input.all] Index has 0 rows.")
     return(invisible(NULL))
   }
+  
+  message("[input.all] Processing ", nrow(indexfile), " dataset(s).")
+  
   for (i in seq_len(nrow(indexfile))) {
     fn <- scalarize_chr(indexfile$DatasetName[i])
     sh <- indexfile$Sheet[i]
+    
     tryCatch(
-      xiaopei.input(fn, Sheet = sh, xlsx.index.location = xlsx.index.location),
-      error = function(e) warning(sprintf("[input.all] Failed on row %d: %s (Sheet=%s): %s", i, fn, as.character(sh), conditionMessage(e)))
+      xiaopei.input(fn, Sheet = sh, xlsx.index.location = xlsx.index.location,
+                    write_to_shinyapp = TRUE),
+      error = function(e)
+        warning(sprintf("[input.all] Failed row %d: %s", i, e$message))
     )
   }
+  
+  if (isTRUE(sync)) {
+    xiaopei.sync.to.shinyapp(xlsx.index.location)
+  }
+  
+  invisible(NULL)
 }
+
+
+
+#' Synchronize all datasets and index files into the package shinyapp directory
+#'
+#' @description
+#' Copies the following **from the current working directory** into the installed
+#' package’s `shinyapp/` directory:
+#'
+#' - `datasets/`  
+#' - `IndexedData/`  
+#' - the dataset-information Excel file (`xlsx.index.location`)
+#'
+#' Before copying, the function clears any existing `datasets/` or `IndexedData/`
+#' folders inside the package directory to ensure a clean update.
+#'
+#' The function tests write permission on the package directory.  
+#' If the directory is locked (common on system-wide installations), a user-friendly
+#' warning is shown instructing the user to perform a manual copy.
+#'
+#' @param xlsx.index.location
+#' Character. Path to the Dataset Information Excel file in the current working
+#' directory. Default: `"Datasets infomation.xlsx"`.
+#'
+#' @return
+#' Logical (invisibly):  
+#' - `TRUE` if sync succeeded  
+#' - `FALSE` if package directory is read-only or not found  
+#'
+#' @examples
+#' \dontrun{
+#' xiaopei.sync.to.shinyapp()
+#' }
+#'
+#' @export
+xiaopei.sync.to.shinyapp <- function(xlsx.index.location = "Datasets infomation.xlsx") {
+  
+  appDir <- system.file("shinyapp", package = "XZDBfunction")
+  
+  if (!nzchar(appDir)) {
+    warning("[sync] Cannot find shinyapp directory in package.")
+    return(invisible(FALSE))
+  }
+  
+  # ---- test write permission ----
+  testfile <- file.path(appDir, ".__test_write__")
+  can_write <- tryCatch({
+    writeLines("test", testfile)
+    file.remove(testfile)
+    TRUE
+  }, error = function(e) FALSE)
+  
+  if (!can_write) {
+    warning(
+      "[sync] shinyapp folder is READ-ONLY.\n",
+      "Please manually copy:\n",
+      "- datasets/\n",
+      "- IndexedData/\n",
+      "- ", xlsx.index.location, "\n",
+      "into: ", appDir
+    )
+    return(invisible(FALSE))
+  }
+  
+  message("[sync] Updating ", appDir)
+  
+  # ---- Remove old copies ----
+  unlink(file.path(appDir, "datasets"),     recursive = TRUE, force = TRUE)
+  unlink(file.path(appDir, "IndexedData"),  recursive = TRUE, force = TRUE)
+  
+  # ---- Copy new datasets/ ----
+  if (dir.exists("datasets")) {
+    file.copy("datasets", appDir, recursive = TRUE, overwrite = TRUE)
+  }
+  
+  # ---- Copy new IndexedData/ ----
+  if (dir.exists("IndexedData")) {
+    file.copy("IndexedData", appDir, recursive = TRUE, overwrite = TRUE)
+  }
+  
+  # ---- Copy index Excel ----
+  if (file.exists(xlsx.index.location)) {
+    file.copy(xlsx.index.location,
+              file.path(appDir, basename(xlsx.index.location)),
+              overwrite = TRUE)
+  }
+  
+  message("[sync] Done.")
+  
+  invisible(TRUE)
+}
+
+
+
 
 ##********************************************************##
 # PREPARE search tables (robust to missing columns)
