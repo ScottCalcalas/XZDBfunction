@@ -9,6 +9,8 @@ This README provides complete instructions for starting the application and usin
 
 ```r
 remotes::install_github("scottcalcalas/XZDBfunction")
+
+library(XZDBfunction)
 ```
 
 
@@ -24,7 +26,6 @@ xiaopei.input.all()    #After build neccassry files, copied them to R package. A
 ## Use Genomic website browser
 
 ```r
-library(XZDBfunction)
 XZDB.Run()                 # lunches browser, if you run xiaopei.input.all(), it will use your own dataset instead of example dataset
 
 XZDB.Run(use_current = T)  # Required setup datasets to current path to search
