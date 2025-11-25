@@ -16,7 +16,8 @@ Imports:
     tools, 
     stringr, 
     tibble, 
-    utils
+    utils,
+    tidyr
 Suggests:
     testthat,
     pkgdown
