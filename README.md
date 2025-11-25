@@ -16,7 +16,6 @@ library(XZDBfunction)
 
 ## See protocol and Modify copied files to set up your own datasets
 ```r
-library(XZDBfunction)
 ?xzdb.help()
 xzdb.help()
 
