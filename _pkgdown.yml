@@ -24,8 +24,6 @@ reference:
   - title: "Input & Indexing"
     contents:
       - xiaopei.input.all
-  - title: "Gene ID / Symbol Preparation"
-  - title: "Printing / Exporting"
   - title: "Shiny Application"
     contents:
       - XZDB.Run
