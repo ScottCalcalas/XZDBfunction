@@ -35,6 +35,19 @@
 #' @export
 XZDB.Run <- function(use_current = FALSE) {
   
+  # Packages
+  options(repos = c(CRAN = "https://cloud.r-project.org"))
+  needed <- c("shiny", "bslib", "DT", "readxl", "dplyr", "purrr",
+              "rlang", "stringr", "tibble", "ggpubr", "patchwork",
+              "httpuv", "tidyverse")
+  installed <- rownames(installed.packages())
+  missing <- setdiff(needed, installed)
+  if (length(missing)) {
+    message("Installing packages: ", paste(missing, collapse = ", "))
+    install.packages(missing, Ncpus = max(1, parallel::detectCores() - 1))
+  }
+  
+  
   pkg_app <- system.file("shinyapp", package = "XZDBfunction")
   if (!nzchar(pkg_app)) {
     stop("Could not find 'shinyapp' directory inside the package.", call. = FALSE)
