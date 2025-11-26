@@ -4,17 +4,29 @@
 This README provides complete instructions for starting the application and using all its functions.
 - Daily Functions
 
+## Quick tour
+```r
+install.packages("remotes")
+remotes::install_github("scottcalcalas/XZDBfunction")
+library(XZDBfunction)
+XZDB.Run()
+```
 
-## Installation at R
+## Use 
+
+### Installation at R
 
 ```r
+install.packages("remotes") # Skip this step if you already have "remotes" package
+
 remotes::install_github("scottcalcalas/XZDBfunction")
 
 library(XZDBfunction)
 ```
 
 
-## See protocol and Modify copied files to set up your own datasets
+
+### See protocol and Modify copied files to set up your own datasets
 ```r
 ?xzdb.help()
 xzdb.help()
@@ -22,7 +34,7 @@ xzdb.help()
 xiaopei.input.all()    #After build neccassry files, copied them to R package. Always use your own dataset (storage yours in R package) instead of example dataset
 ```
 
-## Use Genomic website browser
+### Use Genomic website browser
 
 ```r
 XZDB.Run()                 # lunches browser, if you run xiaopei.input.all(), it will use your own dataset instead of example dataset
