@@ -39,7 +39,7 @@ XZDB.Run <- function(use_current = FALSE) {
   options(repos = c(CRAN = "https://cloud.r-project.org"))
   needed <- c("shiny", "bslib", "DT", "readxl", "dplyr", "purrr",
               "rlang", "stringr", "tibble", "ggpubr", "patchwork",
-              "httpuv", "tidyverse")
+              "httpuv","httr","ggplot2","eulerr", "tidyverse")
   installed <- rownames(installed.packages())
   missing <- setdiff(needed, installed)
   if (length(missing)) {
