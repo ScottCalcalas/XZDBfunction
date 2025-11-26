@@ -77,7 +77,7 @@ Use the **Check** tab to:
 
 
 ## Function 3 — Load Index File
-On the left panel, use **Load index file** to view dataset metadata and structure.
+On the left panel, use **Load Data info** to view dataset metadata and structure.
 
 
 ## Function 4 — Output Files
@@ -96,10 +96,8 @@ After updating:
 - `datasets/`
 - `Datasets infomation.xlsx`
 
-Run these actions in the left panel:
-1. **Build index (all)**  
-2. **Build searching_GeneID.csv**  
-3. **Build searching_geneSymbol.csv**
+Run "Rebuild EVERYTHING" at Administrator Operations in the left panel:
+
 
 ## Function 6 — UniProt / MINT Comparison
 - **UniProt:** retrieves protein entry information  
@@ -127,10 +125,7 @@ Example package storage location, inside R package:
  R\R-4.4.3\library\XZDBfunction\shinyapp
 ```
 You can find Datasets infomation.xlsx ; For putting dataset, goes to dataset folder
-After done those, start broswer can run all the Administrator Operation by following 
-1. Build Index(all)
-2. Build for GeneID
-3. Build for GeneSymbol
+After done those, start broswer can run "Rebuild EVERYTHING" at Administrator Operations
 
 ---
 
