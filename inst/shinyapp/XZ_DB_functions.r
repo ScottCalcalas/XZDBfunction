@@ -240,8 +240,8 @@ xiaopei.input <- function(file.Name, Sheet = 1, xlsx.index.location = "Datasets 
   }
   
   # map gene columns (case-insensitive)
-  id_col  <- scalarize_chr(indexfile$VarN_GeneID[i])
-  sym_col <- scalarize_chr(indexfile$VarN_GeneName[i])
+  id_col  <- scalarize_chr(indexfile$VarN_ID[i])
+  sym_col <- scalarize_chr(indexfile$VarN_Name[i])
   id_in   <- ci_match(id_col,  names(nowdata))
   sym_in  <- ci_match(sym_col, names(nowdata))
   
@@ -275,7 +275,47 @@ xiaopei.input <- function(file.Name, Sheet = 1, xlsx.index.location = "Datasets 
   cat("run done : ", file.Name, "\n")
 }
 
+
+xiaopei.clean.file <- function(idx_dir) {
+  
+  # Ensure directory exists
+  if (!dir.exists(idx_dir)) {
+    message(sprintf("[clean.file] Directory '%s' does not exist — creating it.", idx_dir))
+    dir.create(idx_dir, showWarnings = FALSE)
+    return(invisible(TRUE))
+  }
+  
+  # Get all items inside (files + folders)
+  items <- list.files(
+    idx_dir,
+    full.names  = TRUE,
+    all.files   = TRUE,
+    no..        = TRUE
+  )
+  
+  # Nothing to delete
+  if (!length(items)) {
+    message(sprintf("[clean.file] '%s' is already empty.", idx_dir))
+    return(invisible(TRUE))
+  }
+  
+  # Delete everything inside the directory
+  unlink(items, recursive = TRUE, force = TRUE)
+  
+  message(sprintf(
+    "[clean.file] Cleaned '%s': removed %d item(s).",
+    idx_dir, length(items)
+  ))
+  
+  invisible(TRUE)
+}
+
+
+
 xiaopei.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx") {
+  xiaopei.clean.file(idx_dir="IndexedData")
+  
+  
   indexfile <- readxl::read_xlsx(xlsx.index.location)
   indexfile <- trim_df(indexfile)
   if (!NROW(indexfile)) {

@@ -4,10 +4,7 @@
 \alias{xiaopei.input.all}
 \title{Build index files for all datasets listed in the index Excel}
 \usage{
-xiaopei.input.all(
-  xlsx.index.location = "Datasets infomation.xlsx",
-  sync = TRUE
-)
+xiaopei.input.all(xlsx.index.location = "Datasets infomation.xlsx")
 }
 \arguments{
 \item{xlsx.index.location}{Character. File path to the dataset-information Excel file in the current

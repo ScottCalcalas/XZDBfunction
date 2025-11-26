@@ -14,6 +14,9 @@ suppressPackageStartupMessages({
   library(stringr)
   library(tibble)
   library(httr)  # for UniProt/MINT REST calls
+  library(ggplot2)
+  library(eulerr)
+  
 })
 
 # External functions used by this app (search/print/index builders)
@@ -81,17 +84,12 @@ ui <- page_fluid(
       helpText("KD = knockdown; OE = overexpression; GOI = gene of interest."),
       helpText("DEG = Differentially expressed genes; DSG = Differentially spliced genes; RNA IP = RNA immunoprecipitation; MS = Mass spec."),
       hr(),
-      helpText("⚠️ Clean up the Output folder if searching becomes slow."),
-      actionButton("btn_clear_outputs", "Delete ALL Output files", class = "btn-danger"),
-      helpText("⚠️ Permanently deletes everything inside /Output."),
-      hr(),
       h4("Administrator Operation"),
-      helpText("Use to rebuild indices and search tables."),
-      actionButton("btn_run_all", "Build Index (all)", class = "btn-success"),
-      br(), br(),
-      actionButton("btn_prepare_geneid", "Build for GeneID"),
-      actionButton("btn_prepare_symbol", "Build for GeneSymbol"),
-      helpText("After rebuilding the full index, rebuild the GeneID/GeneSymbol search files."),
+      helpText("Rebuild search indices. (Required after update datasets)"),
+      actionButton("btn_run_all_in_one", "Rebuild EVERYTHING"),
+      hr(),
+      helpText("⚠️ Permanently deletes the Output folder if searching becomes slow.⚠️"),
+      actionButton("btn_clear_outputs", "Delete ALL Output files", class = "btn-danger"),
       hr(),
       h4("Logs"),
       verbatimTextOutput("log_box")
@@ -179,6 +177,7 @@ ui <- page_fluid(
           tagList(
             div(
               actionButton("btn_load_index", "Load Data Info", class = "btn-primary"),
+              helpText("Use this button to see information of the Datasets used in this browser."),
               style = "margin-bottom: 8px;"
             ),
             DTOutput("tbl_index")
@@ -231,7 +230,11 @@ ui <- page_fluid(
             column(
               12,
               h5("Quick overlap summary (MINT vs current Search results)"),
-              DTOutput("tbl_cmp_summary")
+              DTOutput("tbl_cmp_summary"),
+              br(),
+              h5("Venn Diagram: MINT Partners vs Current Search IDs"),
+              helpText("Recognize current search ID by using Interaction_With_ID, Protein_ID, Uniprot_ID, Uniprot, or ID."),
+              plotOutput("cmp_venn", height = "350px")
             )
           )
         )
@@ -255,7 +258,9 @@ server <- function(input, output, session) {
     log_msgs    = character(),
     cmp_uniprot = NULL,
     cmp_mint    = NULL,
-    cmp_summary = NULL
+    cmp_summary = NULL,
+    venn_my_ids   = character(),
+    venn_mint_ids = character(),
   )
   
   
@@ -417,7 +422,7 @@ server <- function(input, output, session) {
       return(tibble(file=character(), path=character(), size_kb=numeric(),
                     modified=as.POSIXct(character()), Open=character()))
     }
-    tibble(
+    df<-tibble(
       Download = sprintf('<a href="%s" target="_blank">Download</a>',
                          file.path("out", utils::URLencode(basename(paths), reserved = TRUE))),
       file = basename(paths),
@@ -425,7 +430,10 @@ server <- function(input, output, session) {
       modified = info$mtime,
       path = paths
     )
+    df <- df[order(df$modified, decreasing = TRUE), ]
   }
+  
+  
   
   sanitize_filename <- function(x) {
     x <- enc2utf8(trimws(x %||% ""))
@@ -742,6 +750,8 @@ server <- function(input, output, session) {
       unique(as.character(my_df$Interaction_With_ID))
     } else if ("Protein_ID" %in% names(my_df)) {
       unique(as.character(my_df$Protein_ID))
+    } else if ("Uniprot_ID" %in% names(my_df)) {
+      unique(as.character(my_df$Uniprot_ID))
     } else if ("Uniprot" %in% names(my_df)) {
       unique(as.character(my_df$Uniprot))
     } else if ("ID" %in% names(my_df)) {
@@ -755,6 +765,7 @@ server <- function(input, output, session) {
   make_cmp_summary <- function(uniprot_df, mint_df, my_df) {
     # IDs from current Search results
     my_ids <- get_current_ids_from_results(my_df)
+    rv$venn_my_ids   <- unique(my_ids)
     
     # Partner IDs from MINT (already cleaned in clean_mint_mitab)
     mint_ids <- if (!is.null(mint_df) && "Partner_ID" %in% names(mint_df)) {
@@ -762,6 +773,7 @@ server <- function(input, output, session) {
     } else {
       character(0)
     }
+    rv$venn_mint_ids <- unique(mint_ids)
     
     # Overlap definition: MINT Partner_ID ∩ IDs in current Search results
     overlap_ids <- intersect(my_ids, mint_ids)
@@ -923,6 +935,48 @@ server <- function(input, output, session) {
       showNotification(conditionMessage(e), type = "error")
     })
   })
+  
+  
+  observeEvent(input$btn_run_all_in_one, {
+    idx_path <- rv$index_path %||% "Datasets infomation.xlsx"
+    
+    showNotification("Running: Build Index (all)", type = "message")
+    log_append(rv, "Start rebuild EVERYTHING: running input.all()")
+    
+    tryCatch({
+      xiaopei.input.all(idx_path)
+    }, error = function(e) {
+      showNotification(paste("input.all error:", conditionMessage(e)), type = "error")
+      log_append(rv, "input.all error:", conditionMessage(e))
+      return(NULL)
+    })
+    
+    showNotification("Running: Prepare ID search", type = "message")
+    log_append(rv, "Running prepare.GeneID()")
+    
+    tryCatch({
+      xiaopei.prepare.GeneID()
+    }, error = function(e) {
+      showNotification(paste("GeneID error:", conditionMessage(e)), type = "error")
+      log_append(rv, "prepare.GeneID error:", conditionMessage(e))
+      return(NULL)
+    })
+    
+    showNotification("Running: Prepare name/Symbol search", type = "message")
+    log_append(rv, "Running prepare.geneSymbol()")
+    
+    tryCatch({
+      xiaopei.prepare.geneSymbol()
+    }, error = function(e) {
+      showNotification(paste("Symbol error:", conditionMessage(e)), type = "error")
+      log_append(rv, "prepare.geneSymbol error:", conditionMessage(e))
+      return(NULL)
+    })
+    
+    showNotification("🎉 Finished rebuilding EVERYTHING!", type = "warning")
+    log_append(rv, "Finished rebuild EVERYTHING.")
+  })
+  
   
   # ---------- CHECK TAB SEARCH ----------
   observeEvent(input$btn_search, {
@@ -1245,7 +1299,7 @@ server <- function(input, output, session) {
         escape = FALSE   # keep <a> links clickable
       )
       
-      # ✅ Green highlight ONLY on Overlap column
+      # Green highlight ONLY on Overlap column
       if ("Overlap" %in% names(df_show)) {
         dt <- DT::formatStyle(
           dt,
@@ -1269,6 +1323,46 @@ server <- function(input, output, session) {
     
     log_append(rv, "External compare fetched for ID:", shQuote(id), " (UniProt AC used:", ac, ")")
   })
+  
+  # ---------- VENN DIAGRAM ----------
+  output$cmp_venn <- renderPlot({
+    my_ids   <- rv$venn_my_ids
+    mint_ids <- rv$venn_mint_ids
+    
+    # Safety check
+    if (length(my_ids) == 0 && length(mint_ids) == 0) {
+      plot.new()
+      title("No data available")
+      return()
+    }
+    
+    # Compute sizes
+    overlap <- length(intersect(my_ids, mint_ids))
+    a_only  <- length(setdiff(my_ids, mint_ids))
+    b_only  <- length(setdiff(mint_ids, my_ids))
+    
+    # Prepare Euler/Venn model
+    fit <- eulerr::euler(c(
+      "Search"          = a_only,
+      "MINT"            = b_only,
+      "Search&MINT"     = overlap
+    ))
+    
+    # Custom two-color gradient: green → red
+    cols <- c(
+      "Search"       = "#2ECC71",  # green
+      "MINT"         = "#E74C3C",  # red
+      "Search&MINT"  = "#F1C40F"   # yellow (overlap)
+    )
+    
+    plot(fit,
+         fills = list(fill = cols, alpha = 0.5),
+         edges = list(col = "black", lwd = 1.2),
+         labels = list(font = 2, cex = 1.2),
+         quantities = list(type = "counts", font = 2)
+    )
+  })
+  
   
   # ---------- Logs ----------
   output$log_box <- renderText({

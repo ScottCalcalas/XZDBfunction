@@ -201,6 +201,55 @@ xiaopei.input <- function(file.Name,
 
 
 
+#' Clean all files and folders inside a directory
+#'
+#' @description Create the directory if it doesn't exist. And make sure it being cleaned
+#' 
+#' 
+#' @param idx_dir Character. Directory to clean.
+#'
+#' @return Invisibly TRUE.
+#'
+#' @examples
+#' xiaopei.clean.file("IndexedData")
+#' xiaopei.clean.file("Output")
+#'
+xiaopei.clean.file <- function(idx_dir) {
+  
+  # Ensure directory exists
+  if (!dir.exists(idx_dir)) {
+    message(sprintf("[clean.file] Directory '%s' does not exist — creating it.", idx_dir))
+    dir.create(idx_dir, showWarnings = FALSE)
+    return(invisible(TRUE))
+  }
+  
+  # Get all items inside (files + folders)
+  items <- list.files(
+    idx_dir,
+    full.names  = TRUE,
+    all.files   = TRUE,
+    no..        = TRUE
+  )
+  
+  # Nothing to delete
+  if (!length(items)) {
+    message(sprintf("[clean.file] '%s' is already empty.", idx_dir))
+    return(invisible(TRUE))
+  }
+  
+  # Delete everything inside the directory
+  unlink(items, recursive = TRUE, force = TRUE)
+  
+  message(sprintf(
+    "[clean.file] Cleaned '%s': removed %d item(s).",
+    idx_dir, length(items)
+  ))
+  
+  invisible(TRUE)
+}
+
+
+
 
 #' Build index files for all datasets listed in the index Excel
 #'
@@ -236,39 +285,25 @@ xiaopei.input <- function(file.Name,
 #' }
 #'
 #' @export
-xiaopei.input.all <- function(
-    xlsx.index.location = "Datasets infomation.xlsx",
-    sync = TRUE
-) {
+xiaopei.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx") {
+  xiaopei.clean.file(idx_dir="IndexedData")
+  
+  
   indexfile <- readxl::read_xlsx(xlsx.index.location)
   indexfile <- trim_df(indexfile)
-  
   if (!NROW(indexfile)) {
     warning("[input.all] Index has 0 rows.")
     return(invisible(NULL))
   }
-  
-  message("[input.all] Processing ", nrow(indexfile), " dataset(s).")
-  
   for (i in seq_len(nrow(indexfile))) {
     fn <- scalarize_chr(indexfile$DatasetName[i])
     sh <- indexfile$Sheet[i]
-    
     tryCatch(
-      xiaopei.input(fn, Sheet = sh, xlsx.index.location = xlsx.index.location,
-                    write_to_shinyapp = TRUE),
-      error = function(e)
-        warning(sprintf("[input.all] Failed row %d: %s", i, e$message))
+      xiaopei.input(fn, Sheet = sh, xlsx.index.location = xlsx.index.location),
+      error = function(e) warning(sprintf("[input.all] Failed on row %d: %s (Sheet=%s): %s", i, fn, as.character(sh), conditionMessage(e)))
     )
   }
-  
-  if (isTRUE(sync)) {
-    xiaopei.sync.to.shinyapp(xlsx.index.location)
-  }
-  
-  invisible(NULL)
 }
-
 
 
 #' Synchronize all datasets and index files into the package shinyapp directory
