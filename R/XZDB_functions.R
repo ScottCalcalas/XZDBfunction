@@ -214,6 +214,7 @@ xiaopei.input <- function(file.Name,
 #' xiaopei.clean.file("IndexedData")
 #' xiaopei.clean.file("Output")
 #'
+#' @export
 xiaopei.clean.file <- function(idx_dir) {
   
   # Ensure directory exists
