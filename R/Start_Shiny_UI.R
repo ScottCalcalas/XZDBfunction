@@ -18,12 +18,13 @@
 #'   **current working directory**:
 #'     * app.R  
 #'     * XZ_DB_functions.r  
+#'     
 #'   Then runs the Shiny app from the working directory.
 #'   
 #'   This allows users to modify UI/server code locally without altering the package installation 
 #'   and without creating any additional folders.
 #'   Under development mode: since the datasets are updated, 
-#'   it's required to run All Administrator Operations(left-bottom side) after launched ShinyUI
+#'   it's required to run "Rebuild EVERYTHING" at Administrator Operations(left-bottom side) after launched ShinyUI
 #'
 #' @param use_current Logical.  
 #' - `FALSE` (default): run packaged app  
