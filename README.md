@@ -1,7 +1,7 @@
 
 # 'XZDBfunction' R Package
 - A user-friendly Shiny application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.  
-- Daily Functions
+- Daily Functions for statistics and biology
 
 
 This README provides complete instructions for starting the application and using all its functions.
