@@ -138,12 +138,27 @@ After done those, start broswer can run "Rebuild EVERYTHING" at Administrator Op
 
 
 ### **Contents**
+- [0. Configure R file](#0-configure-r-file)
 - [1. Auto Start](#1-auto-start)
   - [On Windows](#on-windows)
   - [On Mac](#on-mac)
 - [2.Start & Package Installation](#2start--package-installation)
 - [3.Last Step](#3last-step)
 - [Appendix — Windows & Mac Shortcuts](#appendix)
+
+
+
+## 0. Configure R file
+
+Make an R file, put this two lines.
+
+For example, it can be called Quick_Start.R. The next step is just setting up to run this file using R software(Not R-studio).
+
+```r
+library(XZDBfunction)
+XZDB.Run()
+```
+
 
 ## 1. Auto Start
 
