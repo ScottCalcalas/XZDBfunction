@@ -611,16 +611,173 @@ server <- function(input, output, session) {
   
   
   
+  # tokens = combined string from alias + alt columns for this partner
+  # ac      = UniProt accession for this partner (e.g. "Q9NZC7")
+  extract_partner_name_from_tokens <- function(tokens, ac) {
+    s  <- as.character(tokens %||% "")
+    ac <- as.character(ac %||% "")
+    if (!nzchar(s)) return(NA_character_)
+    
+    toks <- unique(trimws(unlist(strsplit(s, "\\|", fixed = TRUE))))
+    toks <- toks[nzchar(toks)]
+    if (!length(toks)) return(NA_character_)
+    
+    # Parse tokens of the form:
+    #   "db:value(type)"  or  "db:value"
+    parsed <- lapply(toks, function(tok) {
+      # try db:value(type)
+      m <- regexec("^([^:]+):([^()]+?)(?:\\(([^()]*)\\))?$", tok)
+      p <- regmatches(tok, m)[[1]]
+      if (length(p) == 0) {
+        # fallback: db:value
+        m2 <- regexec("^([^:]+):(.+)$", tok)
+        p2 <- regmatches(tok, m2)[[1]]
+        if (length(p2) == 0) return(NULL)
+        return(list(
+          db    = trimws(p2[2]),
+          value = trimws(p2[3]),
+          type  = ""
+        ))
+      }
+      list(
+        db    = trimws(p[2]),
+        value = trimws(p[3]),
+        type  = trimws(ifelse(length(p) >= 4, p[4], ""))
+      )
+    })
+    parsed <- Filter(Negate(is.null), parsed)
+    if (!length(parsed)) return(NA_character_)
+    
+    # helper to detect accession-like strings
+    is_accession <- function(v) {
+      v <- trimws(v)
+      if (!nzchar(v)) return(TRUE)
+      if (v == ac) return(TRUE)
+      # rough UniProt accession pattern
+      grepl("^[OPQ][0-9][A-Z0-9]{3}[0-9]$", v) ||
+        grepl("^[A-NR-Z][0-9]{5}$", v)
+    }
+    
+    # helper to pick first matching value
+    pick <- function(filter_fn) {
+      idx <- which(vapply(parsed, filter_fn, logical(1)))
+      if (length(idx)) {
+        val <- parsed[[idx[1]]]$value
+        val <- trimws(val)
+        if (nzchar(val) && !is_accession(val)) return(val)
+      }
+      NULL
+    }
+    
+    # 1) PSI-MI label: psi-mi:LSM7(display_short) → LSM7
+    val <- pick(function(z)
+      grepl("psi-mi", z$db, ignore.case = TRUE) &&
+        grepl("display_short|display long|display_long|gene name", z$type, ignore.case = TRUE)
+    )
+    if (!is.null(val)) return(val)
+    
+    # 2) explicit gene name / synonym: gene name:EGFR, gene name synonym:ERBB1
+    val <- pick(function(z)
+      grepl("gene name", z$db, ignore.case = TRUE) ||
+        grepl("synonym", z$db, ignore.case = TRUE)
+    )
+    if (!is.null(val)) return(val)
+    
+    # 3) any token where TYPE says display_short/gene name, but VALUE is not accession
+    val <- pick(function(z)
+      grepl("display_short|display long|display_long|gene name", z$type, ignore.case = TRUE) &&
+        !is_accession(z$value)
+    )
+    if (!is.null(val)) return(val)
+    
+    # 4) any token from non-UniProt DB whose value is not clearly an accession
+    val <- pick(function(z)
+      !grepl("uniprot", z$db, ignore.case = TRUE) &&
+        !is_accession(z$value)
+    )
+    if (!is.null(val)) return(val)
+    
+    # 5) last resort: any non-accession value
+    vals <- vapply(parsed, function(z) z$value, character(1))
+    vals <- unique(trimws(vals[nzchar(vals)]))
+    vals <- vals[!is_accession(vals)]
+    if (length(vals)) return(vals[1])
+    
+    NA_character_
+  }
+  
+  # alias + alt string → clean gene/protein name (e.g. EIF4EBP1), no HTTP
+  mint_pick_name <- function(alias, alt = NULL) {
+    s <- paste(c(alias, alt), collapse = "|")
+    s <- as.character(s %||% "")
+    if (!nzchar(s)) return(NA_character_)
+    
+    # Split on "|" (REGEX, no fixed = TRUE)
+    toks <- unique(trimws(unlist(strsplit(s, "\\|"))))
+    toks <- toks[nzchar(toks)]
+    if (!length(toks)) return(NA_character_)
+    
+    # Extract "value" part:
+    #   "uniprotkb:EIF4EBP1(gene name)" -> EIF4EBP1
+    #   "4ebp1_human(display_long)"     -> 4ebp1_human
+    #   "psi-mi:EIF4EBP1(display_short)"-> EIF4EBP1
+    get_value <- function(tok) {
+      tok <- trimws(tok)
+      # drop db: prefix if present
+      tok <- sub("^[^:]+:", "", tok)
+      # drop trailing "(...)" if present
+      tok <- sub("\\([^()]*\\)$", "", tok)
+      trimws(tok)
+    }
+    
+    # gene-like: vectorised check
+    gene_like <- function(v) {
+      v <- trimws(v)
+      v_nz <- nzchar(v)
+      v_nz & grepl("^[A-Za-z0-9_-]{2,20}$", v)
+    }
+    
+    ## 1) tokens whose TYPE is "gene name" or "display_short"
+    idx1 <- grep("gene name\\)|display_short\\)", toks, ignore.case = TRUE)
+    if (length(idx1)) {
+      vals <- vapply(toks[idx1], get_value, character(1))
+      keep <- gene_like(vals)
+      vals <- vals[keep]
+      if (length(vals)) return(vals[1])
+    }
+    
+    ## 2) tokens with "display_long" or "gene name synonym"
+    idx2 <- grep("display_long\\)|gene name synonym\\)", toks, ignore.case = TRUE)
+    if (length(idx2)) {
+      vals <- vapply(toks[idx2], get_value, character(1))
+      keep <- gene_like(vals)
+      vals <- vals[keep]
+      if (length(vals)) return(vals[1])
+    }
+    
+    ## 3) any token with "(...)" at the end
+    idx3 <- grep("\\([^()]*\\)$", toks)
+    if (length(idx3)) {
+      vals <- vapply(toks[idx3], get_value, character(1))
+      keep <- gene_like(vals)
+      vals <- vals[keep]
+      if (length(vals)) return(vals[1])
+    }
+    
+    ## 4) fallback: any gene-like value from all tokens
+    vals_all <- vapply(toks, get_value, character(1))
+    vals_all <- vals_all[gene_like(vals_all)]
+    if (length(vals_all)) return(vals_all[1])
+    
+    NA_character_
+  }
   
   
   
-  
-  # ---- Clean MINT MITAB into a readable partner table ----
   clean_mint_mitab <- function(mint_df, ac, uni_df = NULL) {
-    if (is.null(mint_df) || !nrow(mint_df)) 
+    if (is.null(mint_df) || !nrow(mint_df))
       return(data.frame())
     
-    # Extract best UniProt accession from MITAB ID field
     extract_uniprot <- function(x) {
       x <- as.character(x)
       toks <- unlist(strsplit(x, "\\|"))
@@ -629,7 +786,6 @@ server <- function(input, output, session) {
       sub("^uniprotkb:", "", hits[1], ignore.case = TRUE)
     }
     
-    # Extract PubMed id
     extract_pubmed <- function(x) {
       x <- as.character(x)
       toks <- unlist(strsplit(x, "\\|"))
@@ -638,7 +794,6 @@ server <- function(input, output, session) {
       sub(".*pubmed:", "", hits[1], ignore.case = TRUE)
     }
     
-    # Extract detection method short string
     extract_method <- function(x) {
       x <- as.character(x)
       toks <- unlist(strsplit(x, "\\|"))
@@ -654,10 +809,22 @@ server <- function(input, output, session) {
     out <- lapply(seq_len(nrow(mint_df)), function(i) {
       row <- mint_df[i, , drop = FALSE]
       
+      b_id <- extract_uniprot(row$B_id)
+      a_id <- extract_uniprot(row$A_id)
+      
+      b_alias <- if ("B_aliases" %in% names(mint_df)) row$B_aliases else NA_character_
+      a_alias <- if ("A_aliases" %in% names(mint_df)) row$A_aliases else NA_character_
+      b_alt   <- if ("B_alt"     %in% names(mint_df)) row$B_alt     else NA_character_
+      a_alt   <- if ("A_alt"     %in% names(mint_df)) row$A_alt     else NA_character_
+      
       tibble::tibble(
         Query_AC     = ac,
-        Partner_ID   = c(extract_uniprot(row$B_id), extract_uniprot(row$A_id)),  # raw ID
+        Partner_ID   = c(b_id, a_id),
         Partner_Type = c("B", "A"),
+        Partner_Name = c(
+          mint_pick_name(b_alias, b_alt),
+          mint_pick_name(a_alias, a_alt)
+        ),
         Method       = rep(extract_method(row$Detection_method), 2),
         PubMed       = rep(extract_pubmed(row$Pubmed), 2),
         Source       = rep(row$Source_db %||% NA_character_, 2)
@@ -666,64 +833,32 @@ server <- function(input, output, session) {
     
     out <- dplyr::bind_rows(out)
     
-    # Remove self-interactions and empty partner IDs
     out <- out[!is.na(out$Partner_ID) & nzchar(out$Partner_ID), , drop = FALSE]
     if (nzchar(ac)) {
       out <- out[out$Partner_ID != ac, , drop = FALSE]
     }
-    
     out <- dplyr::distinct(out)
     
-    # --- Make columns pretty & clickable ---
-    
-    # Query_AC: link to mint.bio results page
-    out$Query <- make_mint_result_link(out$Query_AC)
-    
-    # Keep raw partner IDs for overlap checking and for links
+    out$Query   <- make_mint_result_link(out$Query_AC)
     partner_ids <- out$Partner_ID
-    
-    # Partner column: link to IntAct/MINT search
     out$Partner <- make_mint_search_link(partner_ids)
     
-    # ---------- Partner_Uniprot from existing UniProt table ----------
-    partner_display <- partner_ids
+    # Use Partner_Name as text when available; otherwise fall back to ID
+    partner_display <- ifelse(
+      !is.na(out$Partner_Name) & nzchar(out$Partner_Name),
+      out$Partner_Name,
+      out$Partner_ID
+    )
     
-    if (!is.null(uni_df) && nrow(uni_df)) {
-      cn <- names(uni_df)
-      acc_col <- intersect(c("Entry","accession","Accession","id"), cn)
-      if (length(acc_col)) {
-        acc_col <- acc_col[1]
-        gene_cols <- intersect(c("Gene Names","gene_names"), cn)
-        prot_cols <- intersect(c("protein_name","Protein names","Protein Names"), cn)
-        
-        if (length(gene_cols)) {
-          name_vec <- uni_df[[gene_cols[1]]]
-        } else if (length(prot_cols)) {
-          name_vec <- uni_df[[prot_cols[1]]]
-        } else {
-          name_vec <- uni_df[[acc_col]]
-        }
-        
-        acc_vec  <- as.character(uni_df[[acc_col]])
-        name_vec <- as.character(name_vec)
-        
-        idx <- match(partner_ids, acc_vec)
-        hit <- !is.na(idx)
-        partner_display[hit] <- name_vec[idx[hit]]
-      }
-    }
-    
-    # Uniprot_Name: display name text, UniProt link
     out$Uniprot_Name <- sprintf(
       '<a href="https://www.uniprot.org/uniprotkb/%s" target="_blank">%s</a>',
       partner_ids, partner_display
     )
     
-    # PubMed: clickable
     out$PubMed <- make_pubmed_link(out$PubMed)
     
-    # Final column order (keep Partner_ID for overlap)
-    out <- out[, c("Query", "Partner_ID", "Partner", "Uniprot_Name", "Method", "PubMed"), drop = FALSE]
+    out <- out[, c("Query", "Partner_ID", "Partner", "Uniprot_Name",
+                    "Method", "PubMed"), drop = FALSE]
     
     out
   }
