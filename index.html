@@ -201,6 +201,7 @@ The output folder may be cleared monthly—please save results you want to keep.
 <strong>Contents</strong><a class="anchor" aria-label="anchor" href="#contents"></a>
 </h3>
 <ul>
+<li><a href="#id_0-configure-r-file">0. Configure R file</a></li>
 <li>
 <a href="#id_1-auto-start">1. Auto Start</a>
 <ul>
@@ -212,6 +213,15 @@ The output folder may be cleared monthly—please save results you want to keep.
 <li><a href="#id_3last-step">3.Last Step</a></li>
 <li><a href="#appendix">Appendix — Windows &amp; Mac Shortcuts</a></li>
 </ul>
+</div>
+<div class="section level2">
+<h2 id="id_0-configure-r-file">0. Configure R file<a class="anchor" aria-label="anchor" href="#id_0-configure-r-file"></a>
+</h2>
+<p>Make an R file, put this two lines.</p>
+<p>For example, it can be called Quick_Start.R. The next step is just setting up to run this file using R software(Not R-studio).</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ScottCalcalas/XZDBfunction" class="external-link">XZDBfunction</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/XZDB.Run.html">XZDB.Run</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="id_1-auto-start">1. Auto Start<a class="anchor" aria-label="anchor" href="#id_1-auto-start"></a>
@@ -254,12 +264,12 @@ The output folder may be cleared monthly—please save results you want to keep.
 <h4 id="a2mac-one-click-start-command-file">A2.Mac “One-Click Start” Command File<a class="anchor" aria-label="anchor" href="#a2mac-one-click-start-command-file"></a>
 </h4>
 <p>Create a file named <code>something.command</code> (e.g. <code>MAC_Start.command</code>) on the Desktop:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># Launch script</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># Launch script</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co"># ...</span></span></code></pre></div>
 <p>Then run</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">chmod</span> +x something.command</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">chmod</span> +x something.command</span></code></pre></div>
 <p>After those steps, Double-click the file can run it.</p>
 </div>
 </div>
