@@ -162,7 +162,7 @@ XZDB.Run()
 
 ## 1. Auto Start
 
-*Check examples at Appendix*
+*(Check examples at Appendix)*
 
 *On Windows*: 
 
