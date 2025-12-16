@@ -4,7 +4,7 @@
 - Daily Functions for statistics and biology
 
 
-This README provides complete instructions for starting the application and using all its functions.
+This document provides complete instructions for starting the application and using all its functions.
 
 ## Quick tour
 ```r
