@@ -11,7 +11,7 @@ This document provides complete instructions for starting the application and us
 install.packages("remotes")
 remotes::install_github("scottcalcalas/XZDBfunction")
 library(XZDBfunction)
-XZDB.Run()
+XZDB.Run() #Run a demo - with example datasets
 ```
 
 ## Use 
