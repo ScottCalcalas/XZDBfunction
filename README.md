@@ -28,7 +28,7 @@ library(XZDBfunction)
 
 
 
-### See protocol and Modify copied files to set up your own datasets
+### Get protocol and Modify copied files to set up your own datasets
 ```r
 ?xzdb.help()
 xzdb.help()
