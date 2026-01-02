@@ -6,7 +6,7 @@
 
 This document provides complete instructions for starting the application and using all its functions.
 
-## Quick tour
+## Quick tour (R)
 ```r
 install.packages("remotes")
 remotes::install_github("scottcalcalas/XZDBfunction")
