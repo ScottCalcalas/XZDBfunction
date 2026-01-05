@@ -28,12 +28,14 @@ library(XZDBfunction)
 
 
 
-### Get protocol and Modify copied files to set up your own datasets
+### Get protocol and Set up your own database
 ```r
 ?xzdb.help()
-xzdb.help()
+xzdb.help() #Get protocols and setup instructions
 
-xiaopei.input.all()    #After build neccassry files, copied them to R package. Always use your own dataset (storage yours in R package) instead of example dataset
+#transfer your datasets to current folder, check everything ok to run next step.
+xiaopei.input.all()    #Build database in current folder and copy them to R package.
+#After this step, R always use your own dataset instead of example dataset
 ```
 
 ### Use Genomic website browser
