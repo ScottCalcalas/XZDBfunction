@@ -1,10 +1,12 @@
 
 # 'XZDBfunction' R Package
-- A user-friendly Shiny application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.  
-- Daily Functions for statistics and biology
+- A user-friendly website browser application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.
+- Only dependency is R (Shiny UI), work for Windows, Mac, and linux.
+- Easy lunch script available (both Windows and MacOS system).
+- Also contains daily analysis functions for statistics and biology.
 
 
-This document provides complete instructions for starting the application and using all its functions.
+This document provides complete instructions for starting the website browser application and its functions.
 
 ## Quick tour (R)
 ```r
