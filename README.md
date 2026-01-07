@@ -218,7 +218,7 @@ cd ~/Desktop
 chmod +x something.command
 ```
 
-After those steps, Double-click the file can run it.
+After those steps, Double-click the file can luanch the website browser application.
 
 #### A3. Update local R script (For Borden Lab at Northwestern University)
 
