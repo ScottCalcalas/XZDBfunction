@@ -154,14 +154,13 @@ After done those, start broswer can run "Rebuild EVERYTHING" at Administrator Op
 
 ## 0. Configure R file
 
-Make an R file, put this two lines.
-
-For example, it can be called Quick_Start.R. The next step is just setting up to run this file using R software(Not R-studio).
-
+To make an quick start R file, put this two lines:
 ```r
 library(XZDBfunction)
 XZDB.Run()
 ```
+
+For example, it can be called Quick_Start.R. The next step is just setting up to run this file using R software(Not R-studio).
 
 
 ## 1. Auto Start
@@ -220,6 +219,10 @@ chmod +x something.command
 ```
 
 After those steps, Double-click the file can run it.
+
+#### A3. Update local R script (For Borden Lab at Northwestern University)
+
+Copy and replace your local scripts using the scripts at github location: XZDBfunction/inst/shinyapp/
 
 
 
