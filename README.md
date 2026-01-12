@@ -1,6 +1,6 @@
 
 # 'XZDBfunction' R Package
-- A user-friendly website browser application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.
+- A user-friendly database website browser application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.
 - Only dependency is R (Shiny UI), work for Windows, Mac, and linux.
 - Easy lunch script available (both Windows and MacOS system).
 - Also contains daily analysis functions for statistics and biology.
@@ -50,7 +50,7 @@ XZDB.Run(use_current = T)  # Required setup datasets to current path to search
 
 ---
 
- # Contents (*for database functions*)
+ # Contents (*for database website browser functions*)
   - [1. Print/Export](#function-1-printexport)
   - [2. Check](#function-2-check)
   - [3. Load Index File](#function-3-load-index-file)
