@@ -8,7 +8,7 @@
 
 This document provides complete instructions for starting the website browser application and its functions.
 
-## Quick tour 
+## Quick Tour 
 (*Contains setup code for R, lunching the website browser directly with an example dataset*) 
 ```r
 install.packages("remotes")
@@ -18,6 +18,7 @@ XZDB.Run() #Run a demo - with example datasets
 ```
 
 ## Quick Use 
+(*Step by step setup instructions for R, and how to lunching the database browser directly with an example/yours dataset*) 
 
 ### Installation at R
 
