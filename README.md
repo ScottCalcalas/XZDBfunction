@@ -20,7 +20,7 @@ XZDB.Run() #Run a demo - with example datasets
 ## Quick Use 
 (*Step by step setup instruction for R, and how to lunch the database browser directly with example/yours dataset*) 
 
-### Installation at R
+### 1.Installation at R
 
 ```r
 install.packages("remotes") # Skip this step if you already have "remotes" package
@@ -32,7 +32,7 @@ library(XZDBfunction)
 
 
 
-### Get protocol and Set up your own database
+### 2.Get protocol and Set up your own database
 ```r
 ?xzdb.help()
 xzdb.help() #Get protocols and setup instructions
@@ -42,7 +42,7 @@ xiaopei.input.all()    #Build database in current folder and copy them to R pack
 #After this step, R always use your own dataset instead of example dataset
 ```
 
-### Use Genomic website browser
+### 3.Use Genomic website browser
 
 ```r
 XZDB.Run()                 # lunches browser, if you already finished running xiaopei.input.all(), it will use your own dataset instead of example dataset
