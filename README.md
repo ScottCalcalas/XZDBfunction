@@ -18,7 +18,7 @@ XZDB.Run() #Run a demo - with example datasets
 ```
 
 ## Quick Use 
-(*Step by step setup instructions for R, and how to lunching the database browser directly with an example/yours dataset*) 
+(*Step by step setup instruction for R, and how to lunch the database browser directly with example/yours dataset*) 
 
 ### Installation at R
 
