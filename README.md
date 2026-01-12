@@ -50,7 +50,7 @@ XZDB.Run(use_current = T)  # Required setup datasets to current path to search
 
 ---
 
- *Functions Contents*
+ #Contents *for database functions*
   - [1. Print/Export](#function-1-printexport)
   - [2. Check](#function-2-check)
   - [3. Load Index File](#function-3-load-index-file)
