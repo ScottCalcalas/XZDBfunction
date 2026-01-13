@@ -52,7 +52,7 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
 
 ---
 
- ## Contents (*for database website browser functions*)
+## Browser Functions
  
   - [1. Print/Export](#function-1-printexport)
   - [2. Check](#function-2-check)
