@@ -52,7 +52,7 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
 
 ---
 
- # Contents (*for database website browser functions*)
+ ## Contents (*for database website browser functions*)
  
   - [1. Print/Export](#function-1-printexport)
   - [2. Check](#function-2-check)
@@ -62,7 +62,7 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
   - [6. UniProt / MINT Comparison](#function-6-uniprot--mint-comparison)
   - [Browser Files: Add Your Own Dataset & Dataset Information](#browser-files)
 
-## Function 1 — Print/Export
+### Function 1 — Print/Export
 Use the **Print/Export** tab to obtain detailed search results.
 
 Supported search options:
@@ -77,17 +77,17 @@ The app generates three files automatically:
 - Details for Gene 1  
 - Details for Gene 2  
 
-## Function 2 — Check
+### Function 2 — Check
 Use the **Check** tab to:
 - See which datasets include a specific gene  
 - Quickly confirm if the gene exists in the database  
 
 
-## Function 3 — Load Index File
+### Function 3 — Load Index File
 On the left panel, use **Load Data info** to view dataset metadata and structure.
 
 
-## Function 4 — Output Files
+### Function 4 — Output Files
 Open the **Output files** tab to:
 - Preview a result file (using the red *Preview Selected* button)  
 - Download results (using the *Download* button in each row)
@@ -96,7 +96,7 @@ Open the **Output files** tab to:
 Not all outputs can be previewed.  
 The output folder may be cleared monthly—please save results you want to keep.
 
-## Function 5 — Update Database
+### Function 5 — Update Database
 *(Optional — only needed if updating dataset metadata)*
 
 After updating:
@@ -106,7 +106,7 @@ After updating:
 Run "Rebuild EVERYTHING" at Administrator Operations in the left panel:
 
 
-## Function 6 — UniProt / MINT Comparison
+### Function 6 — UniProt / MINT Comparison
 - **UniProt:** retrieves protein entry information  
 - **MINT:** retrieves protein–protein interaction data based on UniProt ID  
 
@@ -114,7 +114,7 @@ Requires an internet connection.
 
 
 
-# Browser files
+## Browser files
 
 To use your own dataset and dataset information (saving to package storage or running on current path), use:
 ```r
