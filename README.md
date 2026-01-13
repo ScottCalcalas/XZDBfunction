@@ -134,7 +134,12 @@ Example package storage location, inside R package:
 You can find Datasets information.xlsx; for putting datasets, go to the dataset folder.
 After those steps, start the browser and run "Rebuild EVERYTHING" at Administrator Operations.
 
+
+
 ---
+
+
+
 
 # Local usage protocol
 
