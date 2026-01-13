@@ -47,7 +47,7 @@ xiaopei.input.all()    #Build database in current folder and copy them to R pack
 ```r
 XZDB.Run()                 # lunches browser, if you already finished running xiaopei.input.all(), it will use your own dataset instead of example dataset
 
-XZDB.Run(use_current = T)  # Required setup datasets to current path to search
+XZDB.Run(use_current = T)  # Force running on current path. Requires setup datasets.
 ```
 
 ---
