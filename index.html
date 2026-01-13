@@ -128,7 +128,7 @@
 <span></span>
 <span><span class="fu"><a href="reference/XZDB.Run.html">XZDB.Run</a></span><span class="op">(</span>use_current <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>  <span class="co"># Force running on current path. Requires setup datasets.</span></span></code></pre></div>
 <hr>
-<p># Contents (<em>for database website browser functions</em>)</p>
+<p>## Contents (<em>for database website browser functions</em>)</p>
 <ul>
 <li><a href="#function-1-printexport">1. Print/Export</a></li>
 <li><a href="#function-2-check">2. Check</a></li>
@@ -139,10 +139,9 @@
 <li><a href="#browser-files">Browser Files: Add Your Own Dataset &amp; Dataset Information</a></li>
 </ul>
 </div>
-</div>
-<div class="section level2">
-<h2 id="function-1--printexport">Function 1 — Print/Export<a class="anchor" aria-label="anchor" href="#function-1--printexport"></a>
-</h2>
+<div class="section level3">
+<h3 id="function-1--printexport">Function 1 — Print/Export<a class="anchor" aria-label="anchor" href="#function-1--printexport"></a>
+</h3>
 <p>Use the <strong>Print/Export</strong> tab to obtain detailed search results.</p>
 <p>Supported search options: - Gene Symbol — <em>exact</em>, <em>family</em>, <em>fuzzy</em> - Protein ID — <em>exact match</em> - ENSEMBL Gene ID — <em>exact match</em></p>
 <p>Example: searching <strong>CDK13</strong> and <strong>NCBP2</strong> returns all matching rows across all datasets.</p>
@@ -150,36 +149,36 @@
 - Details for Gene 1<br>
 - Details for Gene 2</p>
 </div>
-<div class="section level2">
-<h2 id="function-2--check">Function 2 — Check<a class="anchor" aria-label="anchor" href="#function-2--check"></a>
-</h2>
+<div class="section level3">
+<h3 id="function-2--check">Function 2 — Check<a class="anchor" aria-label="anchor" href="#function-2--check"></a>
+</h3>
 <p>Use the <strong>Check</strong> tab to: - See which datasets include a specific gene<br>
 - Quickly confirm if the gene exists in the database</p>
 </div>
-<div class="section level2">
-<h2 id="function-3--load-index-file">Function 3 — Load Index File<a class="anchor" aria-label="anchor" href="#function-3--load-index-file"></a>
-</h2>
+<div class="section level3">
+<h3 id="function-3--load-index-file">Function 3 — Load Index File<a class="anchor" aria-label="anchor" href="#function-3--load-index-file"></a>
+</h3>
 <p>On the left panel, use <strong>Load Data info</strong> to view dataset metadata and structure.</p>
 </div>
-<div class="section level2">
-<h2 id="function-4--output-files">Function 4 — Output Files<a class="anchor" aria-label="anchor" href="#function-4--output-files"></a>
-</h2>
+<div class="section level3">
+<h3 id="function-4--output-files">Function 4 — Output Files<a class="anchor" aria-label="anchor" href="#function-4--output-files"></a>
+</h3>
 <p>Open the <strong>Output files</strong> tab to: - Preview a result file (using the red <em>Preview Selected</em> button)<br>
 - Download results (using the <em>Download</em> button in each row)</p>
 <p><strong>Note:</strong><br>
 Not all outputs can be previewed.<br>
 The output folder may be cleared monthly—please save results you want to keep.</p>
 </div>
-<div class="section level2">
-<h2 id="function-5--update-database">Function 5 — Update Database<a class="anchor" aria-label="anchor" href="#function-5--update-database"></a>
-</h2>
+<div class="section level3">
+<h3 id="function-5--update-database">Function 5 — Update Database<a class="anchor" aria-label="anchor" href="#function-5--update-database"></a>
+</h3>
 <p><em>(Optional — only needed if updating dataset metadata)</em></p>
 <p>After updating: - <code>datasets/</code> - <code>Datasets information.xlsx</code></p>
 <p>Run “Rebuild EVERYTHING” at Administrator Operations in the left panel:</p>
 </div>
-<div class="section level2">
-<h2 id="function-6--uniprot--mint-comparison">Function 6 — UniProt / MINT Comparison<a class="anchor" aria-label="anchor" href="#function-6--uniprot--mint-comparison"></a>
-</h2>
+<div class="section level3">
+<h3 id="function-6--uniprot--mint-comparison">Function 6 — UniProt / MINT Comparison<a class="anchor" aria-label="anchor" href="#function-6--uniprot--mint-comparison"></a>
+</h3>
 <ul>
 <li>
 <strong>UniProt:</strong> retrieves protein entry information<br>
@@ -190,9 +189,9 @@ The output folder may be cleared monthly—please save results you want to keep.
 <p>Requires an internet connection.</p>
 </div>
 </div>
-<div class="section level1">
-<h1 id="browser-files">Browser files<a class="anchor" aria-label="anchor" href="#browser-files"></a>
-</h1>
+<div class="section level2">
+<h2 id="browser-files">Browser files<a class="anchor" aria-label="anchor" href="#browser-files"></a>
+</h2>
 <p>To use your own dataset and dataset information (saving to package storage or running on current path), use:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/xiaopei.input.all.html">xiaopei.input.all</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -204,6 +203,7 @@ The output folder may be cleared monthly—please save results you want to keep.
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a> R\R<span class="dv">-4</span>.<span class="fl">4.3</span>\library\XZDBfunction\shinyapp</span></code></pre></div>
 <p>You can find Datasets information.xlsx; for putting datasets, go to the dataset folder. After those steps, start the browser and run “Rebuild EVERYTHING” at Administrator Operations.</p>
 <hr>
+</div>
 </div>
 <div class="section level1">
 <h1 id="local-usage-protocol">Local usage protocol<a class="anchor" aria-label="anchor" href="#local-usage-protocol"></a>
