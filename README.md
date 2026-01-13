@@ -1,15 +1,15 @@
 
 # 'XZDBfunction' R Package
 - A user-friendly database website browser application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.
-- Only dependency is R (Shiny UI), work for Windows, Mac, and linux.
-- Easy lunch script available (both Windows and MacOS system).
+- The only dependency is R (Shiny UI); works on Windows, macOS, and Linux.
+- Easy launch scripts available for both Windows and macOS.
 - Also contains daily analysis functions for statistics and biology.
 
 
 This document provides complete instructions for starting the website browser application and its functions.
 
 ## Quick Tour 
-(*Contains setup code for R, lunching the website browser directly with an example dataset*) 
+(*Contains setup code for R, launching the website browser directly with an example dataset*) 
 ```r
 install.packages("remotes")
 remotes::install_github("scottcalcalas/XZDBfunction")
@@ -18,9 +18,9 @@ XZDB.Run() #Run a demo - with example datasets
 ```
 
 ## Quick Use 
-(*Step by step setup instruction for R, and how to lunch the database browser directly with example/yours dataset*) 
+(*Step-by-step setup instructions for R, and how to launch the database browser directly with example/your dataset*) 
 
-### 1.Installation at R
+### 1. Installation in R
 
 ```r
 install.packages("remotes") # Skip this step if you already have "remotes" package
@@ -32,20 +32,20 @@ library(XZDBfunction)
 
 
 
-### 2.Get protocol and Set up your own database
+### 2. Get protocol and set up your own database
 ```r
 ?xzdb.help()
 xzdb.help() #Get protocols and setup instructions
 
-#transfer your datasets to current folder, check everything ok to run next step.
+# Transfer your datasets to the current folder, check everything is OK to run next step.
 xiaopei.input.all()    #Build database in current folder and copy them to R package.
-#After this step, R always use your own dataset instead of example dataset
+# After this step, R always uses your own dataset instead of the example dataset
 ```
 
-### 3.Use Genomic website browser
+### 3. Use the genomic website browser
 
 ```r
-XZDB.Run()                 # lunches browser, if you already finished running xiaopei.input.all(), it will use your own dataset instead of example dataset
+XZDB.Run()                 # launches browser; if you already ran xiaopei.input.all(), it will use your own dataset instead of the example dataset
 
 XZDB.Run(use_current = T)  # Force running on current path. Requires setup datasets.
 ```
@@ -100,7 +100,7 @@ The output folder may be cleared monthly—please save results you want to keep.
 
 After updating:
 - `datasets/`
-- `Datasets infomation.xlsx`
+- `Datasets information.xlsx`
 
 Run "Rebuild EVERYTHING" at Administrator Operations in the left panel:
 
@@ -115,7 +115,7 @@ Requires an internet connection.
 
 # Browser files
 
-To use your own dataset and dataset information(saving to package storage or run on current path), use:
+To use your own dataset and dataset information (saving to package storage or running on current path), use:
 ```r
 xiaopei.input.all()
 ```
@@ -123,19 +123,19 @@ xiaopei.input.all()
 Use helper to create your own dataset, run:
 ```r
 xzdb.help()
-xiaopei.input.all()    # Run this after modified copied files
+xiaopei.input.all()    # Run this after modifying the copied files
 ```
 
 Example package storage location, inside R package:
 ```r
  R\R-4.4.3\library\XZDBfunction\shinyapp
 ```
-You can find Datasets infomation.xlsx ; For putting dataset, goes to dataset folder
-After done those, start broswer can run "Rebuild EVERYTHING" at Administrator Operations
+You can find Datasets information.xlsx; for putting datasets, go to the dataset folder.
+After those steps, start the browser and run "Rebuild EVERYTHING" at Administrator Operations.
 
 ---
 
-# Local use protocol
+# Local usage protocol
 
 (If you want to use it as one click, instead of open R)
 
@@ -156,13 +156,13 @@ After done those, start broswer can run "Rebuild EVERYTHING" at Administrator Op
 
 ## 0. Configure R file
 
-To make an quick start R file, put this two lines:
+To make a quick start R file, put these two lines:
 ```r
 library(XZDBfunction)
 XZDB.Run()
 ```
 
-For example, it can be called Quick_Start.R. The next step is just setting up to run this file using R software(Not R-studio).
+For example, it can be called Quick_Start.R. The next step is just setting up to run this file using R (not RStudio).
 
 
 ## 1. Auto Start
@@ -220,11 +220,9 @@ cd ~/Desktop
 chmod +x something.command
 ```
 
-After those steps, Double-click the file can luanch the website browser application.
+After those steps, double-click the file to launch the website browser application.
 
 #### A3. Update local R script (For Borden Lab at Northwestern University)
 
 Copy and replace your local scripts using the scripts at github location: XZDBfunction/inst/shinyapp/
-
-
 
