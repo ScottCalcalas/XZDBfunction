@@ -80,15 +80,15 @@
 </h1></div>
 <ul>
 <li>A user-friendly database website browser application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.</li>
-<li>Only dependency is R (Shiny UI), work for Windows, Mac, and linux.</li>
-<li>Easy lunch script available (both Windows and MacOS system).</li>
+<li>The only dependency is R (Shiny UI); works on Windows, macOS, and Linux.</li>
+<li>Easy launch scripts available for both Windows and macOS.</li>
 <li>Also contains daily analysis functions for statistics and biology.</li>
 </ul>
 <p>This document provides complete instructions for starting the website browser application and its functions.</p>
 <div class="section level2">
 <h2 id="quick-tour">Quick Tour<a class="anchor" aria-label="anchor" href="#quick-tour"></a>
 </h2>
-<p>(<em>Contains setup code for R, lunching the website browser directly with an example dataset</em>)</p>
+<p>(<em>Contains setup code for R, launching the website browser directly with an example dataset</em>)</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"scottcalcalas/XZDBfunction"</span><span class="op">)</span></span>
@@ -98,9 +98,9 @@
 <div class="section level2">
 <h2 id="quick-use">Quick Use<a class="anchor" aria-label="anchor" href="#quick-use"></a>
 </h2>
-<p>(<em>Step by step setup instruction for R, and how to lunch the database browser directly with example/yours dataset</em>)</p>
+<p>(<em>Step-by-step setup instructions for R, and how to launch the database browser directly with example/your dataset</em>)</p>
 <div class="section level3">
-<h3 id="id_1installation-at-r">1.Installation at R<a class="anchor" aria-label="anchor" href="#id_1installation-at-r"></a>
+<h3 id="id_1-installation-in-r">1. Installation in R<a class="anchor" aria-label="anchor" href="#id_1-installation-in-r"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span> <span class="co"># Skip this step if you already have "remotes" package</span></span>
@@ -110,21 +110,21 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ScottCalcalas/XZDBfunction" class="external-link">XZDBfunction</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="id_2get-protocol-and-set-up-your-own-database">2.Get protocol and Set up your own database<a class="anchor" aria-label="anchor" href="#id_2get-protocol-and-set-up-your-own-database"></a>
+<h3 id="id_2-get-protocol-and-set-up-your-own-database">2. Get protocol and set up your own database<a class="anchor" aria-label="anchor" href="#id_2-get-protocol-and-set-up-your-own-database"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="fu"><a href="reference/xzdb.help.html">xzdb.help</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/xzdb.help.html">xzdb.help</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#Get protocols and setup instructions</span></span>
 <span></span>
-<span><span class="co">#transfer your datasets to current folder, check everything ok to run next step.</span></span>
+<span><span class="co"># Transfer your datasets to the current folder, check everything is OK to run next step.</span></span>
 <span><span class="fu"><a href="reference/xiaopei.input.all.html">xiaopei.input.all</a></span><span class="op">(</span><span class="op">)</span>    <span class="co">#Build database in current folder and copy them to R package.</span></span>
-<span><span class="co">#After this step, R always use your own dataset instead of example dataset</span></span></code></pre></div>
+<span><span class="co"># After this step, R always uses your own dataset instead of the example dataset</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="id_3use-genomic-website-browser">3.Use Genomic website browser<a class="anchor" aria-label="anchor" href="#id_3use-genomic-website-browser"></a>
+<h3 id="id_3-use-the-genomic-website-browser">3. Use the genomic website browser<a class="anchor" aria-label="anchor" href="#id_3-use-the-genomic-website-browser"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/XZDB.Run.html">XZDB.Run</a></span><span class="op">(</span><span class="op">)</span>                 <span class="co"># lunches browser, if you already finished running xiaopei.input.all(), it will use your own dataset instead of example dataset</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/XZDB.Run.html">XZDB.Run</a></span><span class="op">(</span><span class="op">)</span>                 <span class="co"># launches browser; if you already ran xiaopei.input.all(), it will use your own dataset instead of the example dataset</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/XZDB.Run.html">XZDB.Run</a></span><span class="op">(</span>use_current <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>  <span class="co"># Force running on current path. Requires setup datasets.</span></span></code></pre></div>
 <hr>
@@ -165,7 +165,7 @@ The output folder may be cleared monthly—please save results you want to keep.
 <h2 id="function-5--update-database">Function 5 — Update Database<a class="anchor" aria-label="anchor" href="#function-5--update-database"></a>
 </h2>
 <p><em>(Optional — only needed if updating dataset metadata)</em></p>
-<p>After updating: - <code>datasets/</code> - <code>Datasets infomation.xlsx</code></p>
+<p>After updating: - <code>datasets/</code> - <code>Datasets information.xlsx</code></p>
 <p>Run “Rebuild EVERYTHING” at Administrator Operations in the left panel:</p>
 </div>
 <div class="section level2">
@@ -184,20 +184,20 @@ The output folder may be cleared monthly—please save results you want to keep.
 <div class="section level1">
 <h1 id="browser-files">Browser files<a class="anchor" aria-label="anchor" href="#browser-files"></a>
 </h1>
-<p>To use your own dataset and dataset information(saving to package storage or run on current path), use:</p>
+<p>To use your own dataset and dataset information (saving to package storage or running on current path), use:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/xiaopei.input.all.html">xiaopei.input.all</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Use helper to create your own dataset, run:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/xzdb.help.html">xzdb.help</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/xiaopei.input.all.html">xiaopei.input.all</a></span><span class="op">(</span><span class="op">)</span>    <span class="co"># Run this after modified copied files</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/xiaopei.input.all.html">xiaopei.input.all</a></span><span class="op">(</span><span class="op">)</span>    <span class="co"># Run this after modifying the copied files</span></span></code></pre></div>
 <p>Example package storage location, inside R package:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a> R\R<span class="dv">-4</span>.<span class="fl">4.3</span>\library\XZDBfunction\shinyapp</span></code></pre></div>
-<p>You can find Datasets infomation.xlsx ; For putting dataset, goes to dataset folder After done those, start broswer can run “Rebuild EVERYTHING” at Administrator Operations</p>
+<p>You can find Datasets information.xlsx; for putting datasets, go to the dataset folder. After those steps, start the browser and run “Rebuild EVERYTHING” at Administrator Operations.</p>
 <hr>
 </div>
 <div class="section level1">
-<h1 id="local-use-protocol">Local use protocol<a class="anchor" aria-label="anchor" href="#local-use-protocol"></a>
+<h1 id="local-usage-protocol">Local usage protocol<a class="anchor" aria-label="anchor" href="#local-usage-protocol"></a>
 </h1>
 <p>(If you want to use it as one click, instead of open R)</p>
 <p><strong>Author:</strong> Xiaopei<br><strong>Updated:</strong> 2025-11-20</p>
@@ -222,11 +222,11 @@ The output folder may be cleared monthly—please save results you want to keep.
 <div class="section level2">
 <h2 id="id_0-configure-r-file">0. Configure R file<a class="anchor" aria-label="anchor" href="#id_0-configure-r-file"></a>
 </h2>
-<p>To make an quick start R file, put this two lines:</p>
+<p>To make a quick start R file, put these two lines:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ScottCalcalas/XZDBfunction" class="external-link">XZDBfunction</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/XZDB.Run.html">XZDB.Run</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>For example, it can be called Quick_Start.R. The next step is just setting up to run this file using R software(Not R-studio).</p>
+<p>For example, it can be called Quick_Start.R. The next step is just setting up to run this file using R (not RStudio).</p>
 </div>
 <div class="section level2">
 <h2 id="id_1-auto-start">1. Auto Start<a class="anchor" aria-label="anchor" href="#id_1-auto-start"></a>
@@ -276,7 +276,7 @@ The output folder may be cleared monthly—please save results you want to keep.
 <p>Then run</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">chmod</span> +x something.command</span></code></pre></div>
-<p>After those steps, Double-click the file can luanch the website browser application.</p>
+<p>After those steps, double-click the file to launch the website browser application.</p>
 </div>
 <div class="section level4">
 <h4 id="a3-update-local-r-script-for-borden-lab-at-northwestern-university">A3. Update local R script (For Borden Lab at Northwestern University)<a class="anchor" aria-label="anchor" href="#a3-update-local-r-script-for-borden-lab-at-northwestern-university"></a>
