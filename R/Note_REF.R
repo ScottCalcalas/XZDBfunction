@@ -18,5 +18,6 @@ XZ.update <- function() {
   library("remotes")
   detach("package:XZDBfunction", unload = TRUE)
   remotes::install_github("scottcalcalas/XZDBfunction")
+  cat("\n\n------Update Completed------\n\n")
   library(XZDBfunction)
 }
