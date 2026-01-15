@@ -11,7 +11,7 @@
 #' Update this XZDBfunction package
 #'
 #' @description
-#' Update this XZDBfunction package
+#' Update this XZDBfunction package, Automatic detaching current XZDB.
 #' 
 #' @export
 XZ.update <- function() {
