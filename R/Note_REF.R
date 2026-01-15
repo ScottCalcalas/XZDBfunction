@@ -27,7 +27,7 @@ XZ.update <- function(I_have_dataset=FALSE) {
   remotes::install_github("scottcalcalas/XZDBfunction")
   
   if(I_have_dataset){
-    xiaopei.input.all()
+    xiaopei.sync.to.shinyapp()
     #xiaopei.clean.file()
   }
   
