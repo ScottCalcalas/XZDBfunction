@@ -21,14 +21,16 @@ XZ.update <- function(I_have_dataset=FALSE) {
   detach("package:XZDBfunction", unload = TRUE)
   
   if(I_have_dataset){
-    xzdb.help()
+    xiaopei.clean.file("TEMP_XZupdate")
+    xzdb.nowDataset(ToName="TEMP_XZupdate")
   }
   
   remotes::install_github("scottcalcalas/XZDBfunction")
   
   if(I_have_dataset){
-    xiaopei.sync.to.shinyapp()
-    #xiaopei.clean.file()
+    xiaopei.sync.to.shinyapp(DatasetfolderName="TEMP_XZupdate")
+    xiaopei.clean.file("TEMP_XZupdate")
+    cat("Please delete folder 'TEMP_XZupdate' ")
   }
   
   cat("\n\n------Update Completed------\n\n")

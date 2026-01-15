@@ -284,7 +284,7 @@ xiaopei.clean.file <- function(idx_dir) {
 #' }
 #'
 #' @export
-xiaopei.sync.to.shinyapp <- function(xlsx.index.location = "Datasets infomation.xlsx") {
+xiaopei.sync.to.shinyapp <- function(xlsx.index.location = "Datasets infomation.xlsx",DatasetfolderName="datasets") {
   
   appDir <- system.file("shinyapp", package = "XZDBfunction")
   
@@ -321,7 +321,7 @@ xiaopei.sync.to.shinyapp <- function(xlsx.index.location = "Datasets infomation.
   
   # ---- Copy new datasets/ ----
   if (dir.exists("datasets")) {
-    file.copy("datasets", appDir, recursive = TRUE, overwrite = TRUE)
+    file.copy(folderName, appDir, recursive = TRUE, overwrite = TRUE)
   }
   
   # ---- Copy new IndexedData/ ----

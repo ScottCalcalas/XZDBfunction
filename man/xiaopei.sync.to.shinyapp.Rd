@@ -4,7 +4,10 @@
 \alias{xiaopei.sync.to.shinyapp}
 \title{Synchronize all datasets and index files into the package shinyapp directory}
 \usage{
-xiaopei.sync.to.shinyapp(xlsx.index.location = "Datasets infomation.xlsx")
+xiaopei.sync.to.shinyapp(
+  xlsx.index.location = "Datasets infomation.xlsx",
+  DatasetfolderName = "datasets"
+)
 }
 \arguments{
 \item{xlsx.index.location}{Character. Path to the Dataset Information Excel file in the current working
