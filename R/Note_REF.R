@@ -16,6 +16,7 @@
 #' @export
 XZ.update <- function() {
   library("remotes")
+  detach("package:XZDBfunction", unload = TRUE)
   remotes::install_github("scottcalcalas/XZDBfunction")
   
 }
