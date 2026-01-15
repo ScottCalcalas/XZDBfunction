@@ -5,3 +5,17 @@
 
 # If want everything inside the package, put next line at NAMESPACE
 # exportPattern(".")
+
+
+
+#' Update this XZDBfunction package
+#'
+#' @description
+#' Update this XZDBfunction package
+#' 
+#' @export
+XZ.update <- function() {
+  install.packages("remotes")
+  remotes::install_github("scottcalcalas/XZDBfunction")
+  
+}

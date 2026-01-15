@@ -6,7 +6,9 @@
 #'
 Clean.measurement.for.prism<-function(df,outname="Cleaned.Prism.input"){
 
-  
+  library(dplyr)
+  library(tidyr)
+  library(readxl)
   out <- df %>%
     mutate(row_id = ave(seq_len(n()), Row, FUN = seq_along)) %>% 
     pivot_wider(
