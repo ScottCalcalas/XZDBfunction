@@ -1,7 +1,19 @@
 
 
-#' Transformation for df when doing PRISM input
+#' Transformation for data inputs when using PRISM to draw figures
 #'
+#' @description
+#' It's for quantificated western blot data. See the data input requirement below. 
+#' If you like to see an example, run: Clean.measurement.for.prism.help()
+#' 
+#' Require input in tables is like:
+#' Col names: Protein names (Accept multiple same exist)
+#' Row names: GroupNames
+#' 
+#' Output tables is like:
+#' Col names: Orgnaized GroupNames by orders
+#' Row names: Protein names (Transfer to only one row for a same Protein)
+#' 
 #' @export
 #'
 Clean.measurement.for.prism<-function(df,outname="Cleaned.Prism.input"){

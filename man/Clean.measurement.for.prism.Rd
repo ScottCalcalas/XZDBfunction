@@ -2,10 +2,19 @@
 % Please edit documentation in R/WB_Functions.R
 \name{Clean.measurement.for.prism}
 \alias{Clean.measurement.for.prism}
-\title{Transformation for df when doing PRISM input}
+\title{Transformation for data inputs when using PRISM to draw figures}
 \usage{
 Clean.measurement.for.prism(df, outname = "Cleaned.Prism.input")
 }
 \description{
-Transformation for df when doing PRISM input
+It's for quantificated western blot data. See the data input requirement below.
+If you like to see an example, run: Clean.measurement.for.prism.help()
+
+Require input in tables is like:
+Col names: Protein names (Accept multiple same exist)
+Row names: GroupNames
+
+Output tables is like:
+Col names: Orgnaized GroupNames by orders
+Row names: Protein names (Transfer to only one row for a same Protein)
 }

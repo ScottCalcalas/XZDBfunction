@@ -98,6 +98,52 @@ xzdb.help <- function() {
 
 
 
-
-
-
+#' Help for Clean.measurement.for.prism
+#'
+#' @description
+#' 
+#' Copies the example input / output 
+#' into the current working directory.
+#' 
+#' @export
+Clean.measurement.for.prism.help <- function() {
+  # 1. Locate shinyapp folder inside the installed package
+  pkg_app <- system.file("example/prism", package = "XZDBfunction")
+  if (pkg_app == "")
+    stop("Cannot find example/prism folder inside XZDBfunction package.")
+  
+  # 2. Paths to items we want to copy
+  datasets_src <- file.path(pkg_app, "REF example _ Input_Clean.measurement.for.prism.help.xlsx")
+  info_xlsx_src <- file.path(pkg_app, "REF example _ Output_Clean.measurement.for.prism.help.csv")
+  protocol_docx_src <- file.path(pkg_app, "REF example _ PRISM_Clean.measurement.for.prism.help.prism")
+  
+  # 3. Check file existence
+  if (!file.exists(input_xlsx_src)) {
+    stop("Missing example input XLSX file in package/example/prism.")
+  }
+  
+  if (!file.exists(output_csv_src)) {
+    stop("Missing example output CSV file in package/example/prism.")
+  }
+  
+  if (!file.exists(prism_file_src)) {
+    stop("Missing PRISM example file in package/example/prism.")
+  }
+  
+  # 4. Copy files into current working directory
+  cwd <- getwd()
+  
+  message("Copying example input XLSX...")
+  file.copy(input_xlsx_src, cwd, overwrite = FALSE)
+  
+  message("Copying example output CSV...")
+  file.copy(output_csv_src, cwd, overwrite = FALSE)
+  
+  message("Copying example PRISM file...")
+  file.copy(prism_file_src, cwd, overwrite = FALSE)
+  
+  message(
+    "Example files copied successfully.\n",
+    "Please check the following files in:\n  ", cwd
+  )
+}
