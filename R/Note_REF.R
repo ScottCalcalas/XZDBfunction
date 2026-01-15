@@ -11,12 +11,12 @@
 #' Update this XZDBfunction package
 #'
 #' @description
-#' Update this XZDBfunction package, Automatic detaching current XZDB.
+#' Update this XZDBfunction package, Automatic detaching and attaching current XZDB.
 #' 
 #' @export
 XZ.update <- function() {
   library("remotes")
   detach("package:XZDBfunction", unload = TRUE)
   remotes::install_github("scottcalcalas/XZDBfunction")
-  
+  library(XZDBfunction)
 }
