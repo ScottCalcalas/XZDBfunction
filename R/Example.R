@@ -98,7 +98,7 @@ xzdb.help <- function() {
 #'
 xzdb.nowDataset <- function(ToName="datasets") {
   # 1. Locate shinyapp folder inside the installed package
-  pkg_app <- system.file("shinyapp\datasets", package = "XZDBfunction")
+  pkg_app <- system.file("shinyapp/datasets", package = "XZDBfunction")
   if (pkg_app == "")
     stop("Cannot find shinyapp/datasets folder inside XZDBfunction package.")
   
@@ -107,7 +107,7 @@ xzdb.nowDataset <- function(ToName="datasets") {
   
   # 3. Check existence
   if (!dir.exists(datasets_src))
-    stop("Missing 'datasets' folder @ shinyapp\datasets.")
+    stop("Missing 'datasets' folder @ shinyapp/datasets.")
   
   # 4. Copy into current working directory
   cwd <- getwd()
