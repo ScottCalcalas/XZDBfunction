@@ -13,11 +13,25 @@
 #' @description
 #' Update this XZDBfunction package, Automatic detaching and attaching current XZDB.
 #' 
+#' If you have your own dataset, use: I_have_dataset=TRUE
+#' 
 #' @export
-XZ.update <- function() {
+XZ.update <- function(I_have_dataset=FALSE) {
   library("remotes")
   detach("package:XZDBfunction", unload = TRUE)
+  
+  if(I_have_dataset){
+    xzdb.help()
+  }
+  
   remotes::install_github("scottcalcalas/XZDBfunction")
+  
+  if(I_have_dataset){
+    xiaopei.input.all()
+    #xiaopei.clean.file()
+  }
+  
   cat("\n\n------Update Completed------\n\n")
   library(XZDBfunction)
+  
 }
