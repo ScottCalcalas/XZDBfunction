@@ -1,7 +1,7 @@
 Package: XZDBfunction
 Type: Package
 Title: Genomic Dataset Indexing and Search Website Browser
-Version: 7.37.6
+Version: 7.37.7
 Author: Xiaopei Zhang
 Maintainer: Xiaopei Zhang <xiaopei.zhang@northwestern.edu>
 Description: Modularized tools for dataset indexing, gene ID/symbol resolution, searching, printing, and metadata binding. Includes full roxygen2, pkgdown, and GitHub Actions support.
