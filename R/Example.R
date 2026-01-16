@@ -96,27 +96,43 @@ xzdb.help <- function() {
 #' 
 #' @export
 #'
-xzdb.nowDataset <- function(ToName="datasets") {
+xzdb.nowDataset <- function(ToName = "datasets") {
   # 1. Locate shinyapp folder inside the installed package
   pkg_app <- system.file("shinyapp", package = "XZDBfunction")
   if (pkg_app == "")
     stop("Cannot find shinyapp folder inside XZDBfunction package.")
   
-  # 2. Paths to items we want to copy
+  # 2. Source folder
   datasets_src <- file.path(pkg_app, "datasets")
-  
-  # 3. Check existence
   if (!dir.exists(datasets_src))
     stop("Missing 'datasets' folder @ shinyapp.")
   
-  # 4. Copy into current working directory
-  cwd <- getwd()
+  # 3. Destination folder (under current working directory)
+  dest <- file.path(getwd(), ToName)
+  dir.create(dest, showWarnings = FALSE, recursive = TRUE)
   
-  message("Copying 'datasets' folder...")
-  dir.create(file.path(cwd, "datasets"), showWarnings = FALSE)
-  file.copy(from = list.files(datasets_src, full.names = TRUE),
-            to   = file.path(cwd,ToName),
-            overwrite = TRUE, recursive = TRUE)
+  message("Copying contents of 'datasets' into: ", dest)
+  
+  # 4. Copy ALL contents, including subfolders
+  items <- list.files(datasets_src, full.names = TRUE, recursive = FALSE, all.files = TRUE, no.. = TRUE)
+  
+  if (length(items) == 0L) {
+    warning("Source datasets folder is empty: ", datasets_src)
+    return(invisible(dest))
+  }
+  
+  ok <- file.copy(
+    from = items,
+    to = dest,
+    overwrite = TRUE,
+    recursive = TRUE
+  )
+  
+  if (any(!ok)) {
+    warning("Some items failed to copy: ", paste(basename(items)[!ok], collapse = ", "))
+  }
+  
+  invisible(dest)
 }
 
 

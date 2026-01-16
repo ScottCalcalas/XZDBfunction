@@ -18,13 +18,13 @@
 #' @export
 XZ.update <- function(I_have_dataset=FALSE) {
   library("remotes")
-  detach("package:XZDBfunction", unload = TRUE)
   
   if(I_have_dataset){
     xiaopei.clean.file("TEMP_XZupdate")
     xzdb.nowDataset(ToName="TEMP_XZupdate")
   }
   
+  detach("package:XZDBfunction", unload = TRUE)
   remotes::install_github("scottcalcalas/XZDBfunction")
   
   if(I_have_dataset){
