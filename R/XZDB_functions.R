@@ -317,10 +317,10 @@ xiaopei.sync.to.shinyapp <- function(xlsx.index.location = "Datasets infomation.
   
   # ---- Remove old copies ----
   unlink(file.path(appDir, "datasets"),     recursive = TRUE, force = TRUE)
-  unlink(file.path(appDir, "IndexedData"),  recursive = TRUE, force = TRUE)
+  #unlink(file.path(appDir, "IndexedData"),  recursive = TRUE, force = TRUE)
   
   # ---- Copy new datasets/ ----
-  if (dir.exists("datasets")) {
+  if (dir.exists(DatasetfolderName)) {
     file.copy(DatasetfolderName, appDir, recursive = TRUE, overwrite = TRUE)
   }
   
