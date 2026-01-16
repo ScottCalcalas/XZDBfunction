@@ -3,7 +3,7 @@
 - A user-friendly database website browser application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.
 - The only dependency is R (Shiny UI); works on Windows, macOS, and Linux.
 - Easy launch scripts available for both Windows and macOS(Linux).
-- Also contains daily analysis functions for statistics and biology.
+- Also contains daily analysis functions for statistical and biological analysis.
 
 
 This document provides complete instructions for starting the website browser application and its functions.
