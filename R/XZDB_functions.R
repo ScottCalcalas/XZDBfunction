@@ -284,7 +284,10 @@ xiaopei.clean.file <- function(idx_dir) {
 #' }
 #'
 #' @export
-xiaopei.sync.to.shinyapp <- function(xlsx.index.location = "Datasets infomation.xlsx",DatasetfolderName="datasets") {
+xiaopei.sync.to.shinyapp <- function(
+    xlsx.index.location = "Datasets infomation.xlsx",
+    DatasetfolderName  = "datasets"
+) {
   
   appDir <- system.file("shinyapp", package = "XZDBfunction")
   
@@ -315,31 +318,53 @@ xiaopei.sync.to.shinyapp <- function(xlsx.index.location = "Datasets infomation.
   
   message("[sync] Updating ", appDir)
   
-  # ---- Remove old copies ----
-  unlink(file.path(appDir, "datasets"),     recursive = TRUE, force = TRUE)
-  #unlink(file.path(appDir, "IndexedData"),  recursive = TRUE, force = TRUE)
+  # ---- Prepare target datasets folder ----
+  target_datasets <- file.path(appDir, "datasets")
+  unlink(target_datasets, recursive = TRUE, force = TRUE)
+  dir.create(target_datasets, recursive = TRUE, showWarnings = FALSE)
   
-  # ---- Copy new datasets/ ----
+  # ---- Copy contents of DatasetfolderName INTO shinyapp/datasets ----
   if (dir.exists(DatasetfolderName)) {
-    file.copy(DatasetfolderName, appDir, recursive = TRUE, overwrite = TRUE)
+    files_to_copy <- list.files(
+      DatasetfolderName,
+      full.names = TRUE,
+      recursive  = FALSE
+    )
+    
+    file.copy(
+      from      = files_to_copy,
+      to        = target_datasets,
+      recursive = TRUE,
+      overwrite = TRUE
+    )
+  } else {
+    warning("[sync] DatasetfolderName does not exist: ", DatasetfolderName)
   }
   
-  # ---- Copy new IndexedData/ ----
+  # ---- Copy IndexedData ----
   if (dir.exists("IndexedData")) {
-    file.copy("IndexedData", appDir, recursive = TRUE, overwrite = TRUE)
+    unlink(file.path(appDir, "IndexedData"), recursive = TRUE, force = TRUE)
+    file.copy(
+      "IndexedData",
+      appDir,
+      recursive = TRUE,
+      overwrite = TRUE
+    )
   }
   
   # ---- Copy index Excel ----
   if (file.exists(xlsx.index.location)) {
-    file.copy(xlsx.index.location,
-              file.path(appDir, basename(xlsx.index.location)),
-              overwrite = TRUE)
+    file.copy(
+      xlsx.index.location,
+      file.path(appDir, basename(xlsx.index.location)),
+      overwrite = TRUE
+    )
   }
   
   message("[sync] Done.")
-  
   invisible(TRUE)
 }
+
 
 
 #' Build index files for all datasets listed in the index Excel

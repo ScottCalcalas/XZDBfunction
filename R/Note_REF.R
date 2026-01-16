@@ -30,6 +30,8 @@ XZ.update <- function(I_have_dataset=TRUE,forceInstall=FALSE) {
     remotes::install_github("scottcalcalas/XZDBfunction",force = TRUE,upgrade = "never")
   }else{remotes::install_github("scottcalcalas/XZDBfunction")}
   
+  cat("\n\n------Github files configure Completed------\n\n")
+  
   library(XZDBfunction)
   
   if(I_have_dataset){
