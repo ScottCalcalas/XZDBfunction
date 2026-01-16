@@ -16,7 +16,7 @@
 #' If you have your own dataset, use: I_have_dataset=TRUE
 #' 
 #' @export
-XZ.update <- function(I_have_dataset=FALSE) {
+XZ.update <- function(I_have_dataset=TRUE,forceInstall=FALSE) {
   library("remotes")
   
   if(I_have_dataset){
@@ -25,8 +25,12 @@ XZ.update <- function(I_have_dataset=FALSE) {
   }
   
   detach("package:XZDBfunction", unload = TRUE)
-  remotes::install_github("scottcalcalas/XZDBfunction")
   
+  if(forceInstall=TRUE){
+    remotes::install_github("scottcalcalas/XZDBfunction",    force = TRUE,    upgrade = "never"  )
+  }else{remotes::install_github("scottcalcalas/XZDBfunction")}
+  
+  library(XZDBfunction)
   if(I_have_dataset){
     xiaopei.sync.to.shinyapp(DatasetfolderName="TEMP_XZupdate")
     xiaopei.clean.file("TEMP_XZupdate")
@@ -34,6 +38,5 @@ XZ.update <- function(I_have_dataset=FALSE) {
   }
   
   cat("\n\n------Update Completed------\n\n")
-  library(XZDBfunction)
   
 }
