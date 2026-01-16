@@ -4,7 +4,7 @@
 \alias{XZ.update}
 \title{Update this XZDBfunction package}
 \usage{
-XZ.update(I_have_dataset = FALSE)
+XZ.update(I_have_dataset = TRUE, forceInstall = FALSE)
 }
 \description{
 Update this XZDBfunction package, Automatic detaching and attaching current XZDB.

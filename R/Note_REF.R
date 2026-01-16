@@ -26,11 +26,12 @@ XZ.update <- function(I_have_dataset=TRUE,forceInstall=FALSE) {
   
   detach("package:XZDBfunction", unload = TRUE)
   
-  if(forceInstall=TRUE){
-    remotes::install_github("scottcalcalas/XZDBfunction",    force = TRUE,    upgrade = "never"  )
+  if(forceInstall){
+    remotes::install_github("scottcalcalas/XZDBfunction",force = TRUE,upgrade = "never")
   }else{remotes::install_github("scottcalcalas/XZDBfunction")}
   
   library(XZDBfunction)
+  
   if(I_have_dataset){
     xiaopei.sync.to.shinyapp(DatasetfolderName="TEMP_XZupdate")
     xiaopei.clean.file("TEMP_XZupdate")
