@@ -14,6 +14,7 @@
 #' Update this XZDBfunction package, Automatic detaching and attaching current XZDB.
 #' 
 #' If you have your own dataset, use: I_have_dataset=TRUE
+#' It will keep your datasets and Datasets infomation.xlsx
 #' 
 #' @export
 XZ.update <- function(I_have_dataset=TRUE,forceInstall=FALSE) {
@@ -38,7 +39,7 @@ XZ.update <- function(I_have_dataset=TRUE,forceInstall=FALSE) {
   cat("\n\n------Testing Completed------\n\n")
   
   if(I_have_dataset){
-    xiaopei.sync.to.shinyapp(DatasetfolderName="TEMP_XZupdate")
+    xiaopei.sync.to.shinyapp(DatasetfolderName="TEMP_XZupdate",xlsx.index.location = "TEMP_XZupdate/Datasets infomation.xlsx")
     xiaopei.clean.file("TEMP_XZupdate")
     cat("Please delete folder 'TEMP_XZupdate' ")
   }

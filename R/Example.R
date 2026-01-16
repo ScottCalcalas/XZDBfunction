@@ -107,11 +107,19 @@ xzdb.nowDataset <- function(ToName = "datasets") {
   if (!dir.exists(datasets_src))
     stop("Missing 'datasets' folder @ shinyapp.")
   
+  info_xlsx_src <- file.path(pkg_app, "Datasets infomation.xlsx")
+  if (!file.exists(info_xlsx_src))
+    stop("Missing 'Datasets infomation.xlsx' inside shinyapp.")
+  
   # 3. Destination folder (under current working directory)
   dest <- file.path(getwd(), ToName)
   dir.create(dest, showWarnings = FALSE, recursive = TRUE)
   
+  message("Copying 'Datasets infomation.xlsx'...")
+  file.copy(info_xlsx_src, dest, overwrite = FALSE)
+  
   message("Copying contents of 'datasets' into: ", dest)
+  
   
   # 4. Copy ALL contents, including subfolders
   items <- list.files(datasets_src, full.names = TRUE, recursive = FALSE, all.files = TRUE, no.. = TRUE)
