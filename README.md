@@ -7,6 +7,8 @@
 
 ![Shiny UI Overview](images/xzdbGraph_Explain.png)
 
+![Shiny UI FirstPage](images/FirstPage.png)
+
 This document provides complete instructions for starting the website browser application and its functions.
 
 ## Quick Tour 
@@ -53,7 +55,6 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
 
 ---
 
-![Shiny UI FirstPage](images/FirstPage.png)
 
 ## Browser Functions
  
