@@ -1,8 +1,8 @@
 
-# 'XZDBfunction' R Package
+# 'XZDBfunction' R Package: Genomic Database Website Browser - Expressing & Interaction
 - A user-friendly database website browser application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.
-- The only dependency is R ; works on Windows, macOS, and Linux.
-- Easy to launch for people don't understand computer.
+- Supports gene expressing & protein interaction database. 
+- The only dependency is R ; works on Windows, macOS, and Linux. Easy to launch.
 - Also contains daily analysis functions for statistical and biological analysis.
 
 
