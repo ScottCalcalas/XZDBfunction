@@ -5,6 +5,10 @@
 - The only dependency is R ; works on Windows, macOS, and Linux. Easy to launch.
 - Also contains daily analysis functions for statistical and biological analysis.
 
+
+| ![Shiny UI Overview](images/xzdbGraph_Explain.png) | ![Shiny UI FirstPage](images/FirstPage.png) |
+
+
 ![Shiny UI Overview](images/xzdbGraph_Explain.png)
 
 ![Shiny UI FirstPage](images/FirstPage.png)
