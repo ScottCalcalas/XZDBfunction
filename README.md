@@ -8,7 +8,7 @@
 
 | Overview | Start Page |
 |---|---|
-| ![Shiny UI Overview](man/images/xzdbGraph_Explain.png) | ![Shiny UI FirstPage](man/images/FirstPage.png) |
+| ![Shiny UI Overview](man/figures/xzdbGraph_Explain.png) | ![Shiny UI FirstPage](man/figures/FirstPage.png) |
 
 This document provides complete instructions for starting the website browser application and its functions.
 
@@ -82,7 +82,7 @@ The app generates three files automatically:
 - Details for Gene 1  
 - Details for Gene 2  
 
-![Shiny UI function1](man/images/function1.png)
+![Shiny UI function1](man/figures/function1.png)
 
 ### Function 2 — Check
 Use the **Check** tab to:
@@ -238,4 +238,3 @@ After those steps, double-click the file to launch the website browser applicati
 #### A3. Update local R script (For Borden Lab at Northwestern University)
 
 Copy and replace your local scripts using the scripts at github location: XZDBfunction/inst/shinyapp/
-
