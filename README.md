@@ -53,6 +53,8 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
 
 ---
 
+![Shiny UI FirstPage](images/FirstPage.png)
+
 ## Browser Functions
  
   - [1. Print/Export](#function-1-printexport)
@@ -77,6 +79,8 @@ The app generates three files automatically:
 - Full results  
 - Details for Gene 1  
 - Details for Gene 2  
+
+![Shiny UI function1](images/function1.png)
 
 ### Function 2 — Check
 Use the **Check** tab to:
