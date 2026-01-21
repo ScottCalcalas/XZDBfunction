@@ -6,13 +6,7 @@
 - Also contains daily analysis functions for statistical and biological analysis.
 
 | | |
-|---|---|
 | ![Shiny UI Overview](images/xzdbGraph_Explain.png) | ![Shiny UI FirstPage](images/FirstPage.png) |
-
-
-![Shiny UI Overview](images/xzdbGraph_Explain.png)
-
-![Shiny UI FirstPage](images/FirstPage.png)
 
 This document provides complete instructions for starting the website browser application and its functions.
 
