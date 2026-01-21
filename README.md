@@ -5,7 +5,9 @@
 - The only dependency is R ; works on Windows, macOS, and Linux. Easy to launch.
 - Also contains daily analysis functions for statistical and biological analysis.
 
-| | |
+
+| Overview | Start Page |
+|---|---|
 | ![Shiny UI Overview](images/xzdbGraph_Explain.png) | ![Shiny UI FirstPage](images/FirstPage.png) |
 
 This document provides complete instructions for starting the website browser application and its functions.
