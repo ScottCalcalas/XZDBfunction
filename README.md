@@ -1,7 +1,7 @@
 
 # 'XZDBfunction' R Package
 - A user-friendly database website browser application for searching, annotating, and exporting genomic and proteomic metadata across multiple datasets.
-- The only dependency is R (Shiny UI); works on Windows, macOS, and Linux.
+- The only dependency is R ; works on Windows, macOS, and Linux.
 - Easy to launch for people don't understand computer.
 - Also contains daily analysis functions for statistical and biological analysis.
 
