@@ -4,6 +4,6 @@
     "--Use XZDB.Run() to start the Shiny Genomic DB Browser.\n",
     "---Need help? Run: ?XZDB.Run\n",
     "----Build you own: ?xzdb.help\n",
-    "-----Update me: XZ.update()"
+    "-----Update me: xzdb.update()"
   )
 }

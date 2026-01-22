@@ -211,11 +211,11 @@ xiaopei.input <- function(file.Name,
 #' @return Invisibly TRUE.
 #'
 #' @examples
-#' xiaopei.clean.file("IndexedData")
-#' xiaopei.clean.file("Output")
+#' xzdb.clean.file("IndexedData")
+#' xzdb.clean.file("Output")
 #'
 #' @export
-xiaopei.clean.file <- function(idx_dir) {
+xzdb.clean.file <- function(idx_dir) {
   
   # Ensure directory exists
   if (!dir.exists(idx_dir)) {
@@ -280,11 +280,11 @@ xiaopei.clean.file <- function(idx_dir) {
 #'
 #' @examples
 #' \dontrun{
-#' xiaopei.sync.to.shinyapp()
+#' xzdb.sync.to.shinyapp()
 #' }
 #'
 #' @export
-xiaopei.sync.to.shinyapp <- function(
+xzdb.sync.to.shinyapp <- function(
     xlsx.index.location = "Datasets infomation.xlsx",
     DatasetfolderName  = "datasets"
 ) {
@@ -377,14 +377,14 @@ xiaopei.sync.to.shinyapp <- function(
 #' After successfully building all local index files, the function optionally
 #' synchronizes the entire `datasets/`, `IndexedData/`, and Excel index file
 #' into the installed package's `shinyapp/` directory using
-#' \code{\link{xiaopei.sync.to.shinyapp}}.
+#' \code{\link{xzdb.sync.to.shinyapp}}.
 #'
 #' @param xlsx.index.location
 #' Character. File path to the dataset-information Excel file in the current
 #' working directory. Default: `"Datasets infomation.xlsx"`.
 #'
 #' @param sync
-#' Logical. If `TRUE` (default), calls \code{xiaopei.sync.to.shinyapp()} after all
+#' Logical. If `TRUE` (default), calls \code{xzdb.sync.to.shinyapp()} after all
 #' indexes are built. Set to `FALSE` to disable automatic syncing.
 #'
 #' @return
@@ -394,15 +394,15 @@ xiaopei.sync.to.shinyapp <- function(
 #' @examples
 #' \dontrun{
 #' # Process all datasets and sync to shinyapp
-#' xiaopei.input.all()
+#' xzdb.input.all()
 #'
 #' # Process only, do NOT sync
-#' xiaopei.input.all(sync = FALSE)
+#' xzdb.input.all(sync = FALSE)
 #' }
 #'
 #' @export
-xiaopei.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx") {
-  xiaopei.clean.file(idx_dir="IndexedData")
+xzdb.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx") {
+  xzdb.clean.file(idx_dir="IndexedData")
   
   
   indexfile <- readxl::read_xlsx(xlsx.index.location)
@@ -419,7 +419,7 @@ xiaopei.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx") 
       error = function(e) warning(sprintf("[input.all] Failed on row %d: %s (Sheet=%s): %s", i, fn, as.character(sh), conditionMessage(e)))
     )
   }
-  xiaopei.sync.to.shinyapp()
+  xzdb.sync.to.shinyapp()
 }
 
 
