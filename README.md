@@ -56,7 +56,7 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
   - [6. UniProt / MINT Comparison](#function-6-uniprot--mint-comparison)
   - [Browser Files: Add Your Own Dataset & Dataset Information](#browser-files)
 
-### Function 1 — Print/Export
+### Function 1 — Print/Export (Search)
 Use the **Print/Export** tab to obtain detailed search results.
 
 Supported search options:
@@ -76,11 +76,11 @@ The app generates three files automatically:
 ### Function 2 — Check
 Use the **Check** tab to:
 - See which datasets include a specific gene  
-- Quickly confirm if the gene exists in the database  
+- Confirm if the gene exists in the database  
 
 
-### Function 3 — Load Index File
-On the left panel, use **Load Data info** to view dataset metadata and structure.
+### Function 3 — Data information
+On the **Data info** tab, use **Load Data info** to view dataset metadata and structure.
 
 
 ### Function 4 — Output Files
