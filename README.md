@@ -146,6 +146,7 @@ Requires an internet connection.
 <br><br>
 
 ## Setup a New Database
+*For package user to setup inside R*
 
 Use helper to create your own dataset, run:
 ```r
