@@ -79,10 +79,10 @@
 <div class="page-header"><h1 id="xzdbfunction-r-package-genomic-database-website-browser">‘XZDBfunction’ R Package: Genomic Database Website Browser<a class="anchor" aria-label="anchor" href="#xzdbfunction-r-package-genomic-database-website-browser"></a>
 </h1></div>
 <ul>
-<li>A user-friendly database website browser application for <a href="#browser-functions">searching, annotating, and exporting</a> genomic and proteomic metadata across multiple datasets.</li>
-<li>Supports gene expressing &amp; protein interaction database.</li>
-<li>The only dependency is R ; works on Windows, macOS, and Linux. Easy to launch <a href="#instructions-for-configure-local-qiuck-start">instructions</a> available.</li>
-<li>Also contains functions for statistical and biological analysis.</li>
+<li>A user-friendly database and web browser application for <a href="#browser-functions">searching, annotating, and exporting</a> genomic and proteomic metadata across multiple datasets.</li>
+<li>Supports gene expressing &amp; protein interaction datasets.</li>
+<li>The only dependency is R ; works on Windows, macOS, and Linux. Easy to launch <a href="#instructions-to-configure-local-quick-start">instructions</a> available.</li>
+<li>Also contains analysis functions for statistical and biological analysis.</li>
 </ul>
 <table class="table">
 <colgroup>
@@ -102,7 +102,7 @@
 <div class="section level2">
 <h2 id="quick-tour">Quick Tour<a class="anchor" aria-label="anchor" href="#quick-tour"></a>
 </h2>
-<p>(<em>Contains setup code for R, launching the website browser directly with an example dataset</em>)</p>
+<p>(<em>Contains setup code for R, launching the web browser directly with an example dataset</em>)</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span> <span class="co"># Skip this step if you already have "remotes" package</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"scottcalcalas/XZDBfunction"</span><span class="op">)</span></span>
@@ -122,7 +122,7 @@
 <span><span class="fu"><a href="reference/xzdb.help.html">xzdb.help</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#Get protocols and setup instructions</span></span>
 <span></span>
 <span><span class="co"># Transfer your datasets to the current folder, check everything is OK to run next step.</span></span>
-<span><span class="fu"><a href="reference/xiaopei.input.all.html">xiaopei.input.all</a></span><span class="op">(</span><span class="op">)</span>    <span class="co">#Build database in current folder and copy them to R package.</span></span>
+<span><span class="fu">xzdb.input.all</span><span class="op">(</span><span class="op">)</span>    <span class="co">#Build the database in current folder and copy them to R package.</span></span>
 <span><span class="co"># After this step, R always uses your own dataset instead of the example dataset</span></span></code></pre></div>
 <p>(<a href="#setup-a-new-database">See details</a>)</p>
 </div>
@@ -160,7 +160,7 @@
 <li>ENSEMBL Gene ID: <em>exact match</em>
 </li>
 </ul>
-<p>Example: searching <strong>CDK13</strong> and <strong>NCBP2</strong> returns all matching rows across all datasets.</p>
+<p>Example: searching <strong>CDK13</strong> and <strong>NCBP2</strong> returns all matching rows for either CDK13 or NCBP2 across all datasets.</p>
 <p>The app generates three files automatically:</p>
 <ul>
 <li>Full results<br>
@@ -172,7 +172,7 @@
 <div class="float">
 <img src="reference/figures/function1.png" alt="Shiny UI function1"><div class="figcaption">Shiny UI function1</div>
 </div>
-<p>Each line represents a row founded in our current database, with that database’s description at the beginning.</p>
+<p>Each line represents a row found in our current database, with that database’s description at the beginning.</p>
 <p><br><br></p>
 </div>
 <div class="section level3">
@@ -201,7 +201,7 @@
 - Download results (using the <em>Download</em> button in each row)</p>
 <p><strong>Note:</strong><br>
 Not all outputs can be previewed.<br>
-The output folder may be cleared monthly—please save results you want to keep.</p>
+The output folder should be cleared monthly to prevent slowdowns—please save results you want to keep in other folders.</p>
 <div class="float">
 <img src="reference/figures/function4.png" alt="Shiny UI function4"><div class="figcaption">Shiny UI function4</div>
 </div>
@@ -229,9 +229,9 @@ The output folder may be cleared monthly—please save results you want to keep.
 <strong>MINT:</strong> retrieves protein–protein interaction data based on UniProt ID</li>
 </ul>
 <p>Requires an internet connection.</p>
-<p><strong>If search from current result:</strong> <img src="reference/figures/function61.png" alt="Shiny UI function6.1"></p>
+<p><strong>If you search from current result:</strong> <img src="reference/figures/function61.png" alt="Shiny UI function6.1"></p>
 <p><br></p>
-<p><strong>If type the ID:</strong> <img src="reference/figures/function62.png" alt="Shiny UI function6.2"></p>
+<p><strong>If you type the ID:</strong> <img src="reference/figures/function62.png" alt="Shiny UI function6.2"></p>
 <p><br></p>
 <p><strong>The summary table and the Venn diagram will be like:</strong> <img src="reference/figures/function63.png" alt="Shiny UI function6.3"></p>
 <p><br><br></p>
@@ -242,14 +242,14 @@ The output folder may be cleared monthly—please save results you want to keep.
 <h2 id="setup-a-new-database">Setup a New Database<a class="anchor" aria-label="anchor" href="#setup-a-new-database"></a>
 </h2>
 <p><em>(For package user to setup database inside R)</em></p>
-<p>Use helper to create your own dataset, run:</p>
+<p>To use helper to create your own dataset, run:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/xzdb.help.html">xzdb.help</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/xiaopei.input.all.html">xiaopei.input.all</a></span><span class="op">(</span><span class="op">)</span>        <span class="co"># Run this after modifying the copied files</span></span></code></pre></div>
+<span><span class="fu">xzdb.input.all</span><span class="op">(</span><span class="op">)</span>        <span class="co"># Run this after modifying the copied files</span></span></code></pre></div>
 <p>Synchronize all datasets and index files(include Datasets information.xlsx) into the package shinyapp directly</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/xiaopei.sync.to.shinyapp.html">xiaopei.sync.to.shinyapp</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#No need to run if you already run xiaopei.input.all()</span></span></code></pre></div>
-<p>Get the current using datasets inside the package location (If you want to confirm it’s copied succuessfully)</p>
+<p>Get the currently used datasets inside the package location (If you want to confirm it’s copied successfully)</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/xzdb.nowDataset.html">xzdb.nowDataset</a></span><span class="op">(</span><span class="op">)</span>          <span class="co">#It copies current using datasets to your working path</span></span></code></pre></div>
 <p>Example package storage location, inside R package:</p>
@@ -258,9 +258,9 @@ The output folder may be cleared monthly—please save results you want to keep.
 <hr>
 </div>
 <div class="section level2">
-<h2 id="instructions-for-configure-local-qiuck-start">Instructions for Configure Local Qiuck Start<a class="anchor" aria-label="anchor" href="#instructions-for-configure-local-qiuck-start"></a>
+<h2 id="instructions-to-configure-local-quick-start">Instructions to Configure Local Quick Start<a class="anchor" aria-label="anchor" href="#instructions-to-configure-local-quick-start"></a>
 </h2>
-<p>(If you want to use it as one click, instead of open R)</p>
+<p>(If you want to use it as one click, instead of opening R)</p>
 <div class="section level3">
 <h3 id="steps">
 <em>Steps:</em><a class="anchor" aria-label="anchor" href="#steps"></a>
