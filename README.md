@@ -22,7 +22,7 @@ library(XZDBfunction)
 XZDB.Run() #Launch a demo - with example datasets
 ```
 
-## Quick Use 
+## Setup Database 
 (*Step-by-step setup instructions for R, and how to launch the database browser directly with example/your dataset*) 
 
 ### 1. Get protocol and set up your own database
