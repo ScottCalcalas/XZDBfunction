@@ -35,6 +35,8 @@ xiaopei.input.all()    #Build database in current folder and copy them to R pack
 # After this step, R always uses your own dataset instead of the example dataset
 ```
 
+([See details](#browser-files))
+
 ### 2. Launch the genomic website browser in two different ways
 
 ```r
@@ -154,14 +156,23 @@ xiaopei.input.all()
 Use helper to create your own dataset, run:
 ```r
 xzdb.help()
-xiaopei.input.all()    # Run this after modifying the copied files
+xiaopei.input.all()        # Run this after modifying the copied files
+```
+
+Synchronize all datasets and index files(include Datasets information.xlsx) into the package shinyapp directly
+```r
+xiaopei.sync.to.shinyapp() #No need to run if you already run xiaopei.input.all()
+```
+
+Get the current using datasets inside the package location (If you want to confirm it's copied succuessfully)
+```r
+xzdb.nowDataset()          #It copies current using datasets to your working path
 ```
 
 Example package storage location, inside R package:
 ```r
  R\R-4.4.3\library\XZDBfunction\shinyapp
 ```
-You can find Datasets information.xlsx; for putting datasets, go to the dataset folder.
 After those steps, start the browser and run "Rebuild EVERYTHING" at Administrator Operations.
 
 
