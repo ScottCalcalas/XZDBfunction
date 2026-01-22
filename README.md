@@ -276,6 +276,6 @@ chmod +x something.command
 
 After those steps, double-click the file to launch the website browser application.
 
-#### A3. Update local R script (For Borden Lab at Northwestern University)
+#### A3. Update local R script (If you're using local based instead of package based)
 
 Copy and replace your local scripts using the scripts at github location: XZDBfunction/inst/shinyapp/
