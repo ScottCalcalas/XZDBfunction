@@ -171,19 +171,11 @@ Example package storage location, inside R package:
 After those steps, start the browser and run "Rebuild EVERYTHING" at Administrator Operations.
 
 
-
 ---
 
-
-
-
-# Local usage protocol
+# Instructions for Configure Local Qiuck Start
 
 (If you want to use it as one click, instead of open R)
-
-**Author:** Xiaopei  
-**Updated:** 2025-11-20  
-
 
 ### **Contents**
 - [0. Configure R file](#0-configure-r-file)
@@ -204,7 +196,7 @@ library(XZDBfunction)
 XZDB.Run()
 ```
 
-For example, it can be called Quick_Start.R. The next step is just setting up to run this file using R (not RStudio).
+For example, it can be called **Quick_Start.R**. The next step is just setting up to run this file using R (not RStudio).
 
 
 ## 1. Auto Start
