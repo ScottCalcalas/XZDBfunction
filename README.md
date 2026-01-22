@@ -100,11 +100,11 @@ Open the **Output files** tab to:
 - Preview a result file (using the red *Preview Selected* button)  
 - Download results (using the *Download* button in each row)
 
-![Shiny UI function4](man/figures/function4.png)
-
 **Note:**  
 Not all outputs can be previewed.  
 The output folder may be cleared monthly—please save results you want to keep.
+
+![Shiny UI function4](man/figures/function4.png)
 
 
 <br><br>
@@ -127,13 +127,17 @@ Run "Rebuild EVERYTHING" at Administrator Operations in the left panel:
 
 Requires an internet connection.
 
-If search from current result:
+**If search from current result:**
 ![Shiny UI function6.1](man/figures/function61.png)
 
-If type the ID:
+<br>
+
+**If type the ID:**
 ![Shiny UI function6.2](man/figures/function62.png)
 
-The summary and the Venn diagram:
+<br>
+
+**The summary and the Venn diagram:**
 ![Shiny UI function6.3](man/figures/function63.png)
 
 <br><br>
