@@ -48,7 +48,7 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
 
 ## Browser Functions
  
-  - [1. Print/Export](#function-1-printexport)
+  - [1. Search](#function-1-Search)
   - [2. Check](#function-2-check)
   - [3. Load Data information](#function-3-data-information)
   - [4. Output Files](#function-4-output-files)
@@ -57,8 +57,8 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
   - [Browser Files: Add Your Own Dataset & Dataset Information](#browser-files)
 
 
-### Function 1. Print/Export
-Use the **Print/Export** tab to obtain detailed search results.
+### Function 1. Search
+Use the **Search** tab to obtain detailed search results.
 
 Supported search options:
 - Gene Symbol — *exact*, *family*, *fuzzy*
