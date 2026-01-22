@@ -3,7 +3,7 @@
 - A user-friendly database website browser application for [searching, annotating, and exporting](#browser-functions) genomic and proteomic metadata across multiple datasets.
 - Supports gene expressing & protein interaction database. 
 - The only dependency is R ; works on Windows, macOS, and Linux. Easy to launch [instructions](#instructions-for-configure-local-qiuck-start) available.
-- Also contains daily analysis functions for statistical and biological analysis.
+- Also contains functions for statistical and biological analysis.
 
 
 | Overview | Start Page |
