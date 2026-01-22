@@ -74,6 +74,7 @@ The app generates three files automatically:
 
 ![Shiny UI function1](man/figures/function1.png)
 
+Each line represents a row founded in our current database, with that database’s description at the beginning.
 
 <br><br>
 
@@ -118,6 +119,7 @@ After updating:
 
 Run "Rebuild EVERYTHING" at Administrator Operations in the left panel:
 
+![Shiny UI function5](man/figures/function5.png)
 
 <br><br>
 
