@@ -179,11 +179,11 @@ Example package storage location, inside R package:
 
 ---
 
-# Instructions for Configure Local Qiuck Start
+## Instructions for Configure Local Qiuck Start
 
 (If you want to use it as one click, instead of open R)
 
-### **Contents**
+### *Steps:*
 - [0. Configure R file](#0-configure-r-file)
 - [1. Auto Start](#1-auto-start)
   - [On Windows](#on-windows)
