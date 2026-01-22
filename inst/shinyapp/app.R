@@ -79,7 +79,7 @@ ui <- page_fluid(
       helpText("3. Data info Tab: view dataset metadata."),
       helpText("4. Output files Tab: browse previous results."),
       tags$a(
-        href = "https://scottcalcalas.github.io/XZDBfunction/#function-1-printexport",
+        href = "https://scottcalcalas.github.io/XZDBfunction/#browser-functions",
         target = "_blank",
         style = "display:block; margin-bottom:6px;",
         "Github Online Protocol"
