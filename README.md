@@ -35,7 +35,7 @@ xiaopei.input.all()    #Build database in current folder and copy them to R pack
 # After this step, R always uses your own dataset instead of the example dataset
 ```
 
-([See details](#browser-files))
+([See details](#setup-a-new-database))
 
 ### 2. Launch the genomic website browser in two different ways
 
@@ -56,7 +56,7 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
   - [4. Output Files](#function-4-output-files)
   - [5. Update Database](#function-5-update-database)
   - [6. UniProt / MINT Comparison](#function-6-uniprotmint-comparison)
-  - [Browser Files: Add Your Own Dataset & Dataset Information](#browser-files)
+  - [Setup a New Database](#setup-a-new-database)
 
 
 ### Function 1. Search
@@ -146,12 +146,7 @@ Requires an internet connection.
 
 <br><br>
 
-## Browser files
-
-To use your own dataset and dataset information (saving to package storage or running on current path), use:
-```r
-xiaopei.input.all()
-```
+## Setup a New Database
 
 Use helper to create your own dataset, run:
 ```r
