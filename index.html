@@ -125,7 +125,7 @@
 <span><span class="co"># Transfer your datasets to the current folder, check everything is OK to run next step.</span></span>
 <span><span class="fu"><a href="reference/xiaopei.input.all.html">xiaopei.input.all</a></span><span class="op">(</span><span class="op">)</span>    <span class="co">#Build database in current folder and copy them to R package.</span></span>
 <span><span class="co"># After this step, R always uses your own dataset instead of the example dataset</span></span></code></pre></div>
-<p>(<a href="#browser-files">See details</a>)</p>
+<p>(<a href="#setup-a-new-database">See details</a>)</p>
 </div>
 <div class="section level3">
 <h3 id="id_2-launch-the-genomic-website-browser-in-two-different-ways">2. Launch the genomic website browser in two different ways<a class="anchor" aria-label="anchor" href="#id_2-launch-the-genomic-website-browser-in-two-different-ways"></a>
@@ -147,7 +147,7 @@
 <li><a href="#function-4-output-files">4. Output Files</a></li>
 <li><a href="#function-5-update-database">5. Update Database</a></li>
 <li><a href="#function-6-uniprotmint-comparison">6. UniProt / MINT Comparison</a></li>
-<li><a href="#browser-files">Browser Files: Add Your Own Dataset &amp; Dataset Information</a></li>
+<li><a href="#setup-a-new-database">Setup a New Database</a></li>
 </ul>
 <div class="section level3">
 <h3 id="function-1-search">Function 1. Search<a class="anchor" aria-label="anchor" href="#function-1-search"></a>
@@ -227,23 +227,20 @@ The output folder may be cleared monthly—please save results you want to keep.
 </div>
 </div>
 <div class="section level2">
-<h2 id="browser-files">Browser files<a class="anchor" aria-label="anchor" href="#browser-files"></a>
+<h2 id="setup-a-new-database">Setup a New Database<a class="anchor" aria-label="anchor" href="#setup-a-new-database"></a>
 </h2>
-<p>To use your own dataset and dataset information (saving to package storage or running on current path), use:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/xiaopei.input.all.html">xiaopei.input.all</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Use helper to create your own dataset, run:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/xzdb.help.html">xzdb.help</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/xiaopei.input.all.html">xiaopei.input.all</a></span><span class="op">(</span><span class="op">)</span>        <span class="co"># Run this after modifying the copied files</span></span></code></pre></div>
 <p>Synchronize all datasets and index files(include Datasets information.xlsx) into the package shinyapp directly</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/xiaopei.sync.to.shinyapp.html">xiaopei.sync.to.shinyapp</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#No need to run if you already run xiaopei.input.all()</span></span></code></pre></div>
 <p>Get the current using datasets inside the package location (If you want to confirm it’s copied succuessfully)</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/xzdb.nowDataset.html">xzdb.nowDataset</a></span><span class="op">(</span><span class="op">)</span>          <span class="co">#It copies current using datasets to your working path</span></span></code></pre></div>
 <p>Example package storage location, inside R package:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a> R\R<span class="dv">-4</span>.<span class="fl">4.3</span>\library\XZDBfunction\shinyapp</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a> R\R<span class="dv">-4</span>.<span class="fl">4.3</span>\library\XZDBfunction\shinyapp</span></code></pre></div>
 <p>After those steps, start the browser and run “Rebuild EVERYTHING” at Administrator Operations.</p>
 <hr>
 </div>
@@ -275,7 +272,7 @@ The output folder may be cleared monthly—please save results you want to keep.
 <h2 id="id_0-configure-r-file">0. Configure R file<a class="anchor" aria-label="anchor" href="#id_0-configure-r-file"></a>
 </h2>
 <p>To make a quick start R file, put these two lines:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ScottCalcalas/XZDBfunction" class="external-link">XZDBfunction</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/XZDB.Run.html">XZDB.Run</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>For example, it can be called Quick_Start.R. The next step is just setting up to run this file using R (not RStudio).</p>
@@ -322,12 +319,12 @@ The output folder may be cleared monthly—please save results you want to keep.
 <h4 id="a2mac-one-click-start-command-file">A2.Mac “One-Click Start” Command File<a class="anchor" aria-label="anchor" href="#a2mac-one-click-start-command-file"></a>
 </h4>
 <p>Create a file named <code>something.command</code> (e.g. <code>MAC_Start.command</code>) on the Desktop:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># Launch script</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># Launch script</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co"># ...</span></span></code></pre></div>
 <p>Then run</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">chmod</span> +x something.command</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">chmod</span> +x something.command</span></code></pre></div>
 <p>After those steps, double-click the file to launch the website browser application.</p>
 </div>
 <div class="section level4">
