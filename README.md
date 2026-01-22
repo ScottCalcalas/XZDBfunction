@@ -40,7 +40,7 @@ xzdb.input.all()    #Build the database in current folder and copy them to R pac
 ### 2. Launch the genomic website browser in two different ways
 
 ```r
-XZDB.Run()                 # launches browser; if you already ran xiaopei.input.all(), it will use your own dataset instead of the example dataset
+XZDB.Run()                 # launches browser; if you already ran xzdb.input.all(), it will use your own dataset instead of the example dataset
 
 XZDB.Run(use_current = T)  # Force running on current path. Requires setup datasets.
 ```
@@ -175,7 +175,7 @@ xzdb.input.all()        # Run this after modifying the copied files
 
 Synchronize all datasets and index files(include Datasets information.xlsx) into the package shinyapp directly
 ```r
-xiaopei.sync.to.shinyapp() #No need to run if you already run xiaopei.input.all()
+xzdb.sync.to.shinyapp() #No need to run if you already run xzdb.input.all()
 ```
 
 Get the currently used datasets inside the package location (If you want to confirm it's copied successfully)
