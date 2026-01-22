@@ -72,12 +72,18 @@ ui <- page_fluid(
     sidebar = sidebar(
       h4("Tutorial"),
       #fileInput("index_xlsx", "Datasets infomation.xlsx (optional upload)", accept = c(".xlsx")),
-      helpText("-Updated 10/21/25-"),
+      helpText("-Updated 1/22/26-"),
       helpText("1. Search Tab: will display and automatically save results (all & by gene)."),
       helpText("Empty means that dataset doesn't have that column."),
       helpText("2. Check Tab: see where an item exists in the database."),
       helpText("3. Data info Tab: view dataset metadata."),
       helpText("4. Output files Tab: browse previous results."),
+      tags$a(
+        href = "https://scottcalcalas.github.io/XZDBfunction/#function-1-printexport",
+        target = "_blank",
+        style = "display:block; margin-bottom:6px;",
+        "Github Online Protocol"
+      ),
       hr(),
       helpText("Helpful notes:"),
       helpText("Yellow rows: no statistical columns present for that record."),
