@@ -150,7 +150,7 @@ Requires an internet connection.
 
 <br><br>
 
-
+---
 
 ## Setup a New Database
 
