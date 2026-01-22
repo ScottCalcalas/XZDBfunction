@@ -62,6 +62,8 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
 
 Use the **Search** tab to obtain detailed search results.
 
+<br>
+
 Supported search options:
 
 - Gene Symbol: *exact*, *family*, *fuzzy*
@@ -73,6 +75,8 @@ Supported search options:
 
 *(Fuzzy search: use threshold of 0.1 to have a very permissive, broad search.)*
 
+<br>
+
 Example: exact searching **CDK13** and **NCBP2** returns all matching rows for either CDK13 or NCBP2 across all datasets.
 
 The app generates three files automatically:
@@ -80,6 +84,8 @@ The app generates three files automatically:
 - Full results  
 - Details for Gene 1  
 - Details for Gene 2  
+
+<br>
 
 ![Shiny UI function1](man/figures/function1.png)
 
