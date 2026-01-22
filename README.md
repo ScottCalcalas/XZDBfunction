@@ -15,28 +15,17 @@ This document provides complete instructions for starting the website browser ap
 ## Quick Tour 
 (*Contains setup code for R, launching the website browser directly with an example dataset*) 
 ```r
-install.packages("remotes")
+install.packages("remotes") # Skip this step if you already have "remotes" package
 remotes::install_github("scottcalcalas/XZDBfunction")
 library(XZDBfunction)
-XZDB.Run() #Run a demo - with example datasets
+
+XZDB.Run() #Launch a demo - with example datasets
 ```
 
 ## Quick Use 
 (*Step-by-step setup instructions for R, and how to launch the database browser directly with example/your dataset*) 
 
-### 1. Installation in R
-
-```r
-install.packages("remotes") # Skip this step if you already have "remotes" package
-
-remotes::install_github("scottcalcalas/XZDBfunction")
-
-library(XZDBfunction)
-```
-
-
-
-### 2. Get protocol and set up your own database
+### 1. Get protocol and set up your own database
 ```r
 ?xzdb.help()
 xzdb.help() #Get protocols and setup instructions
@@ -46,7 +35,7 @@ xiaopei.input.all()    #Build database in current folder and copy them to R pack
 # After this step, R always uses your own dataset instead of the example dataset
 ```
 
-### 3. Use the genomic website browser
+### 2. Launch the genomic website browser in two different ways
 
 ```r
 XZDB.Run()                 # launches browser; if you already ran xiaopei.input.all(), it will use your own dataset instead of the example dataset
