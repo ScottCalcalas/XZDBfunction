@@ -122,7 +122,7 @@
 <span><span class="fu"><a href="reference/xzdb.help.html">xzdb.help</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#Get protocols and setup instructions</span></span>
 <span></span>
 <span><span class="co"># Transfer your datasets to the current folder, check everything is OK to run next step.</span></span>
-<span><span class="fu">xzdb.input.all</span><span class="op">(</span><span class="op">)</span>    <span class="co">#Build the database in current folder and copy them to R package.</span></span>
+<span><span class="fu"><a href="reference/xzdb.input.all.html">xzdb.input.all</a></span><span class="op">(</span><span class="op">)</span>    <span class="co">#Build the database in current folder and copy them to R package.</span></span>
 <span><span class="co"># After this step, R always uses your own dataset instead of the example dataset</span></span></code></pre></div>
 <p>(<a href="#setup-a-new-database">See details</a>)</p>
 </div>
@@ -250,10 +250,10 @@ The output folder should be cleared monthly to prevent slowdowns—please save r
 <p>To use helper to create your own dataset, run:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/xzdb.help.html">xzdb.help</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu">xzdb.input.all</span><span class="op">(</span><span class="op">)</span>        <span class="co"># Run this after modifying the copied files</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/xzdb.input.all.html">xzdb.input.all</a></span><span class="op">(</span><span class="op">)</span>        <span class="co"># Run this after modifying the copied files</span></span></code></pre></div>
 <p>Synchronize all datasets and index files(include Datasets information.xlsx) into the package shinyapp directly</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">xzdb.sync.to.shinyapp</span><span class="op">(</span><span class="op">)</span> <span class="co">#No need to run if you already run xzdb.input.all()</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/xzdb.sync.to.shinyapp.html">xzdb.sync.to.shinyapp</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#No need to run if you already run xzdb.input.all()</span></span></code></pre></div>
 <p>Get the currently used datasets inside the package location (If you want to confirm it’s copied successfully)</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/xzdb.nowDataset.html">xzdb.nowDataset</a></span><span class="op">(</span><span class="op">)</span>          <span class="co">#It copies current using datasets to your working path</span></span></code></pre></div>

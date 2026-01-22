@@ -8,7 +8,6 @@
 <url><loc>/index.html</loc></url>
 <url><loc>/reference/Clean.measurement.for.prism.help.html</loc></url>
 <url><loc>/reference/Clean.measurement.for.prism.html</loc></url>
-<url><loc>/reference/XZ.update.html</loc></url>
 <url><loc>/reference/XZDB.Run.html</loc></url>
 <url><loc>/reference/cox_multivar_fun.html</loc></url>
 <url><loc>/reference/cox_multivar_fun_cts.html</loc></url>
@@ -24,11 +23,12 @@
 <url><loc>/reference/logist_univar_fun.html</loc></url>
 <url><loc>/reference/logist_univar_fun_cts.html</loc></url>
 <url><loc>/reference/xiaopei.build.bioinfo.envi.html</loc></url>
-<url><loc>/reference/xiaopei.clean.file.html</loc></url>
-<url><loc>/reference/xiaopei.input.all.html</loc></url>
 <url><loc>/reference/xiaopei.input.html</loc></url>
-<url><loc>/reference/xiaopei.sync.to.shinyapp.html</loc></url>
+<url><loc>/reference/xzdb.clean.file.html</loc></url>
 <url><loc>/reference/xzdb.help.html</loc></url>
+<url><loc>/reference/xzdb.input.all.html</loc></url>
 <url><loc>/reference/xzdb.nowDataset.html</loc></url>
+<url><loc>/reference/xzdb.sync.to.shinyapp.html</loc></url>
+<url><loc>/reference/xzdb.update.html</loc></url>
 </urlset>
 
