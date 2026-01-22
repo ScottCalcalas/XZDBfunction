@@ -56,6 +56,7 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
   - [6. UniProt / MINT Comparison](#function-6-uniprotmint-comparison)
   - [Browser Files: Add Your Own Dataset & Dataset Information](#browser-files)
 
+
 ### Function 1. Print/Export
 Use the **Print/Export** tab to obtain detailed search results.
 
@@ -73,6 +74,8 @@ The app generates three files automatically:
 
 ![Shiny UI function1](man/figures/function1.png)
 
+
+<br><br>
 ### Function 2. Check
 Use the **Check** tab to:
 - See which datasets include a specific gene  
@@ -80,11 +83,15 @@ Use the **Check** tab to:
 
 ![Shiny UI function2](man/figures/function2.png)
 
+
+<br><br>
 ### Function 3. Data information
 On the **Data info** tab, use **"Load Data info"** button to view dataset metadata and structure.
 
 ![Shiny UI function3](man/figures/function3.png)
 
+
+<br><br>
 ### Function 4. Output Files
 Open the **Output files** tab to:
 - Preview a result file (using the red *Preview Selected* button)  
@@ -96,6 +103,8 @@ Open the **Output files** tab to:
 Not all outputs can be previewed.  
 The output folder may be cleared monthly—please save results you want to keep.
 
+
+<br><br>
 ### Function 5. Update Database
 *(Optional — only needed if updating dataset metadata)*
 
@@ -106,17 +115,23 @@ After updating:
 Run "Rebuild EVERYTHING" at Administrator Operations in the left panel:
 
 
+<br><br>
 ### Function 6. UniProt/MINT Comparison
 - **UniProt:** retrieves protein entry information  
 - **MINT:** retrieves protein–protein interaction data based on UniProt ID  
 
 Requires an internet connection.
 
+If search from current result:
 ![Shiny UI function6.1](man/figures/function61.png)
+
+If type the ID:
 ![Shiny UI function6.2](man/figures/function62.png)
+
+The summary and the Venn diagram:
 ![Shiny UI function6.3](man/figures/function63.png)
 
-
+<br><br>
 ## Browser files
 
 To use your own dataset and dataset information (saving to package storage or running on current path), use:
