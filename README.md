@@ -80,7 +80,7 @@ Use the **Check** tab to:
 
 
 ### Function 3 — Data information
-On the **Data info** tab, use **Load Data info** to view dataset metadata and structure.
+On the **Data info** tab, use **"Load Data info"** button to view dataset metadata and structure.
 
 
 ### Function 4 — Output Files
