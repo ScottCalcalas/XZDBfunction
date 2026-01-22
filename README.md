@@ -68,8 +68,10 @@ Supported search options:
 - Protein ID: *exact match*
 - ENSEMBL Gene ID: *exact match*
 
-(Family search: seaching for gene/proteins start with the same letters but haveing different numbers at end. NCBP2 family search will also includes NCBP1.)
-(Fuzzy search: use threshold of 0.1 to have a very permissive, broad search.)
+
+*(Family search: seaching for gene/proteins start with the same letters but haveing different numbers at end. NCBP2 family search will also includes NCBP1.)*
+
+*(Fuzzy search: use threshold of 0.1 to have a very permissive, broad search.)*
 
 Example: exact searching **CDK13** and **NCBP2** returns all matching rows for either CDK13 or NCBP2 across all datasets.
 
