@@ -143,10 +143,15 @@ Requires an internet connection.
 **The summary table and the Venn diagram will be like:**
 ![Shiny UI function6.3](man/figures/function63.png)
 
+
+
 <br><br>
 
+
+
 ## Setup a New Database
-*(For package user to setup inside R)*
+
+*(For package user to setup database inside R)*
 
 Use helper to create your own dataset, run:
 ```r
@@ -168,7 +173,8 @@ Example package storage location, inside R package:
 ```r
  R\R-4.4.3\library\XZDBfunction\shinyapp
 ```
-After those steps, start the browser and run "Rebuild EVERYTHING" at Administrator Operations.
+
+*After those steps, start the browser and run "Rebuild EVERYTHING" at Administrator Operations.*
 
 
 ---
