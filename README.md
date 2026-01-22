@@ -59,12 +59,13 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
 
 
 ### Function 1. Search
+
 Use the **Search** tab to obtain detailed search results.
 
 Supported search options:
-- Gene Symbol — *exact*, *family*, *fuzzy*
-- Protein ID — *exact match*
-- ENSEMBL Gene ID — *exact match*
+- Gene Symbol: *exact*, *family*, *fuzzy*
+- Protein ID: *exact match*
+- ENSEMBL Gene ID: *exact match*
 
 Example: searching **CDK13** and **NCBP2** returns all matching rows across all datasets.
 
