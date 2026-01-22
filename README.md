@@ -78,15 +78,19 @@ Use the **Check** tab to:
 - See which datasets include a specific gene  
 - Confirm if the gene exists in the database  
 
+![Shiny UI function2](man/figures/function2.png)
 
 ### Function 3. Data information
 On the **Data info** tab, use **"Load Data info"** button to view dataset metadata and structure.
 
+![Shiny UI function3](man/figures/function3.png)
 
 ### Function 4. Output Files
 Open the **Output files** tab to:
 - Preview a result file (using the red *Preview Selected* button)  
 - Download results (using the *Download* button in each row)
+
+![Shiny UI function4](man/figures/function4.png)
 
 **Note:**  
 Not all outputs can be previewed.  
@@ -108,6 +112,9 @@ Run "Rebuild EVERYTHING" at Administrator Operations in the left panel:
 
 Requires an internet connection.
 
+![Shiny UI function6.1](man/figures/function61.png)
+![Shiny UI function6.2](man/figures/function62.png)
+![Shiny UI function6.3](man/figures/function63.png)
 
 
 ## Browser files
