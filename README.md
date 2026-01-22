@@ -1,9 +1,9 @@
 
 # 'XZDBfunction' R Package: Genomic Database Website Browser
-- A user-friendly database website browser application for [searching, annotating, and exporting](#browser-functions) genomic and proteomic metadata across multiple datasets.
-- Supports gene expressing & protein interaction database. 
-- The only dependency is R ; works on Windows, macOS, and Linux. Easy to launch [instructions](#instructions-for-configure-local-qiuck-start) available.
-- Also contains functions for statistical and biological analysis.
+- A user-friendly database and web browser application for [searching, annotating, and exporting](#browser-functions) genomic and proteomic metadata across multiple datasets.
+- Supports gene expressing & protein interaction datasets. 
+- The only dependency is R ; works on Windows, macOS, and Linux. Easy to launch [instructions](#instructions-to-configure-local-quick-start) available.
+- Also contains analysis functions for statistical and biological analysis.
 
 
 | Overview | Start Page |
@@ -13,7 +13,7 @@
 This document provides complete instructions for starting the website browser application and its functions.
 
 ## Quick Tour 
-(*Contains setup code for R, launching the website browser directly with an example dataset*) 
+(*Contains setup code for R, launching the web browser directly with an example dataset*) 
 ```r
 install.packages("remotes") # Skip this step if you already have "remotes" package
 remotes::install_github("scottcalcalas/XZDBfunction")
@@ -31,7 +31,7 @@ XZDB.Run() #Launch a demo - with example datasets
 xzdb.help() #Get protocols and setup instructions
 
 # Transfer your datasets to the current folder, check everything is OK to run next step.
-xiaopei.input.all()    #Build database in current folder and copy them to R package.
+xzdb.input.all()    #Build the database in current folder and copy them to R package.
 # After this step, R always uses your own dataset instead of the example dataset
 ```
 
@@ -68,7 +68,7 @@ Supported search options:
 - Protein ID: *exact match*
 - ENSEMBL Gene ID: *exact match*
 
-Example: searching **CDK13** and **NCBP2** returns all matching rows across all datasets.
+Example: searching **CDK13** and **NCBP2** returns all matching rows for either CDK13 or NCBP2 across all datasets.
 
 The app generates three files automatically:
 
@@ -78,7 +78,7 @@ The app generates three files automatically:
 
 ![Shiny UI function1](man/figures/function1.png)
 
-Each line represents a row founded in our current database, with that database’s description at the beginning.
+Each line represents a row found in our current database, with that database’s description at the beginning.
 
 <br><br>
 
@@ -107,7 +107,7 @@ Open the **Output files** tab to:
 
 **Note:**  
 Not all outputs can be previewed.  
-The output folder may be cleared monthly—please save results you want to keep.
+The output folder should be cleared monthly to prevent slowdowns—please save results you want to keep in other folders.
 
 ![Shiny UI function4](man/figures/function4.png)
 
@@ -133,12 +133,12 @@ Run "Rebuild EVERYTHING" at Administrator Operations in the left panel:
 
 Requires an internet connection.
 
-**If search from current result:**
+**If you search from current result:**
 ![Shiny UI function6.1](man/figures/function61.png)
 
 <br>
 
-**If type the ID:**
+**If you type the ID:**
 ![Shiny UI function6.2](man/figures/function62.png)
 
 <br>
@@ -156,10 +156,10 @@ Requires an internet connection.
 
 *(For package user to setup database inside R)*
 
-Use helper to create your own dataset, run:
+To use helper to create your own dataset, run:
 ```r
 xzdb.help()
-xiaopei.input.all()        # Run this after modifying the copied files
+xzdb.input.all()        # Run this after modifying the copied files
 ```
 
 Synchronize all datasets and index files(include Datasets information.xlsx) into the package shinyapp directly
@@ -167,7 +167,7 @@ Synchronize all datasets and index files(include Datasets information.xlsx) into
 xiaopei.sync.to.shinyapp() #No need to run if you already run xiaopei.input.all()
 ```
 
-Get the current using datasets inside the package location (If you want to confirm it's copied succuessfully)
+Get the currently used datasets inside the package location (If you want to confirm it's copied successfully)
 ```r
 xzdb.nowDataset()          #It copies current using datasets to your working path
 ```
@@ -182,9 +182,9 @@ Example package storage location, inside R package:
 
 ---
 
-## Instructions for Configure Local Qiuck Start
+## Instructions to Configure Local Quick Start
 
-(If you want to use it as one click, instead of open R)
+(If you want to use it as one click, instead of opening R)
 
 ### *Steps:*
 - [0. Configure R file](#0-configure-r-file)
