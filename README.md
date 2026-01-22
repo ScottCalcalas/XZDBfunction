@@ -137,7 +137,7 @@ Requires an internet connection.
 
 <br>
 
-**The summary and the Venn diagram:**
+**The summary table and the Venn diagram will be like:**
 ![Shiny UI function6.3](man/figures/function63.png)
 
 <br><br>
