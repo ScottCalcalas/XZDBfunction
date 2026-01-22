@@ -130,7 +130,7 @@
 <h3 id="id_2-launch-the-genomic-website-browser-in-two-different-ways">2. Launch the genomic website browser in two different ways<a class="anchor" aria-label="anchor" href="#id_2-launch-the-genomic-website-browser-in-two-different-ways"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/XZDB.Run.html">XZDB.Run</a></span><span class="op">(</span><span class="op">)</span>                 <span class="co"># launches browser; if you already ran xiaopei.input.all(), it will use your own dataset instead of the example dataset</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/XZDB.Run.html">XZDB.Run</a></span><span class="op">(</span><span class="op">)</span>                 <span class="co"># launches browser; if you already ran xzdb.input.all(), it will use your own dataset instead of the example dataset</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/XZDB.Run.html">XZDB.Run</a></span><span class="op">(</span>use_current <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>  <span class="co"># Force running on current path. Requires setup datasets.</span></span></code></pre></div>
 <hr>
@@ -253,7 +253,7 @@ The output folder should be cleared monthly to prevent slowdowns—please save r
 <span><span class="fu">xzdb.input.all</span><span class="op">(</span><span class="op">)</span>        <span class="co"># Run this after modifying the copied files</span></span></code></pre></div>
 <p>Synchronize all datasets and index files(include Datasets information.xlsx) into the package shinyapp directly</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/xiaopei.sync.to.shinyapp.html">xiaopei.sync.to.shinyapp</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#No need to run if you already run xiaopei.input.all()</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">xzdb.sync.to.shinyapp</span><span class="op">(</span><span class="op">)</span> <span class="co">#No need to run if you already run xzdb.input.all()</span></span></code></pre></div>
 <p>Get the currently used datasets inside the package location (If you want to confirm it’s copied successfully)</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/xzdb.nowDataset.html">xzdb.nowDataset</a></span><span class="op">(</span><span class="op">)</span>          <span class="co">#It copies current using datasets to your working path</span></span></code></pre></div>
