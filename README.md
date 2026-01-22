@@ -76,6 +76,7 @@ The app generates three files automatically:
 
 
 <br><br>
+
 ### Function 2. Check
 Use the **Check** tab to:
 - See which datasets include a specific gene  
@@ -85,6 +86,7 @@ Use the **Check** tab to:
 
 
 <br><br>
+
 ### Function 3. Data information
 On the **Data info** tab, use **"Load Data info"** button to view dataset metadata and structure.
 
@@ -92,6 +94,7 @@ On the **Data info** tab, use **"Load Data info"** button to view dataset metada
 
 
 <br><br>
+
 ### Function 4. Output Files
 Open the **Output files** tab to:
 - Preview a result file (using the red *Preview Selected* button)  
@@ -105,6 +108,7 @@ The output folder may be cleared monthly—please save results you want to keep.
 
 
 <br><br>
+
 ### Function 5. Update Database
 *(Optional — only needed if updating dataset metadata)*
 
@@ -116,6 +120,7 @@ Run "Rebuild EVERYTHING" at Administrator Operations in the left panel:
 
 
 <br><br>
+
 ### Function 6. UniProt/MINT Comparison
 - **UniProt:** retrieves protein entry information  
 - **MINT:** retrieves protein–protein interaction data based on UniProt ID  
@@ -132,6 +137,7 @@ The summary and the Venn diagram:
 ![Shiny UI function6.3](man/figures/function63.png)
 
 <br><br>
+
 ## Browser files
 
 To use your own dataset and dataset information (saving to package storage or running on current path), use:
