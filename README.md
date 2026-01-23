@@ -3,7 +3,7 @@
 - A user-friendly database and web browser application for [searching, annotating, and exporting](#browser-functions) genomic and proteomic metadata across multiple datasets.
 - Supports gene expressing & protein interaction datasets. 
 - The only dependency is R ; works on Windows, macOS, and Linux. Easy to launch [instructions](#instructions-to-configure-local-quick-start) available.
-- Also contains analysis functions for statistical and biological analysis.
+
 
 
 | Overview | Start Page |
@@ -11,6 +11,8 @@
 | ![Shiny UI Overview](man/figures/xzdbGraph_Explain.png) | ![Shiny UI FirstPage](man/figures/FirstPage.png) |
 
 This document provides complete instructions for starting the website browser application and its functions.
+
+Please go to reference page to check the list of analysis functions for statistical and biological analysis in this package.
 
 ## Quick Tour 
 (*Contains setup code for R, launching the web browser directly with an example dataset*) 
