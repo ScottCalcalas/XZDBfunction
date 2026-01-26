@@ -165,9 +165,9 @@ Clean.measurement.for.prism.help <- function() {
     stop("Cannot find example/prism folder inside XZDBfunction package.")
   
   # 2. Paths to items we want to copy
-  datasets_src <- file.path(pkg_app, "REF example _ Input_Clean.measurement.for.prism.help.xlsx")
-  info_xlsx_src <- file.path(pkg_app, "REF example _ Output_Clean.measurement.for.prism.help.csv")
-  protocol_docx_src <- file.path(pkg_app, "REF example _ PRISM_Clean.measurement.for.prism.help.prism")
+  input_xlsx_src <- file.path(pkg_app, "REF example _ Input_Clean.measurement.for.prism.help.xlsx")
+  output_csv_src <- file.path(pkg_app, "REF example _ Output_Clean.measurement.for.prism.help.csv")
+  prism_file_src <- file.path(pkg_app, "REF example _ PRISM_Clean.measurement.for.prism.help.prism")
   
   # 3. Check file existence
   if (!file.exists(input_xlsx_src)) {
