@@ -10,7 +10,6 @@
 |---|---|
 | ![Shiny UI Overview](man/figures/xzdbGraph_Explain.png) | ![Shiny UI FirstPage](man/figures/FirstPage.png) |
 
-This document provides complete instructions for starting the web browser application and its functions.
 
 Please go to reference page to check the list of analysis functions for statistical and biological analysis in this package.
 
