@@ -51,7 +51,7 @@ XZDB.Run(use_current = T)  # Force running on current path. Requires setup datas
 
 ## Browser Functions
 
-*(Use Protocol)* Please click on the following features to view detailed instructions.
+*(Protocol)* Please click on the following features to view detailed instructions.
  
   - [1. Search](#function-1-Search)
   - [2. Check](#function-2-check)
