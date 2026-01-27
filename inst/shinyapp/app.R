@@ -86,7 +86,6 @@ ui <- page_fluid(
       ),
       hr(),
       helpText("Helpful notes:"),
-      helpText("Yellow rows: no statistical columns present for that record."),
       helpText("KD = knockdown; OE = overexpression; GOI = gene of interest."),
       helpText("DEG = Differentially expressed genes; DSG = Differentially spliced genes; RNA IP = RNA immunoprecipitation; MS = Mass spec."),
       hr(),
@@ -104,7 +103,7 @@ ui <- page_fluid(
     card(
       card_header(
         h3("Genomic DB Searching Browser"),
-        tooltip = "Interactive UI for building indexes, searching, and exporting rows."
+        tooltip = "Interactive UI for searching, and exporting gene/protein's information."
       ),
       navset_card_tab(
         
@@ -142,11 +141,11 @@ ui <- page_fluid(
             
             # RIGHT live preview
             div(
-              h6("FULL searching results will be shown below. Grey shadow part are dataset descriptions."),
-              h6("The right side search box: You can add dataset or cell type filters in your downstream workflows."),
+              h6("Searching results will be shown below, starting with dataset descriptions in Grey. No statistical information present is in Yellow."),
+              h6(""),
               DTOutput("tbl_to_print"),
               br(), br(),
-              h6("If nothing appears right away after searching, it may be working —-some queries take time.")
+              h6("Use search box: Filter dataset or cell type.")
             )
           )
         ),
@@ -162,7 +161,7 @@ ui <- page_fluid(
                             "Symbol (exact)" = "geneSymbol",
                             "ID (exact)"     = "GeneID"
                           )),
-              textInput("search_term", "Search term"),
+              textInput("search_term", "Check term location"),
               div(style="margin-top:28px",
                   actionButton("btn_search","Check", class="btn btn-primary"))
             )
@@ -171,7 +170,7 @@ ui <- page_fluid(
             column(
               12,
               h6(class="text-muted",
-                 "Note: Results show where the term appears, in the format: fileName.sheet~row"),
+                 "Result shows the location in the dataset: fileName.sheet~row"),
               DTOutput("tbl_search")
             )
           )
@@ -270,9 +269,8 @@ server <- function(input, output, session) {
   )
   
   
-  
   # ---- placeholders (1-column DF avoids DT zero-column quirks) ----
-  empty_df <- data.frame(`(no data yet)` = character(0), check.names = FALSE)
+  empty_df <- data.frame(`(No data / some queries take time)` = character(0), check.names = FALSE)
   output$tbl_search    <- DT::renderDT(DT::datatable(empty_df, options = list(dom = 't')))
   output$tbl_to_print  <- DT::renderDT(DT::datatable(empty_df, options = list(dom = 't')))
   output$tbl_index     <- DT::renderDT(DT::datatable(empty_df, options = list(dom = 't')))
@@ -1143,10 +1141,24 @@ server <- function(input, output, session) {
         idx <- read.csv("searching_GeneID.csv", check.names = FALSE)
         res <- idx[as.character(idx$GeneID) == as.character(term), , drop = FALSE]
       }
-      rv$search_df <- res
+      rv$search_df <- res 
       output$tbl_search <- renderDT({
-        render_dt_safe(make_hilite_table(res), fallback_df = res)
+        # transpose  scottfix transpose at local v40.1
+        res_t <- as.data.frame(t(res), stringsAsFactors = FALSE)
+        
+        colnames(res_t) <- res_t["geneSymbol", ]
+        
+        # drop the geneSymbol row
+        res_t <- res_t[rownames(res_t) != "geneSymbol", , drop = FALSE]
+        
+        # move rownames to a real column called "dataset"
+        res_t <- cbind(Dataset = rownames(res_t), res_t)
+        rownames(res_t) <- NULL
+        
+        render_dt_safe(make_hilite_table(res_t), fallback_df = res)# scottfix transpose at local v40.1
       })
+      
+      
       log_append(rv, "Search done:", mode, shQuote(term), sprintf("(%d rows)", nrow(res)))
     }, error = function(e) {
       log_append(rv, "Search error:", conditionMessage(e))
