@@ -129,13 +129,28 @@ The output folder should be cleared monthly to prevent slowdowns—please save r
 <br><br>
 
 ### Function 5. Update Database
-*(Optional — only needed if updating dataset metadata)*
+*(Optional — Administrator Operation locate at left panel)*
 
-After updating:
-- `datasets/`
+
+#### A. Update datasets:
+
+After update new datasets folder and datasets information:
+
+- `datasets/` folder
 - `Datasets information.xlsx`
 
 Run "Rebuild EVERYTHING" at Administrator Operations in the left panel:
+
+
+#### B: Clean the output file & Check the log to debug:
+
+Use the "Delete ALL Output files" button to clean the output folder. 
+It's recommand every month to ensure the browser won't be slow to run. (It will load the entire output folder in the Output tab everytime.
+
+<br>
+
+If you find some issue when you're using the database browser, check the "Logs" at the bottom of left panel.
+
 
 ![Shiny UI function5](man/figures/function5.png)
 
