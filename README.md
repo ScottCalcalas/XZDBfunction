@@ -84,7 +84,7 @@ Example: exact searching **CDK13** and **NCBP2** returns all matching rows for e
 
 The app generates three files to "Output" automatically:
 
-- Full results  (Includes dataset description, the **same** you see at Search tab)
+- Full results        (Includes dataset description, the **same** you see at Search tab)
 - Details for Gene 1  (list each entry from each dataset, Please download to see.)
 - Details for Gene 2  (list each entry from each dataset, Please download to see.)
 
