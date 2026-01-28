@@ -82,11 +82,11 @@ Supported search options:
 
 Example: exact searching **CDK13** and **NCBP2** returns all matching rows for either CDK13 or NCBP2 across all datasets.
 
-The app generates three files automatically:
+The app generates three files to "Output" automatically:
 
-- Full results  
-- Details for Gene 1  
-- Details for Gene 2  
+- Full results  (Includes dataset description, the **same** you see at Search tab)
+- Details for Gene 1  (list each entry from each dataset, Please download to see.)
+- Details for Gene 2  (list each entry from each dataset, Please download to see.)
 
 <br>
 
