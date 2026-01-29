@@ -43,7 +43,7 @@ xzdb.input.all()    #Build the database in current folder and copy them to R pac
 ```r
 XZDB.Run()                 # launches browser; if you already ran xzdb.input.all(), it will use your own dataset instead of the example dataset
 
-XZDB.Run(use_current = T)  # Force running on current path. Requires setup datasets.
+XZDB.Run(use_current = T)  # Froce to run in current path. Require setup datasets in current path piror. Easy to modify and checking the database files.
 ```
 
 ---
