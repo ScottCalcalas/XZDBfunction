@@ -159,8 +159,8 @@ If you find some issue when you're using the database browser, check the "Logs" 
 <br><br>
 
 ### Function 6. UniProt/MINT Comparison
-- **UniProt:** retrieves protein entry information  
-- **MINT:** retrieves protein–protein interaction data based on UniProt ID  
+- **UniProt:** retrieves possible protein (Search exactly by entering ID)
+- **MINT:** retrieves protein–protein interaction data based on the UniProt result 
 
 Requires an internet connection.
 
