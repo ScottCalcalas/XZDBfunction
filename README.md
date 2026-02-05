@@ -20,7 +20,7 @@ install.packages("remotes") # Skip this step if you already have "remotes" packa
 remotes::install_github("scottcalcalas/XZDBfunction")
 library(XZDBfunction)
 
-XZDB.Run() #Launch a demo - with example datasets
+XZDB.Run() #Launch a demo (with example datasets)
 ```
 
 ## Setup Database 
