@@ -59,7 +59,6 @@
 #' xiaopei.input("DatasetA.xlsx", Sheet = 1)
 #' }
 #'
-#' @export
 xiaopei.input <- function(file.Name,
                           Sheet = 1,
                           xlsx.index.location = "Datasets infomation.xlsx",
