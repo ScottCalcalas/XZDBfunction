@@ -102,8 +102,8 @@ ui <- page_fluid(
     
     card(
       card_header(
-        h3("Genomic DB Searching Browser"),
-        tooltip = "Interactive UI for searching, and exporting gene/protein's information."
+        h3("Multi-Omics Database Explorer"),
+        tooltip = "A user-friendly Shiny-based platform for searching, annotating, and exporting multi-omics (genomic and proteomic) metadata across multiple datasets."
       ),
       navset_card_tab(
         
