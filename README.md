@@ -1,6 +1,6 @@
 
 # 'XZDBfunction' R Package: Genomic Database Website Browser
-- A user-friendly database and web browser application for [searching, annotating, and exporting](#browser-functions) genomic and proteomic metadata across multiple datasets.
+- A user-friendly web database browser for [searching, annotating, and exporting](#browser-functions) genomic and proteomic metadata across multiple datasets.
 - Supporting genomic & protein interaction datasets. 
 - Works on Windows, macOS, and Linux, the only dependency is R. Easy to launch [instructions](#instructions-to-configure-local-quick-start) available.
 
