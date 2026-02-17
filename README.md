@@ -2,7 +2,7 @@
 # 'XZDBfunction' R Package: Multi-Omices eXplore & Zoom Database Browser
 - A user-friendly Shiny-based web platform for [searching, annotating, and exporting](#browser-functions) multi-omics (genomic and proteomic) metadata across multiple datasets.
 - Supporting genomic & protein interaction datasets. 
-- Works on Windows, macOS, and Linux, the only dependency is R. Easy to launch [instructions](#instructions-to-configure-local-quick-start) available.
+- Works on Windows, macOS, and Linux system, the only dependency is R. Easy to launch [instructions](#instructions-to-configure-local-quick-start) available.
 
 
 
