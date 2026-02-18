@@ -107,7 +107,7 @@ Use the **Check** function to:
 <br><br>
 
 ### Function 3. Data information
-On the **Data info** tab, use **"Load Data info"** button to view dataset metadata and structure.
+At the **Data info** tab, use **"Load Data info"** button to view dataset metadata and structure.
 
 ![Shiny UI function3](man/figures/function3.png)
 
