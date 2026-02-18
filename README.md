@@ -63,7 +63,7 @@ XZDB.Run(use_current = T)  # Froce to run in current path. Require setup dataset
 
 ### Function 1. Search
 
-Use the **Search** tab to obtain detailed search results.
+Go to the **Search** tab to obtain detailed search results.
 
 <br>
 
@@ -97,7 +97,7 @@ Each line represents a row found in our current database, with that database’s
 <br><br>
 
 ### Function 2. Check
-Use the **Check** tab to:
+Use the **Check** function to:
 - See which datasets include a specific gene  
 - Confirm if the gene exists in the database  
 
