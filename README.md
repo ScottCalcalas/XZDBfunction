@@ -69,9 +69,9 @@ Use the **Search** tab to obtain detailed search results.
 
 Supported search options:
 
-- Gene Symbol: *exact*, *family*, *fuzzy*
-- Protein ID: *exact match*
-- ENSEMBL Gene ID: *exact match*
+- Gene Symbol:      *exact* ,  *family*  ,  *fuzzy*
+- Protein ID:       *exact match*
+- ENSEMBL Gene ID:  *exact match*
 
 
 *(Family search: seaching for gene/proteins start with the same letters but haveing different numbers at end. NCBP2 family search will also includes NCBP1.)*
