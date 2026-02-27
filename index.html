@@ -81,7 +81,7 @@
 <ul>
 <li>User-friendly Shiny-based web platform for <a href="#browser-functions">searching, annotating, and exporting</a> multi-omics (genomic and proteomic) metadata across multiple datasets.</li>
 <li>Build for genomic &amp; protein interaction datasets.</li>
-<li>Works on Windows, macOS, and Linux system, the only dependency is R. Supports running without install an R package. Easy to launch <a href="#instructions-to-configure-local-quick-start">instructions</a> available.</li>
+<li>Works on Windows, macOS, and Linux system, the only dependency is R. Supports running without install an R package. Easy to launch <a href="#instructions-to-configure-local-quick-start">instructions</a> for local use / server use available.</li>
 </ul>
 <table class="table">
 <colgroup>
@@ -345,6 +345,7 @@ The output folder should be cleared monthly to prevent slowdowns—please save r
 </h4>
 <p>Modify the shortcut <strong>Target</strong> to point to Rscript and your Quick Start script: (For example:)</p>
 <pre><code>C:\Users\jcc1885\AppData\Local\Programs\R\R-4.4.3\bin\Rscript.exe "R:\Basic_Sciences\Pharm\Borden_Lab\borden\Database\Genomic result Browser\Quick Start.R"</code></pre>
+<p>It works for both local use / server use.</p>
 </div>
 <div class="section level4">
 <h4 id="a2mac-one-click-start-command-file">A2.Mac “One-Click Start” Command File<a class="anchor" aria-label="anchor" href="#a2mac-one-click-start-command-file"></a>
@@ -352,8 +353,9 @@ The output folder should be cleared monthly to prevent slowdowns—please save r
 <p>Create a file named <code>something.command</code> (e.g. <code>MAC_Start.command</code>) on the Desktop:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># Launch script</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co"># ...</span></span></code></pre></div>
-<p>Then run</p>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co"># ...Please send email to xpzhang15@gmail.com ask for details.</span></span></code></pre></div>
+<p>If you want make it for server use, will require more codes on connection step up.</p>
+<p>Then run:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">chmod</span> +x something.command</span></code></pre></div>
 <p>After those steps, double-click the file to launch the website browser application.</p>
