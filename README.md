@@ -2,7 +2,7 @@
 # 'XZDBfunction' R Package: Multi-Omices eXplore & Zoom Database Browser
 - User-friendly Shiny-based web platform for [searching, annotating, and exporting](#browser-functions) multi-omics (genomic and proteomic) metadata across multiple datasets.
 - Build for genomic & protein interaction datasets. 
-- Works on Windows, macOS, and Linux system, the only dependency is R. Supports running without install an R package. Easy to launch [instructions](#instructions-to-configure-local-quick-start) available.
+- Works on Windows, macOS, and Linux system, the only dependency is R. Supports running without install an R package. Easy to launch [instructions](#instructions-to-configure-local-quick-start) for local use / server use available.
 
 
 
@@ -278,7 +278,7 @@ Modify the shortcut **Target** to point to Rscript and your Quick Start script: 
 ```
 C:\Users\jcc1885\AppData\Local\Programs\R\R-4.4.3\bin\Rscript.exe "R:\Basic_Sciences\Pharm\Borden_Lab\borden\Database\Genomic result Browser\Quick Start.R"
 ```
-
+It works for both local use / server use.
 
 #### A2.Mac “One-Click Start” Command File
 Create a file named `something.command` (e.g. `MAC_Start.command`) on the Desktop:
@@ -286,9 +286,11 @@ Create a file named `something.command` (e.g. `MAC_Start.command`) on the Deskto
 ```bash
 #!/bin/bash
 # Launch script
-# ...
+# ...Please send email to xpzhang15@gmail.com ask for details.
 ```
-Then run
+If you want make it for server use, will require more codes on connection step up. 
+
+Then run:
 ```bash
 cd ~/Desktop
 chmod +x something.command
