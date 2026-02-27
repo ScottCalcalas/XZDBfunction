@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "XZDBfunction: An Open-Source Platform for Integrative Exploration and Discovery of Genomic and Protein Interaction Networks"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: Xiaopei
+    given-names: Zhang
+    orcid: https://orcid.org/0009-0002-7980-8653
+version: 1.0.0
+date-released: 2026-02-27
+repository-code: https://github.com/ScottCalcalas/XZDBfunction
+license: MIT
