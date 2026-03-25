@@ -41,9 +41,9 @@ xzdb.input.all()    #Build the database in current folder and copy them to R pac
 ### 2. Launch the genomic website browser in two different ways
 
 ```r
-XZDB.Run()                 # launches browser; if you already ran xzdb.input.all(), it will use your own dataset instead of the example dataset
+XZDB.Run()                 # launches browser(package build-in); if you already ran xzdb.input.all(), it will use your own dataset instead of the example dataset
 
-XZDB.Run(use_current = T)  # Froce to run in current path. Require setup datasets in current path piror. Easy to modify and checking the database files.
+XZDB.Run(use_current = T)  # Froce to run in current path (instead of run in package). Require setup datasets in current path piror. Easy to modify and checking the database files.
 ```
 
 ---
