@@ -15,7 +15,7 @@ authors:
   - name: Caleb Embree
     affiliation: 1
 affiliations:
-  - name: Borden Lab, Department of Pharmacology, Northwestern University Feinberg School of Medicine, United States
+  - name: Department of Pharmacology, Northwestern University Feinberg School of Medicine, United States
     index: 1
 date: 27 April 2026
 bibliography: paper.bib
