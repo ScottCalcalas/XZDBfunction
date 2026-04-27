@@ -1,7 +1,7 @@
 # XZDBfunction News
 
-## 8.1.1 (2026-04-27)
-
+## 8.1.1 
+- (2026-04-27)
 - Current public release used for the JOSS submission draft.
 - Includes the Shiny browser, dataset indexing helpers, UniProt/MINT comparison
   workflow, exported search results, example datasets, README screenshots, and
