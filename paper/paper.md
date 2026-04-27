@@ -10,9 +10,11 @@ tags:
 authors:
   - name: Xiaopei Zhang
     orcid: 0009-0002-7980-8653
-    corresponding: true
     affiliation: 1
   - name: Caleb Embree
+    affiliation: 1
+  - name: Katherine L.B. Borden
+    corresponding: true
     affiliation: 1
 affiliations:
   - name: Department of Pharmacology, Northwestern University Feinberg School of Medicine, United States
