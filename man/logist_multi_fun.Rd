@@ -9,7 +9,8 @@ logist_multi_fun(
   var,
   response,
   data_fun,
-  multi_var_all = multi_var_all
+  multi_var_all = multi_var_all,
+  dig = 2
 )
 }
 \arguments{
@@ -35,10 +36,12 @@ model. Performs Wald tests for 2-category predictors and likelihood
 ratio tests (LRT) for predictors with more than 2 categories.
 }
 \details{
-• Categorical levels are compared to the first level (reference).
-• If \code{var} is not included in \code{var_model}, a blank row is returned.
-• For >2 categories, LRT compares:
+\itemize{
+\item Categorical levels are compared to the first level (reference).
+\item If \code{var} is not included in \code{var_model}, a blank row is returned.
+\item For >2 categories, LRT compares:
 full model vs. model without the variable.
+}
 }
 \examples{
 \dontrun{

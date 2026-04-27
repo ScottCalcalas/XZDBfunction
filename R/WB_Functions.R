@@ -14,13 +14,15 @@
 #' Col names: Orgnaized GroupNames by orders
 #' Row names: Protein names (Transfer to only one row for a same Protein)
 #' 
+#' @param df Data frame with a `Row` column and measurement columns to reshape.
+#' @param outname Character. Base filename for the cleaned CSV output.
+#'
+#' @return Invisibly returns `NULL`; writes a CSV file as a side effect.
+#'
 #' @export
 #'
 Clean.measurement.for.prism<-function(df,outname="Cleaned.Prism.input"){
 
-  library(dplyr)
-  library(tidyr)
-  library(readxl)
   out <- df %>%
     mutate(row_id = ave(seq_len(n()), Row, FUN = seq_along)) %>% 
     pivot_wider(
@@ -50,6 +52,7 @@ Clean.measurement.for.prism<-function(df,outname="Cleaned.Prism.input"){
   write.csv(out,file = paste0(outname,".csv"),row.names = F,na="")
   print("saved file:")
   print(paste0(outname,".csv"))
+  invisible(NULL)
 }
 
 

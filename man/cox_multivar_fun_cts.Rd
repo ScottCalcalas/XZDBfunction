@@ -26,6 +26,8 @@ cox_multivar_fun_cts(
 
 \item{multi_var_all}{Character vector of full model candidate variables.
 Used to determine whether \code{var} is included in \code{var_model}.}
+
+\item{dig}{Rounding digits.}
 }
 \value{
 A one-row matrix of adjusted HR and p-value.

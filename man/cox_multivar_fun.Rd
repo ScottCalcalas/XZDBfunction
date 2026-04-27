@@ -10,7 +10,8 @@ cox_multivar_fun(
   res_event,
   var_model,
   var,
-  multi_var_all = multi_var_all
+  multi_var_all = multi_var_all,
+  dig = 2
 )
 }
 \arguments{
@@ -26,6 +27,8 @@ cox_multivar_fun(
 
 \item{multi_var_all}{Character vector of full model candidate variables.
 Used to determine whether \code{var} is included in \code{var_model}.}
+
+\item{dig}{Rounding digits.}
 }
 \value{
 A matrix of adjusted HRs and p-values.

@@ -20,10 +20,10 @@ dig=2
 #' @param dig Integer. Number of digits for rounding OR and CI. Default = 2.
 #'
 #' @details
-#' • Removes incomplete cases using only the variables in \code{response} and \code{var}.  
-#' • For categorical predictors with:
-#'   - **2 levels** → Wald p-value for the coefficient  
-#'   - **>2 levels** → Likelihood ratio test (LRT) comparing model vs. intercept-only model  
+#' - Removes incomplete cases using only the variables in \code{response} and \code{var}.  
+#' - For categorical predictors with:
+#'   - **2 levels** -> Wald p-value for the coefficient  
+#'   - **>2 levels** -> Likelihood ratio test (LRT) comparing model vs. intercept-only model  
 #'
 #' @return A character matrix with rows = levels of the variable and 
 #' columns = \code{"OR (95% CI)"} and \code{"p value"}.
@@ -35,7 +35,7 @@ dig=2
 #'
 #' @export
 
-logist_univar_fun =  function(data_fun, response, var){
+logist_univar_fun =  function(data_fun, response, var, dig = 2){
   data_fun_1 = data_fun[complete.cases(data_fun[,c(response,var)]),]
   if(response == var | (response=="OR" & var=="OR"))
   {
@@ -122,7 +122,7 @@ logist_univar_fun =  function(data_fun, response, var){
 #'
 #' @export
 
-logist_univar_fun_cts =  function(data_fun, response, var){
+logist_univar_fun_cts =  function(data_fun, response, var, dig = 2){
   data_fun_1 = data_fun[complete.cases(data_fun[,c(response,var)]),]
   x = glm( as.formula(paste(response, ' ~ ', var,sep="")), data = data_fun_1, family = binomial() )
   sum_x <- summary(x)
@@ -174,9 +174,9 @@ logist_univar_fun_cts =  function(data_fun, response, var){
 #' @param dig Number of digits to round OR and CI.
 #'
 #' @details
-#' • Categorical levels are compared to the first level (reference).  
-#' • If \code{var} is not included in \code{var_model}, a blank row is returned.  
-#' • For >2 categories, LRT compares:
+#' - Categorical levels are compared to the first level (reference).  
+#' - If \code{var} is not included in \code{var_model}, a blank row is returned.  
+#' - For >2 categories, LRT compares:
 #'   full model vs. model without the variable.
 #'
 #' @return A matrix of adjusted ORs and p-values.
@@ -194,7 +194,7 @@ logist_univar_fun_cts =  function(data_fun, response, var){
 #'
 #' @export
 
-logist_multi_fun = function(var_model, var, response, data_fun, multi_var_all=multi_var_all){
+logist_multi_fun = function(var_model, var, response, data_fun, multi_var_all=multi_var_all, dig = 2){
   not_in_model = setdiff(multi_var_all, var_model)
   data_fun_1 = data_fun[complete.cases(data_fun[,c(response,var_model)]),]
   logit_m = glm(as.formula(paste(response," ~ ",paste(var_model,collapse =" + "), sep="")),
@@ -271,7 +271,7 @@ logist_multi_fun = function(var_model, var, response, data_fun, multi_var_all=mu
 #'
 #' @export
 
-logist_multi_fun_cts = function(var_model, var, response, data_fun, multi_var_all=multi_var_all){
+logist_multi_fun_cts = function(var_model, var, response, data_fun, multi_var_all=multi_var_all, dig = 2){
   not_in_model = setdiff(multi_var_all, var_model)
   data_fun_1 = data_fun[complete.cases(data_fun[,c(response,var_model)]),]
   logit_m = glm(as.formula(paste(response," ~ ",paste(var_model,collapse =" + "), sep="")),
@@ -336,11 +336,11 @@ logist_multi_fun_cts = function(var_model, var, response, data_fun, multi_var_al
 #'
 #' @export
 
-cox_univar_fun =  function(data_fun, res_time, res_event, var){
+cox_univar_fun =  function(data_fun, res_time, res_event, var, dig = 2){
   
   data_fun_1 = data_fun[complete.cases(data_fun[,c(res_time,res_event,var)]),]
   response = paste0("Surv(", res_time, ", ", res_event,")", sep= "")
-  x = coxph( as.formula(paste(response, ' ~ ', var,sep="")), data = data_fun_1 )
+  x = survival::coxph( as.formula(paste(response, ' ~ ', var,sep="")), data = data_fun_1 )
   sum_x <- summary(x)
   var_n_cat = length(levels(data_fun_1[,var]))
   
@@ -365,7 +365,7 @@ cox_univar_fun =  function(data_fun, res_time, res_event, var){
     res[,"p value"] = c(p.value.unadj, rep("",var_n_cat))
   }
   if(var_n_cat>2){
-    model0 = coxph( as.formula(paste(response, ' ~ ', 1,sep="")), data = data_fun_1)
+    model0 = survival::coxph( as.formula(paste(response, ' ~ ', 1,sep="")), data = data_fun_1)
     LRT_p = round(anova(model0, x, test = 'LRT')[2,"Pr(>|Chi|)"],3)
     LRT_p = ifelse(LRT_p<0.001,"<0.001",LRT_p)
     res[,"p value"]= c(LRT_p, rep("",var_n_cat))
@@ -395,11 +395,11 @@ cox_univar_fun =  function(data_fun, res_time, res_event, var){
 #'
 #' @export
 
-cox_univar_fun_cts =  function(data_fun, res_time, res_event, var){
+cox_univar_fun_cts =  function(data_fun, res_time, res_event, var, dig = 2){
   
   data_fun_1 = data_fun[complete.cases(data_fun[,c(res_time,res_event,var)]),]
   response = paste0("Surv(", res_time, ", ", res_event,")", sep= "")
-  x = coxph( as.formula(paste(response, ' ~ ', var,sep="")), data = data_fun_1 )
+  x = survival::coxph( as.formula(paste(response, ' ~ ', var,sep="")), data = data_fun_1 )
   sum_x <- summary(x)
   var_n_cat = length(levels(data_fun_1[,var]))
   #var_n_cat=length(var)
@@ -452,11 +452,11 @@ cox_univar_fun_cts =  function(data_fun, res_time, res_event, var){
 #' @export
 
 #Survival endpoint multivariate
-cox_multivar_fun =  function(data_fun, res_time, res_event, var_model, var, multi_var_all=multi_var_all){
+cox_multivar_fun =  function(data_fun, res_time, res_event, var_model, var, multi_var_all=multi_var_all, dig = 2){
   not_in_model = setdiff(multi_var_all, var_model)
   data_fun_1 = data_fun[complete.cases(data_fun[,c(res_time,res_event,var_model)]),]
   response = paste0("Surv(", res_time, ", ", res_event,")", sep= "")
-  x = coxph( as.formula(paste(response, ' ~ ', paste(var_model,collapse =" + "), sep="")), data = data_fun_1 )
+  x = survival::coxph( as.formula(paste(response, ' ~ ', paste(var_model,collapse =" + "), sep="")), data = data_fun_1 )
   sum_x = summary(x)
   var_n_cat = length(levels(data_fun_1[,var]))
   
@@ -487,7 +487,7 @@ cox_multivar_fun =  function(data_fun, res_time, res_event, var_model, var, mult
     }
     
     if(var_n_cat>2){
-      model0 = coxph( as.formula(paste(response, ' ~ ',
+      model0 = survival::coxph( as.formula(paste(response, ' ~ ',
                                        exp_var_multi = paste0(setdiff(var_model, var), collapse = "+"),sep="")),
                       data = data_fun_1)
       LRT_p = round(anova(model0, x, test = 'LRT')[2,"Pr(>|Chi|)"],3)
@@ -525,11 +525,11 @@ cox_multivar_fun =  function(data_fun, res_time, res_event, var_model, var, mult
 #' @export
 
 
-cox_multivar_fun_cts =  function(data_fun, res_time, res_event, var_model, var, multi_var_all=multi_var_all){
+cox_multivar_fun_cts =  function(data_fun, res_time, res_event, var_model, var, multi_var_all=multi_var_all, dig = 2){
   not_in_model = setdiff(multi_var_all, var_model)
   data_fun_1 = data_fun[complete.cases(data_fun[,c(res_time,res_event,var_model)]),]
   response = paste0("Surv(", res_time, ", ", res_event,")", sep= "")
-  x = coxph( as.formula(paste(response, ' ~ ', paste(var_model,collapse =" + "), sep="")), data = data_fun_1 )
+  x = survival::coxph( as.formula(paste(response, ' ~ ', paste(var_model,collapse =" + "), sep="")), data = data_fun_1 )
   sum_x = summary(x)
   var_n_cat = length(var)
   

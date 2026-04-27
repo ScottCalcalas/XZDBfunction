@@ -6,6 +6,14 @@
 \usage{
 Clean.measurement.for.prism(df, outname = "Cleaned.Prism.input")
 }
+\arguments{
+\item{df}{Data frame with a \code{Row} column and measurement columns to reshape.}
+
+\item{outname}{Character. Base filename for the cleaned CSV output.}
+}
+\value{
+Invisibly returns \code{NULL}; writes a CSV file as a side effect.
+}
 \description{
 It's for quantificated western blot data. See the data input requirement below.
 If you like to see an example, run: Clean.measurement.for.prism.help()

@@ -6,6 +6,13 @@
 \usage{
 xzdb.update(I_have_dataset = TRUE, forceInstall = FALSE)
 }
+\arguments{
+\item{I_have_dataset}{Logical. Whether to preserve and restore the current
+datasets while updating the package.}
+
+\item{forceInstall}{Logical. Passed to \code{remotes::install_github()} to force a
+reinstall from GitHub.}
+}
 \description{
 Update this XZDBfunction package, Automatic detaching and attaching current XZDB.
 

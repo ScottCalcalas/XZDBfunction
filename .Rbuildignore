@@ -1,0 +1,8 @@
+^\.github$
+^\.gitignore$
+^paper$
+^CITATION\.cff$
+^NEWS\.md$
+^CONTRIBUTING\.md$
+^.*\.Rcheck$
+^.*\.tar\.gz$

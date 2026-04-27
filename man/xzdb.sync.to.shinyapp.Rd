@@ -12,6 +12,9 @@ xzdb.sync.to.shinyapp(
 \arguments{
 \item{xlsx.index.location}{Character. Path to the Dataset Information Excel file in the current working
 directory. Default: \code{"Datasets infomation.xlsx"}.}
+
+\item{DatasetfolderName}{Character. Folder containing dataset files to copy into the Shiny app.
+Default: \code{"datasets"}.}
 }
 \value{
 Logical (invisibly):
@@ -22,7 +25,7 @@ Logical (invisibly):
 }
 \description{
 Copies the following \strong{from the current working directory} into the installed
-package’s \verb{shinyapp/} directory:
+package's \verb{shinyapp/} directory:
 \itemize{
 \item \verb{datasets/}
 \item \verb{IndexedData/}

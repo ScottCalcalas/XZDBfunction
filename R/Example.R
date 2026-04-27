@@ -94,6 +94,9 @@ xzdb.help <- function() {
 
 #' Get the current using datasets
 #' 
+#' @param ToName Character. Destination folder name under the current working
+#'   directory. Default: `"datasets"`.
+#'
 #' @export
 #'
 xzdb.nowDataset <- function(ToName = "datasets") {

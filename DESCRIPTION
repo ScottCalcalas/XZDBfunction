@@ -1,26 +1,46 @@
 Package: XZDBfunction
 Type: Package
 Title: Genomic Dataset Indexing and Search Website Browser
-Version: 7.38.3
+Version: 8.1.1
 Author: Xiaopei Zhang
 Maintainer: Xiaopei Zhang <xiaopei.zhang@northwestern.edu>
 Description: Modularized tools for dataset indexing, gene ID/symbol resolution, searching, printing, and metadata binding. Includes full roxygen2, pkgdown, and GitHub Actions support.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 4.2.0)
 Imports: 
+    httpuv,
+    parallel,
     readxl, 
     dplyr, 
     purrr, 
     rlang, 
+    shiny,
+    survival,
     tools, 
-    stringr, 
     tibble, 
+    tidyselect,
     utils,
     tidyr
 Suggests:
+    BiocManager,
+    bslib,
+    devtools,
+    DT,
+    eulerr,
+    ggplot2,
+    ggpubr,
+    httr,
+    knitr,
+    patchwork,
+    remotes,
+    rmarkdown,
+    stringr,
     testthat,
+    tidyverse,
     pkgdown
+VignetteBuilder: knitr
+Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 URL: https://github.com/ScottCalcalas/XZDBfunction

@@ -4,7 +4,7 @@
 \alias{logist_univar_fun_cts}
 \title{Univariate Logistic Regression (Continuous Predictor)}
 \usage{
-logist_univar_fun_cts(data_fun, response, var)
+logist_univar_fun_cts(data_fun, response, var, dig = 2)
 }
 \arguments{
 \item{data_fun}{Data frame containing variables.}

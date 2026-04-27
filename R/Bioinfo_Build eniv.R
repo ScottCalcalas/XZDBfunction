@@ -8,7 +8,10 @@
 
 xiaopei.build.bioinfo.envi<-function(){
 
-  install.packages("BiocManager")
+  utils::install.packages("BiocManager")
+  if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    stop("Package 'BiocManager' is required for Bioconductor installation.", call. = FALSE)
+  }
   
   
   BiocManager::install(c("DESeq2", "EnhancedVolcano", "edgeR", "sva"))
@@ -18,9 +21,9 @@ xiaopei.build.bioinfo.envi<-function(){
   
   
   
-  install.packages(c("ggplot2", "magrittr", "readr", "pheatmap", "ggpubr"))
-  
-  install.packages("biomaRt")
+  utils::install.packages(c("ggplot2", "magrittr", "readr", "pheatmap", "ggpubr"))
+
+  utils::install.packages("biomaRt")
   
   
   BiocManager::install("biomaRt")
@@ -28,11 +31,13 @@ xiaopei.build.bioinfo.envi<-function(){
   
   
   
-  install.packages("PKI")
-  
-  install.packages("devtools")
-  
-  library("devtools")
+  utils::install.packages("PKI")
+
+  utils::install.packages("devtools")
+
+  if (!requireNamespace("devtools", quietly = TRUE)) {
+    stop("Package 'devtools' is required to install pinned package versions.", call. = FALSE)
+  }
   
   devtools::install_version("dbplyr", version = "2.3.4")
   

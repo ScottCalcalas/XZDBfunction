@@ -4,7 +4,7 @@
 \alias{logist_univar_fun}
 \title{Univariate Logistic Regression (Categorical Predictor)}
 \usage{
-logist_univar_fun(data_fun, response, var)
+logist_univar_fun(data_fun, response, var, dig = 2)
 }
 \arguments{
 \item{data_fun}{Data frame containing variables.}
@@ -26,11 +26,13 @@ Wald p-values for 2-level predictors, and likelihood ratio test (LRT)
 p-values for predictors with >2 categories.
 }
 \details{
-• Removes incomplete cases using only the variables in \code{response} and \code{var}.
-• For categorical predictors with:
 \itemize{
-\item \strong{2 levels} → Wald p-value for the coefficient
-\item \strong{>2 levels} → Likelihood ratio test (LRT) comparing model vs. intercept-only model
+\item Removes incomplete cases using only the variables in \code{response} and \code{var}.
+\item For categorical predictors with:
+\itemize{
+\item \strong{2 levels} -> Wald p-value for the coefficient
+\item \strong{>2 levels} -> Likelihood ratio test (LRT) comparing model vs. intercept-only model
+}
 }
 }
 \examples{

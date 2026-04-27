@@ -1,4 +1,4 @@
-# start.R — one-click bootstrapper for XZ DB Browser
+# start.R - one-click bootstrapper for XZ DB Browser
 # Project layout:
 #   ProjectRoot/
 #     App_Info/           (app.R, XZ_DB_functions.r, datasets/, IndexedData/, searching_*.csv)
@@ -59,7 +59,7 @@ XZDB.Run <- function(use_current = FALSE) {
   # --------------------------
   if (isTRUE(use_current)) {
     
-    message("[XZDB.Run] use_current = TRUE → Running Shiny app from working directory.")
+    message("[XZDB.Run] use_current = TRUE -> Running Shiny app from working directory.")
     
     # required files inside package shinyapp
     pkg_app_R <- file.path(pkg_app, "app.R")

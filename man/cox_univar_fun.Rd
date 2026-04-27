@@ -4,7 +4,7 @@
 \alias{cox_univar_fun}
 \title{Univariate Cox Regression (Categorical Predictor)}
 \usage{
-cox_univar_fun(data_fun, res_time, res_event, var)
+cox_univar_fun(data_fun, res_time, res_event, var, dig = 2)
 }
 \arguments{
 \item{data_fun}{Data frame containing survival data.}

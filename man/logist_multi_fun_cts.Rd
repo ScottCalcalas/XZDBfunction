@@ -9,7 +9,8 @@ logist_multi_fun_cts(
   var,
   response,
   data_fun,
-  multi_var_all = multi_var_all
+  multi_var_all = multi_var_all,
+  dig = 2
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ logist_multi_fun_cts(
 
 \item{multi_var_all}{Character vector of full model candidate variables.
 Used to determine whether \code{var} is included in \code{var_model}.}
+
+\item{dig}{Number of digits to round OR and CI.}
 }
 \value{
 A single-row matrix containing adjusted OR, CI, and p-value.

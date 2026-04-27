@@ -4,7 +4,7 @@
 \alias{cox_univar_fun_cts}
 \title{Univariate Cox Regression (Continuous Predictor)}
 \usage{
-cox_univar_fun_cts(data_fun, res_time, res_event, var)
+cox_univar_fun_cts(data_fun, res_time, res_event, var, dig = 2)
 }
 \arguments{
 \item{data_fun}{Data frame containing survival data.}
@@ -14,6 +14,8 @@ cox_univar_fun_cts(data_fun, res_time, res_event, var)
 \item{res_event}{Character. Name of event indicator (1 = event, 0 = censored).}
 
 \item{var}{Character. Categorical predictor variable.}
+
+\item{dig}{Rounding digits.}
 }
 \value{
 A single-row matrix of HR and p-value.

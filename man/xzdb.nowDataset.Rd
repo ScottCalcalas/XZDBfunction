@@ -6,6 +6,10 @@
 \usage{
 xzdb.nowDataset(ToName = "datasets")
 }
+\arguments{
+\item{ToName}{Character. Destination folder name under the current working
+directory. Default: \code{"datasets"}.}
+}
 \description{
 Get the current using datasets
 }

@@ -16,9 +16,16 @@
 #' If you have your own dataset, use: I_have_dataset=TRUE
 #' It will keep your datasets and Datasets infomation.xlsx
 #' 
+#' @param I_have_dataset Logical. Whether to preserve and restore the current
+#'   datasets while updating the package.
+#' @param forceInstall Logical. Passed to `remotes::install_github()` to force a
+#'   reinstall from GitHub.
+#'
 #' @export
 xzdb.update <- function(I_have_dataset=TRUE,forceInstall=FALSE) {
-  library("remotes")
+  if (!requireNamespace("remotes", quietly = TRUE)) {
+    stop("Package 'remotes' is required to update XZDBfunction.", call. = FALSE)
+  }
   
   if(I_have_dataset){
     xzdb.clean.file("TEMP_XZupdate")

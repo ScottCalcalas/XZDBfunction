@@ -218,7 +218,7 @@ xzdb.clean.file <- function(idx_dir) {
   
   # Ensure directory exists
   if (!dir.exists(idx_dir)) {
-    message(sprintf("[clean.file] Directory '%s' does not exist — creating it.", idx_dir))
+    message(sprintf("[clean.file] Directory '%s' does not exist - creating it.", idx_dir))
     dir.create(idx_dir, showWarnings = FALSE)
     return(invisible(TRUE))
   }
@@ -255,7 +255,7 @@ xzdb.clean.file <- function(idx_dir) {
 #'
 #' @description
 #' Copies the following **from the current working directory** into the installed
-#' package’s `shinyapp/` directory:
+#' package's `shinyapp/` directory:
 #'
 #' - `datasets/`  
 #' - `IndexedData/`  
@@ -271,6 +271,10 @@ xzdb.clean.file <- function(idx_dir) {
 #' @param xlsx.index.location
 #' Character. Path to the Dataset Information Excel file in the current working
 #' directory. Default: `"Datasets infomation.xlsx"`.
+#'
+#' @param DatasetfolderName
+#' Character. Folder containing dataset files to copy into the Shiny app.
+#' Default: `"datasets"`.
 #'
 #' @return
 #' Logical (invisibly):  
@@ -400,7 +404,7 @@ xzdb.sync.to.shinyapp <- function(
 #' }
 #'
 #' @export
-xzdb.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx") {
+xzdb.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx", sync = TRUE) {
   xzdb.clean.file(idx_dir="IndexedData")
   
   
@@ -418,7 +422,9 @@ xzdb.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx") {
       error = function(e) warning(sprintf("[input.all] Failed on row %d: %s (Sheet=%s): %s", i, fn, as.character(sh), conditionMessage(e)))
     )
   }
-  xzdb.sync.to.shinyapp()
+  if (isTRUE(sync)) {
+    xzdb.sync.to.shinyapp()
+  }
 }
 
 
@@ -459,7 +465,7 @@ xiaopei.prepare.GeneID <- function(index.location = "IndexedData",
   pieces <- purrr::map(files, read_one)
   combined <- purrr::reduce(pieces, dplyr::full_join, by = "GeneID")
   utils::write.csv(combined, file = "searching_GeneID.csv", row.names = FALSE)
-  message(sprintf("Done: %d files → %d rows, %d columns", length(files), nrow(combined), ncol(combined)))
+  message(sprintf("Done: %d files -> %d rows, %d columns", length(files), nrow(combined), ncol(combined)))
   invisible(NULL)
 }
 
@@ -493,7 +499,7 @@ xiaopei.prepare.geneSymbol <- function(index.location = "IndexedData",
   pieces <- purrr::map(files, read_one)
   combined <- purrr::reduce(pieces, dplyr::full_join, by = "geneSymbol")
   utils::write.csv(combined, file = "searching_geneSymbol.csv", row.names = FALSE)
-  message(sprintf("Done: %d files → %d rows, %d columns", length(files), nrow(combined), ncol(combined)))
+  message(sprintf("Done: %d files -> %d rows, %d columns", length(files), nrow(combined), ncol(combined)))
   invisible(NULL)
 }
 
