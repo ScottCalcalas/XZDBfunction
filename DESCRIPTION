@@ -3,9 +3,9 @@ Type: Package
 Title: Genomic Dataset Indexing and Search Website Browser
 Version: 8.1.1
 Author: Xiaopei Zhang
-Maintainer: Xiaopei Zhang <xiaopei.zhang@northwestern.edu>
+Maintainer: Xiaopei Zhang <xpzhang15@gmail.com>
 Description: Modularized tools for dataset indexing, gene ID/symbol resolution, searching, printing, and metadata binding. Includes full roxygen2, pkgdown, and GitHub Actions support.
-License: MIT + file LICENSE
+License: MIT
 Encoding: UTF-8
 Depends: R (>= 4.2.0)
 Imports: 
