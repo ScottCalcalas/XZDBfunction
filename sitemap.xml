@@ -1,14 +1,17 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>/404.html</loc></url>
+<url><loc>/CONTRIBUTING.html</loc></url>
 <url><loc>/LICENSE-text.html</loc></url>
 <url><loc>/SECURITY.html</loc></url>
 <url><loc>/articles/index.html</loc></url>
 <url><loc>/articles/overview.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
 <url><loc>/reference/Clean.measurement.for.prism.help.html</loc></url>
 <url><loc>/reference/Clean.measurement.for.prism.html</loc></url>
 <url><loc>/reference/XZDB.Run.html</loc></url>
+<url><loc>/reference/XZDBfunction-package.html</loc></url>
 <url><loc>/reference/cox_multivar_fun.html</loc></url>
 <url><loc>/reference/cox_multivar_fun_cts.html</loc></url>
 <url><loc>/reference/cox_univar_fun.html</loc></url>

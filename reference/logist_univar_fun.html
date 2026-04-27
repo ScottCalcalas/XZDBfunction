@@ -20,7 +20,7 @@ p-values for predictors with &amp;gt;2 categories."><meta property="og:image" co
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">XZDBfunction</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">7.38.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">8.1.1</span>
       </span>
     </div>
 
@@ -38,6 +38,9 @@ p-values for predictors with &amp;gt;2 categories."><meta property="og:image" co
       <a href="../articles/overview.html">XZDBfunction Workflow Overview</a>
     </li>
   </ul></li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/ScottCalcalas/XZDBfunction/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
@@ -66,7 +69,7 @@ p-values for predictors with &gt;2 categories.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">logist_univar_fun</span><span class="op">(</span><span class="va">data_fun</span>, <span class="va">response</span>, <span class="va">var</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">logist_univar_fun</span><span class="op">(</span><span class="va">data_fun</span>, <span class="va">response</span>, <span class="va">var</span>, dig <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -96,9 +99,11 @@ columns = <code>"OR (95% CI)"</code> and <code>"p value"</code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>• Removes incomplete cases using only the variables in <code>response</code> and <code>var</code>.
-• For categorical predictors with:</p><ul><li><p><strong>2 levels</strong> → Wald p-value for the coefficient</p></li>
-<li><p><strong>&gt;2 levels</strong> → Likelihood ratio test (LRT) comparing model vs. intercept-only model</p></li>
+
+<ul><li><p>Removes incomplete cases using only the variables in <code>response</code> and <code>var</code>.</p></li>
+<li><p>For categorical predictors with:</p><ul><li><p><strong>2 levels</strong> -&gt; Wald p-value for the coefficient</p></li>
+<li><p><strong>&gt;2 levels</strong> -&gt; Likelihood ratio test (LRT) comparing model vs. intercept-only model</p></li>
+</ul></li>
 </ul></div>
 
     <div id="ref-examples">

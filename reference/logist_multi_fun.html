@@ -19,7 +19,7 @@ ratio tests (LRT) for predictors with more than 2 categories."><meta property="o
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">XZDBfunction</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">7.38.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">8.1.1</span>
       </span>
     </div>
 
@@ -37,6 +37,9 @@ ratio tests (LRT) for predictors with more than 2 categories."><meta property="o
       <a href="../articles/overview.html">XZDBfunction Workflow Overview</a>
     </li>
   </ul></li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/ScottCalcalas/XZDBfunction/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
@@ -69,7 +72,8 @@ ratio tests (LRT) for predictors with more than 2 categories.</p>
 <span>  <span class="va">var</span>,</span>
 <span>  <span class="va">response</span>,</span>
 <span>  <span class="va">data_fun</span>,</span>
-<span>  multi_var_all <span class="op">=</span> <span class="va">multi_var_all</span></span>
+<span>  multi_var_all <span class="op">=</span> <span class="va">multi_var_all</span>,</span>
+<span>  dig <span class="op">=</span> <span class="fl">2</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -108,11 +112,12 @@ Used to determine whether <code>var</code> is included in <code>var_model</code>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>• Categorical levels are compared to the first level (reference).
-• If <code>var</code> is not included in <code>var_model</code>, a blank row is returned.
-• For &gt;2 categories, LRT compares:
-full model vs. model without the variable.</p>
-    </div>
+
+<ul><li><p>Categorical levels are compared to the first level (reference).</p></li>
+<li><p>If <code>var</code> is not included in <code>var_model</code>, a blank row is returned.</p></li>
+<li><p>For &gt;2 categories, LRT compares:
+full model vs. model without the variable.</p></li>
+</ul></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
