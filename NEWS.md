@@ -18,6 +18,6 @@
 
 * Updated database search methods and protein database input requirements.
 
-# 7.35
+# XZDBfunction 7.35
 
 * Improved macOS quick start with one-click automatic R installation.
