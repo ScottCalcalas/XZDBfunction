@@ -1,13 +1,13 @@
-# Contributing to MOD-Browser
+# Contributing to XZDBfunction
 
-Thank you for helping improve `MOD-Browser`. Contributions can include bug
+Thank you for helping improve `XZDBfunction`. Contributions can include bug
 reports, documentation improvements, example datasets, tests, and code changes.
 
 ## Reporting problems
 
 Please open an issue at:
 
-https://github.com/ScottCalcalas/MOD-Browser/issues
+https://github.com/ScottCalcalas/XZDBfunction/issues
 
 Include your operating system, R version, package version, the command you ran,
 and the smallest dataset or screenshot needed to reproduce the problem. Do not

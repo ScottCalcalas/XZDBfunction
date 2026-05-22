@@ -1,5 +1,5 @@
 
-# 'MOD-Browser' R Package: Multi-Omices eXplore & Zoom Database Browser
+# 'XZDBfunction' R Package: Multi-Omices eXplore & Zoom Database Browser
 - User-friendly Shiny-based web platform for [searching, annotating, and exporting](#browser-functions) multi-omics (genomic and proteomic) metadata across multiple datasets.
 - Build for genomic & protein interaction datasets. 
 - Works on Windows, macOS, and Linux system, the only dependency is R. Supports running without install an R package. Easy to launch [instructions](#instructions-to-configure-local-quick-start) for local use / server use available.

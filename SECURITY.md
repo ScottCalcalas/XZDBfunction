@@ -13,5 +13,5 @@
 
 Go: 
 ```
-https://github.com/ScottCalcalas/MOD-Browser/issues
+https://github.com/ScottCalcalas/XZDBfunction/issues
 ```
