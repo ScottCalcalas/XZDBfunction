@@ -13,7 +13,7 @@
 #' - Default: Runs the packaged UI located inside the installed
 #'   XZDBfunction package.
 #'
-#' - Development mode (`use_current = TRUE`): need to run xzdb.input.all() first to build dataset index.
+#' - Development mode (`use_current = TRUE`): need to run \code{\link{xzdb.input.all}} first to build dataset index.
 #'   It Copies only two files into the
 #'   **current working directory**:
 #'     * app.R  
