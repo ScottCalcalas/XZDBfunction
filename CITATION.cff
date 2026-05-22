@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "XZDBfunction: An Open-Source Platform for Integrative Exploration and Discovery of Genomic and Protein Interaction Networks"
+title: "MOD-Browser: An Open-Source Platform for Integrative Exploration and Discovery of Genomic and Protein Interaction Networks"
 message: "If you use this software, please cite it as below."
 type: software
 authors:
@@ -8,5 +8,5 @@ authors:
     orcid: https://orcid.org/0009-0002-7980-8653
 version: 8.1.1
 date-released: 2026-04-27
-repository-code: https://github.com/ScottCalcalas/XZDBfunction
+repository-code: https://github.com/ScottCalcalas/MOD-Browser
 license: MIT

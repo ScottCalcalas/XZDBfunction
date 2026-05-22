@@ -1,5 +1,5 @@
 ---
-title: 'XZDBfunction: An Open-Source Platform for Integrative Exploration and Discovery of Genomic and Protein Interaction Networks'
+title: 'MOD-Browser: An Open-Source Platform for Integrative Exploration and Discovery of Genomic and Protein Interaction Networks'
 tags:
   - R
   - Shiny
