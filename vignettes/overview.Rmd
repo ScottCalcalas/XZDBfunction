@@ -1,9 +1,9 @@
 
 ---
-title: "XZDBfunction Workflow Overview"
+title: "MODBrowser Workflow Overview"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{XZDBfunction Workflow Overview}
+  %\VignetteIndexEntry{MODBrowser Workflow Overview}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

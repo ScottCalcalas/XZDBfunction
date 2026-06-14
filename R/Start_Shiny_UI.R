@@ -1,23 +1,23 @@
-# start.R - one-click bootstrapper for XZ DB Browser
+# start.R - one-click bootstrapper for MOD Browser
 # Project layout:
 #   ProjectRoot/
-#     App_Info/           (app.R, XZ_DB_functions.r, datasets/, IndexedData/, searching_*.csv)
+#     App_Info/           (app.R, MOD_DB_functions.r, datasets/, IndexedData/, searching_*.csv)
 #     Output/             (exports)
 #     Start.R             (this file)
 
-#' Run Shiny UI for the Genomic DB Browser
+#' Run Shiny UI for MOD Browser
 #'
 #' @description
-#' Launches the Shiny-based Genomic DB Browser.
+#' Launches MOD Browser.
 #'
 #' - Default: Runs the packaged UI located inside the installed
-#'   XZDBfunction package.
+#'   MODBrowser package.
 #'
-#' - Development mode (`use_current = TRUE`): need to run \code{\link{xzdb.input.all}} first to build dataset index.
+#' - Development mode (`use_current = TRUE`): need to run \code{\link{modb.input.all}} first to build dataset index.
 #'   It Copies only two files into the
 #'   **current working directory**:
 #'     * app.R  
-#'     * XZ_DB_functions.r  
+#'     * MOD_DB_functions.r  
 #'     
 #'   Then runs the Shiny app from the working directory.
 #'   
@@ -28,13 +28,13 @@
 #'
 #' @param use_current Logical.  
 #' - `FALSE` (default): run packaged app  
-#' - `TRUE`: copy only app.R and XZ_DB_functions.r into current directory,
+#' - `TRUE`: copy only app.R and MOD_DB_functions.r into current directory,
 #'   then run app locally
 #'
 #' @return Invisibly returns the directory used for launching the app.
 #'
 #' @export
-XZDB.Run <- function(use_current = FALSE) {
+MODB.Run <- function(use_current = FALSE) {
   
   # Packages
   options(repos = c(CRAN = "https://cloud.r-project.org"))
@@ -49,7 +49,7 @@ XZDB.Run <- function(use_current = FALSE) {
   }
   
   
-  pkg_app <- system.file("shinyapp", package = "XZDBfunction")
+  pkg_app <- system.file("shinyapp", package = "MODBrowser")
   if (!nzchar(pkg_app)) {
     stop("Could not find 'shinyapp' directory inside the package.", call. = FALSE)
   }
@@ -59,23 +59,23 @@ XZDB.Run <- function(use_current = FALSE) {
   # --------------------------
   if (isTRUE(use_current)) {
     
-    message("[XZDB.Run] use_current = TRUE -> Running Shiny app from working directory.")
+    message("[MODB.Run] use_current = TRUE -> Running Shiny app from working directory.")
     
     # required files inside package shinyapp
     pkg_app_R <- file.path(pkg_app, "app.R")
-    pkg_fun_R <- file.path(pkg_app, "XZ_DB_functions.r")
+    pkg_fun_R <- file.path(pkg_app, "MOD_DB_functions.r")
     
     if (!file.exists(pkg_app_R))
       stop("Missing app.R inside package shinyapp folder.")
     if (!file.exists(pkg_fun_R))
-      stop("Missing XZ_DB_functions.r inside package shinyapp folder.")
+      stop("Missing MOD_DB_functions.r inside package shinyapp folder.")
     
-    # copy ONLY app.R and XZ_DB_functions.r into current working directory
+    # copy ONLY app.R and MOD_DB_functions.r into current working directory
     file.copy(pkg_app_R, getwd(), overwrite = F)
     file.copy(pkg_fun_R, getwd(), overwrite = F)
     
-    message("[XZDB.Run] Copied app.R and XZ_DB_functions.r into: ", normalizePath(getwd()))
-    message("[XZDB.Run] Launching app from working directory...")
+    message("[MODB.Run] Copied app.R and MOD_DB_functions.r into: ", normalizePath(getwd()))
+    message("[MODB.Run] Launching app from working directory...")
     
     # launch app from working directory
     return(shiny::runApp(getwd(), launch.browser = TRUE))
@@ -84,7 +84,7 @@ XZDB.Run <- function(use_current = FALSE) {
   # --------------------------
   # Standard mode: run from package
   # --------------------------
-  message("[XZDB.Run] Running packaged app from: ", pkg_app)
+  message("[MODB.Run] Running packaged app from: ", pkg_app)
   
   shiny::runApp(
     appDir = pkg_app,

@@ -1,4 +1,4 @@
-#' XZDBfunction package
+#' MODBrowser package
 #'
 #' @keywords internal
 #' @importFrom dplyr %>% across arrange bind_cols bind_rows filter group_by last_col mutate n relocate starts_with summarise

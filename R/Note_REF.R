@@ -8,10 +8,10 @@
 
 
 
-#' Update this XZDBfunction package
+#' Update this MODBrowser package
 #'
 #' @description
-#' Update this XZDBfunction package, Automatic detaching and attaching current XZDB.
+#' Update this MODBrowser package, Automatic detaching and attaching current MODB.
 #' 
 #' If you have your own dataset, use: I_have_dataset=TRUE
 #' It will keep your datasets and Datasets infomation.xlsx
@@ -22,33 +22,33 @@
 #'   reinstall from GitHub.
 #'
 #' @export
-xzdb.update <- function(I_have_dataset=TRUE,forceInstall=FALSE) {
+modb.update <- function(I_have_dataset=TRUE,forceInstall=FALSE) {
   if (!requireNamespace("remotes", quietly = TRUE)) {
-    stop("Package 'remotes' is required to update XZDBfunction.", call. = FALSE)
+    stop("Package 'remotes' is required to update MODBrowser.", call. = FALSE)
   }
   
   if(I_have_dataset){
-    xzdb.clean.file("TEMP_XZupdate")
-    xzdb.nowDataset(ToName="TEMP_XZupdate")
+    modb.clean.file("TEMP_MODupdate")
+    modb.nowDataset(ToName="TEMP_MODupdate")
   }
   
-  detach("package:XZDBfunction", unload = TRUE)
+  detach("package:MODBrowser", unload = TRUE)
   
   cat("\n\n------Updating from GitHub------\n\n")
   
   if(forceInstall){
-    remotes::install_github("scottcalcalas/XZDBfunction",force = TRUE,upgrade = "never")
-  }else{remotes::install_github("scottcalcalas/XZDBfunction")}
+    remotes::install_github("ScottCalcalas/XZDBfunction",force = TRUE,upgrade = "never")
+  }else{remotes::install_github("ScottCalcalas/XZDBfunction")}
   
   cat("\n\n------Github files configure Completed------\n\n")
   
-  library(XZDBfunction)
+  library(MODBrowser)
   cat("\n\n------Testing Completed------\n\n")
   
   if(I_have_dataset){
-    xzdb.sync.to.shinyapp(DatasetfolderName="TEMP_XZupdate",xlsx.index.location = "TEMP_XZupdate/Datasets infomation.xlsx")
-    xzdb.clean.file("TEMP_XZupdate")
-    cat("Please delete folder 'TEMP_XZupdate' ")
+    modb.sync.to.shinyapp(DatasetfolderName="TEMP_MODupdate",xlsx.index.location = "TEMP_MODupdate/Datasets infomation.xlsx")
+    modb.clean.file("TEMP_MODupdate")
+    cat("Please delete folder 'TEMP_MODupdate' ")
   }
   
   cat("\n\n------Update Completed------\n\n")

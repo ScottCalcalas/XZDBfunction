@@ -8,7 +8,7 @@
 #'  
 #' This helper function is designed for **new users** who want to quickly
 #' review the protocol and example dataset metadata before running the
-#' Genomic DB Browser manually.
+#' MOD Browser manually.
 #'
 #' It copies:
 #' - The **`datasets/`** folder (including all example datasets),
@@ -44,18 +44,18 @@
 #' @examples
 #' \dontrun{
 #'   # Prepare example data and protocol files in the current folder
-#'   xzdb.help()
+#'   modb.help()
 #'
 #'   # After this, check your working directory:
 #'   #   datasets/
 #'   #   Datasets infomation.xlsx
 #'   #   Use protocol.docx
 #' }
-xzdb.help <- function() {
+modb.help <- function() {
   # 1. Locate shinyapp folder inside the installed package
-  pkg_app <- system.file("example", package = "XZDBfunction")
+  pkg_app <- system.file("example", package = "MODBrowser")
   if (pkg_app == "")
-    stop("Cannot find example folder inside XZDBfunction package.")
+    stop("Cannot find example folder inside MODBrowser package.")
   
   # 2. Paths to items we want to copy
   datasets_src <- file.path(pkg_app, "datasets")
@@ -64,7 +64,7 @@ xzdb.help <- function() {
   
   # 3. Check existence
   if (!dir.exists(datasets_src))
-    stop("Missing 'datasets' folder inside package/XZDBfunction/example.")
+    stop("Missing 'datasets' folder inside package/MODBrowser/example.")
   
   if (!file.exists(info_xlsx_src))
     stop("Missing 'Datasets infomation.xlsx' inside shinyapp.")
@@ -99,11 +99,11 @@ xzdb.help <- function() {
 #'
 #' @export
 #'
-xzdb.nowDataset <- function(ToName = "datasets") {
+modb.nowDataset <- function(ToName = "datasets") {
   # 1. Locate shinyapp folder inside the installed package
-  pkg_app <- system.file("shinyapp", package = "XZDBfunction")
+  pkg_app <- system.file("shinyapp", package = "MODBrowser")
   if (pkg_app == "")
-    stop("Cannot find shinyapp folder inside XZDBfunction package.")
+    stop("Cannot find shinyapp folder inside MODBrowser package.")
   
   # 2. Source folder
   datasets_src <- file.path(pkg_app, "datasets")
@@ -163,9 +163,9 @@ xzdb.nowDataset <- function(ToName = "datasets") {
 #' @export
 Clean.measurement.for.prism.help <- function() {
   # 1. Locate shinyapp folder inside the installed package
-  pkg_app <- system.file("example/prism", package = "XZDBfunction")
+  pkg_app <- system.file("example/prism", package = "MODBrowser")
   if (pkg_app == "")
-    stop("Cannot find example/prism folder inside XZDBfunction package.")
+    stop("Cannot find example/prism folder inside MODBrowser package.")
   
   # 2. Paths to items we want to copy
   input_xlsx_src <- file.path(pkg_app, "REF example _ Input_Clean.measurement.for.prism.help.xlsx")

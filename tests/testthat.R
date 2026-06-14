@@ -1,4 +1,4 @@
 library(testthat)
-library(XZDBfunction)
+library(MODBrowser)
 
-test_check("XZDBfunction")
+test_check("MODBrowser")

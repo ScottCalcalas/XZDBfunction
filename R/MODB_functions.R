@@ -20,7 +20,7 @@
 #' The resulting index CSV is written to both locations:
 #'
 #' 1. Local: `./IndexedData/`  
-#' 2. Package: `system.file("shinyapp", package = "XZDBfunction")/IndexedData/`  
+#' 2. Package: `system.file("shinyapp", package = "MODBrowser")/IndexedData/`  
 #'
 #' If writing to the installed package directory is not permitted,
 #' the function writes locally without error and emits a warning.
@@ -155,7 +155,7 @@ xiaopei.input <- function(file.Name,
 #' Writes an index `data.frame`/`tibble` produced by `xiaopei.input()` to:
 #'
 #' - The local directory `./IndexedData/`  
-#' - The package directory `system.file("shinyapp", package = "XZDBfunction")/IndexedData/`
+#' - The package directory `system.file("shinyapp", package = "MODBrowser")/IndexedData/`
 #'
 #' Fails safely when package directory write access is unavailable.
 #'
@@ -178,7 +178,7 @@ xiaopei.input <- function(file.Name,
   
   # shinyapp location
   if (isTRUE(write_to_shinyapp)) {
-    appDir <- system.file("shinyapp", package = "XZDBfunction")
+    appDir <- system.file("shinyapp", package = "MODBrowser")
     if (nzchar(appDir)) {
       
       idxDir <- file.path(appDir, "IndexedData")
@@ -210,11 +210,11 @@ xiaopei.input <- function(file.Name,
 #' @return Invisibly TRUE.
 #'
 #' @examples
-#' xzdb.clean.file("IndexedData")
-#' xzdb.clean.file("Output")
+#' modb.clean.file("IndexedData")
+#' modb.clean.file("Output")
 #'
 #' @export
-xzdb.clean.file <- function(idx_dir) {
+modb.clean.file <- function(idx_dir) {
   
   # Ensure directory exists
   if (!dir.exists(idx_dir)) {
@@ -283,16 +283,16 @@ xzdb.clean.file <- function(idx_dir) {
 #'
 #' @examples
 #' \dontrun{
-#' xzdb.sync.to.shinyapp()
+#' modb.sync.to.shinyapp()
 #' }
 #'
 #' @export
-xzdb.sync.to.shinyapp <- function(
+modb.sync.to.shinyapp <- function(
     xlsx.index.location = "Datasets infomation.xlsx",
     DatasetfolderName  = "datasets"
 ) {
   
-  appDir <- system.file("shinyapp", package = "XZDBfunction")
+  appDir <- system.file("shinyapp", package = "MODBrowser")
   
   if (!nzchar(appDir)) {
     warning("[sync] Cannot find shinyapp directory in package.")
@@ -380,14 +380,14 @@ xzdb.sync.to.shinyapp <- function(
 #' After successfully building all local index files, the function optionally
 #' synchronizes the entire `datasets/`, `IndexedData/`, and Excel index file
 #' into the installed package's `shinyapp/` directory using
-#' \code{\link{xzdb.sync.to.shinyapp}}.
+#' \code{\link{modb.sync.to.shinyapp}}.
 #'
 #' @param xlsx.index.location
 #' Character. File path to the dataset-information Excel file in the current
 #' working directory. Default: `"Datasets infomation.xlsx"`.
 #'
 #' @param sync
-#' Logical. If `TRUE` (default), calls \code{xzdb.sync.to.shinyapp()} after all
+#' Logical. If `TRUE` (default), calls \code{modb.sync.to.shinyapp()} after all
 #' indexes are built. Set to `FALSE` to disable automatic syncing.
 #'
 #' @return
@@ -397,15 +397,15 @@ xzdb.sync.to.shinyapp <- function(
 #' @examples
 #' \dontrun{
 #' # Process all datasets and sync to shinyapp
-#' xzdb.input.all()
+#' modb.input.all()
 #'
 #' # Process only, do NOT sync
-#' xzdb.input.all(sync = FALSE)
+#' modb.input.all(sync = FALSE)
 #' }
 #'
 #' @export
-xzdb.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx", sync = TRUE) {
-  xzdb.clean.file(idx_dir="IndexedData")
+modb.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx", sync = TRUE) {
+  modb.clean.file(idx_dir="IndexedData")
   
   
   indexfile <- readxl::read_xlsx(xlsx.index.location)
@@ -423,7 +423,7 @@ xzdb.input.all <- function(xlsx.index.location = "Datasets infomation.xlsx", syn
     )
   }
   if (isTRUE(sync)) {
-    xzdb.sync.to.shinyapp()
+    modb.sync.to.shinyapp()
   }
 }
 

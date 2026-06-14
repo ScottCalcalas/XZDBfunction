@@ -1,6 +1,6 @@
-# Contributing to XZDBfunction
+# Contributing to MODBrowser
 
-Thank you for helping improve `XZDBfunction`. Contributions can include bug
+Thank you for helping improve `MODBrowser`. Contributions can include bug
 reports, documentation improvements, example datasets, tests, and code changes.
 
 ## Reporting problems
@@ -16,7 +16,7 @@ upload private or protected research data to a public issue.
 ## Asking for support
 
 For usage questions, start with the README and the examples copied by
-`xzdb.help()`. If the behavior still seems unclear or broken, open a GitHub
+`modb.help()`. If the behavior still seems unclear or broken, open a GitHub
 issue so the answer can help future users too.
 
 ## Development workflow

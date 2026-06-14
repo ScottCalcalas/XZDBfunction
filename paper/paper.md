@@ -1,5 +1,5 @@
 ---
-title: 'MOD-Browser: An Open-Source Platform for Integrative Exploration and Discovery of Genomic and Protein Interaction Networks'
+title: 'MOD Browser: An Open-Source Platform for Integrative Exploration and Discovery of Genomic and Protein Interaction Networks'
 tags:
   - R
   - Shiny
@@ -25,7 +25,7 @@ bibliography: paper.bib
 
 # Summary
 
-`XZDBfunction` is an R package and Shiny application for building a searchable
+`MODBrowser` is an R package and Shiny application for building a searchable
 browser over genomic, proteomic, and protein interaction datasets. A user can add
 CSV, TXT, or XLSX files together with a simple metadata spreadsheet, rebuild the
 database index, search by gene symbol or identifier, inspect dataset-level
@@ -53,7 +53,7 @@ with this collection can require repeated manual searching or ad hoc scripts.
 Those approaches are slow, difficult to reproduce, and hard for collaborators
 without coding experience to audit.
 
-`XZDBfunction` addresses this need by turning a folder of heterogeneous datasets
+`MODBrowser` addresses this need by turning a folder of heterogeneous datasets
 and a metadata workbook into a local, searchable research database. The metadata
 workbook records which columns contain gene identifiers and symbols, while the R
 package builds normalized index files and the Shiny application presents them in
@@ -78,10 +78,10 @@ UniProt and MINT provide high-quality protein annotation and protein-protein
 interaction records [@uniprot2025; @mint2012].
 
 These tools solve important parts of the broader problem, but they do not target
-the specific workflow that motivated `XZDBfunction`: maintaining a lab-scale
+the specific workflow that motivated `MODBrowser`: maintaining a lab-scale
 search browser over many simple files, including both local experiments and
 published comparison datasets, with minimal setup for non-programming users.
-`XZDBfunction` is not intended to replace Cytoscape for network modeling or
+`MODBrowser` is not intended to replace Cytoscape for network modeling or
 Bioconductor tools for structured assay analysis. Instead, it fills an upstream
 curation and triage role: researchers can quickly identify which datasets contain
 a gene or protein of interest, recover the original rows, and compare local
@@ -90,13 +90,13 @@ analysis environment is needed.
 
 # Software design
 
-`XZDBfunction` is implemented as an R package built around a small set of core
+`MODBrowser` is implemented as an R package built around a small set of core
 indexing functions and a bundled Shiny application [@R; @shiny]. The main data
 model separates raw datasets, dataset metadata, derived index files, and exported
-search results. Users can call `xzdb.help()` to copy example files and protocol
-materials, `xzdb.input.all()` to build indexes for all listed datasets,
-`xzdb.sync.to.shinyapp()` to synchronize the indexed database into the packaged
-application, and `XZDB.Run()` to launch the browser.
+search results. Users can call `modb.help()` to copy example files and protocol
+materials, `modb.input.all()` to build indexes for all listed datasets,
+`modb.sync.to.shinyapp()` to synchronize the indexed database into the packaged
+application, and `MODB.Run()` to launch the browser.
 
 The central design trade-off is to prefer portable files and spreadsheet-based
 configuration over a database server. This keeps installation and sharing simple
@@ -116,7 +116,7 @@ table instead of becoming a detached summary.
 
 # Research impact statement
 
-`XZDBfunction` was developed to support molecular pharmacology research workflows
+`MODBrowser` was developed to support molecular pharmacology research workflows
 where laboratory findings must be compared with previous experiments and
 interaction databases. Its immediate impact is practical: it allows collaborators
 without coding experience to perform cross-dataset searches, inspect source

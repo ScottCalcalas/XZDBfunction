@@ -1,6 +1,6 @@
-Package: XZDBfunction
+Package: MODBrowser
 Type: Package
-Title: Genomic Dataset Indexing and Search Website Browser
+Title: MOD Browser for Genomic Dataset Indexing and Search
 Version: 8.1.1
 Author: Xiaopei Zhang
 Maintainer: Xiaopei Zhang <xpzhang15@gmail.com>
